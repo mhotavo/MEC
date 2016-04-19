@@ -7,13 +7,9 @@
 
 	require_once "Core/Config/Autoload.php";
 	Core\Config\Autoload::run();
-	new Core\Config\Request();
+	Core\Config\Enrutador::run(new Core\Config\Request());
+	
 
-	/*$integrante = new Core\Models\Integrante();
-	$integrante->__set("documento", 1);
-	$datos=$integrante->view();
-     print $datos['NOMBRES'];*/
- 
 
 
 ?>
