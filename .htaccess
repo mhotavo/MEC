@@ -1,10 +1,8 @@
-<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|json|lock|swp)|~)$">
-    Order allow,deny
-    Deny from all
-    Satisfy All
-</FilesMatch>
+RewriteEngine On
 
-<Files .htaccess>
-Order allow,deny
-Deny from all
-</Files>
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.*)$ http://localhost/MEC/index.php?url=$1 [QSA,L]
+ 
