@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-04-2016 a las 23:56:54
+-- Tiempo de generación: 21-04-2016 a las 00:50:36
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.5.30
 
@@ -50,11 +50,21 @@ CREATE TABLE `integrante` (
   `SEGUNDO_APELLIDO` varchar(15) DEFAULT NULL,
   `FECHA_NACIMIENTO` date NOT NULL,
   `DIRECCION` varchar(50) DEFAULT NULL,
-  `CELULAR` int(30) DEFAULT NULL,
+  `CELULAR` bigint(200) DEFAULT NULL,
   `CORREO` varchar(30) DEFAULT NULL,
   `ACOLITO` tinyint(1) DEFAULT NULL,
+  `COORDINADOR` tinyint(1) DEFAULT NULL,
+  `IMAGEN` longtext,
   `FECHA_INGRESO` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `integrante`
+--
+
+INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `FECHA_NACIMIENTO`, `DIRECCION`, `CELULAR`, `CORREO`, `ACOLITO`, `COORDINADOR`, `IMAGEN`, `FECHA_INGRESO`) VALUES
+(1, 'Milton', 'Hernando', 'Otavo', '2016-04-13', 'MZ 33 CASA 21 PROTECHO B', 3112002546, NULL, NULL, NULL, 'avatar.jpg', '2016-04-20 15:25:58'),
+(2, 'Hugo', 'Ferney', 'Otavo', '2016-04-13', 'MZ 33 CASA 21 PROTECHO B', 3112002546, NULL, NULL, NULL, 'avatar2.jpg', '2016-04-20 15:30:12');
 
 --
 -- Índices para tablas volcadas
@@ -82,7 +92,7 @@ ALTER TABLE `integrante`
 -- AUTO_INCREMENT de la tabla `integrante`
 --
 ALTER TABLE `integrante`
-  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --

@@ -25,11 +25,9 @@
 			$this->db->query($sql);
 		}
 
-		public function consultaRetorno($sql)
-		{
-			$datos= $this->db->query($sql);
-			$row=mysqli_fetch_assoc($datos);
-			return $row;
+		public function consultaRetorno($sql){
+			$datos = $this->db->query($sql);
+			return $datos;
 		}
 
 	}

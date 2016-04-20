@@ -7,6 +7,7 @@
 
 	require_once "Core/Config/Autoload.php";
 	Core\Config\Autoload::run();
+	require_once "Views/template.php";
 	Core\Config\Enrutador::run(new Core\Config\Request());
 	
 
