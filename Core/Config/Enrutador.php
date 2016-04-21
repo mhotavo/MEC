@@ -26,16 +26,18 @@
 					$datos = call_user_func_array(array($controlador, $metodo), $argumento);
 				}
 			}
-		
+			if (ucwords($request->getControlador())!="Login") 
+			{
+				//Cargar vista
+				$ruta = ROOT . "HTML" . DS . ucwords($request->getControlador()) . DS . $request->getMetodo() . ".php";
+				if(is_readable($ruta)){
+					require_once $ruta;
+				}else{
+					print "No se encontro la vista";
+				}	
 
-			//Cargar vista
-			$ruta = ROOT . "HTML" . DS . ucwords($request->getControlador()) . DS . $request->getMetodo() . ".php";
-			if(is_readable($ruta)){
-				require_once $ruta;
-			}else{
-				print "No se encontro la vista";
 			}
-
+			
 		}
 	}
 	

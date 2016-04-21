@@ -1,5 +1,5 @@
 <?php namespace Views;
-	$template=new Template();
+	//$template=new Template();
 
 	class Template 
 	{
@@ -58,7 +58,7 @@
 		function __destruct()
 		{ ?>
 
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+			<script src="<?php echo URL; ?>Views/js/jquery.min.js"></script>
 			<script src="<?php echo URL; ?>Views/bootstrap/bootstrap.min.js"></script> 	
 			<script src="<?php echo URL; ?>Views/js/generales.js"></script> 	
 			</body>
