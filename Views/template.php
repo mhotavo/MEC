@@ -12,6 +12,7 @@
 				<title>MEC</title>
 			 <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/bootstrap/bootstrap.min.css">
 			 <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/css/general.css">
+
 			 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 			</head>
 			<body>
@@ -24,7 +25,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="#">Misioneros en Camino</a>
+			      <a class="navbar-brand" href="<?php echo URL; ?>">Misioneros en Camino</a>
 			    </div>
 
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -56,8 +57,10 @@
 
 		function __destruct()
 		{ ?>
+
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 			<script src="<?php echo URL; ?>Views/bootstrap/bootstrap.min.js"></script> 	
+			<script src="<?php echo URL; ?>Views/js/generales.js"></script> 	
 			</body>
 			</html>			
 <?php }		

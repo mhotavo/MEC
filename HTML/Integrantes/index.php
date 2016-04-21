@@ -20,13 +20,13 @@
         <tbody> 
       <?php while($row = mysqli_fetch_array($datos)){ ?>
             <tr>
-            <td><img class="avatar" src="<?php  echo URL; ?>HTML/Integrantes/avatars/<?php echo  $row['IMAGEN']; ?>"> </td>
+            <td> <a href="<?php echo URL; ?>Integrantes/ver/<?php echo $row['DOCUMENTO']; ?>"><img class="avatar" src="<?php  echo URL; ?>HTML/Integrantes/avatars/<?php echo  $row['IMAGEN']; ?>"> </a></td>
             <td><?php  echo $row['NOMBRES']; ?></td>
             <td><?php  echo $row['PRIMER_APELLIDO']; ?></td>
             <td><?php  echo $row['SEGUNDO_APELLIDO']; ?></td>
             <td><?php  echo $row['CELULAR']; ?></td>
             <td><a  class="btn btn-warning" href="<?php echo URL; ?>Integrantes/editar/<?php echo $row['DOCUMENTO']; ?>">Editar</a> 
-                <a  class="btn btn-danger" href="<?php echo URL; ?>Integrantes/eliminar/<?php echo $row['DOCUMENTO']; ?>">Eliminar</a> </td>
+                <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este Integrante?','<?php echo URL; ?>Integrantes/eliminar/<?php echo $row['DOCUMENTO']; ?>')" >Eliminar</a> </td>
           </tr>
       <?php 
           }

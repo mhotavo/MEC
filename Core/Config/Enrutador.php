@@ -17,10 +17,12 @@
 				require_once $ruta;
 				$mostrar = "Core\Controllers\\" . $controlador;
 				$controlador = new $mostrar;
-				if(!isset($argumento)){
+				#Validamos que el metodo exista en la clase controlador
+				#echo $exist=var_dump(method_exists($controlador,$metodo));
 
+				if(!isset($argumento) and method_exists($controlador,$metodo) ){
 					$datos = call_user_func(array($controlador, $metodo));
-				}else{
+				}elseif(method_exists($controlador,$metodo)){
 					$datos = call_user_func_array(array($controlador, $metodo), $argumento);
 				}
 			}

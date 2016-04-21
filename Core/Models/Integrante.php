@@ -11,6 +11,7 @@
 		private $correo;
 		private $acolito;
 		private $imagen;
+		private $coordinador;
 		private $db;
 
 		public function __construct(){
@@ -50,6 +51,7 @@
 					 CELULAR, 
 					 CORREO, 
 					 ACOLITO,
+					 COORDINADOR,
 					 IMAGEN) 
 				VALUES 
 					(NULL, 
@@ -61,6 +63,7 @@
 					'{$this->celular}', 
 					'{$this->correo}', 
 					'{$this->acolito}',
+					'{$this->coordinador}',
 					'{$this->imagen}'); ";
 			$this->db->consultaSimple($sql);
 
@@ -73,7 +76,7 @@
 		}
 
 		 public function edit() {
-		      $sql="UPDATE integrante SET 
+		    echo   $sql="UPDATE integrante SET 
 		            NOMBRES='{$this->nombres}',
 		            PRIMER_APELLIDO ='{$this->primerApellido}',
 		            SEGUNDO_APELLIDO ='{$this->segundoApellido}',
@@ -82,16 +85,17 @@
 		            CELULAR ='{$this->celular}',
 		            CORREO ='{$this->correo}',
 		            ACOLITO ='{$this->acolito}',
+		            COORDINADOR ='{$this->coordinador}',
 		            IMAGEN ='{$this->imagen}'
 		            WHERE DOCUMENTO='{$this->documento}';";
 		       $this->db->consultaSimple($sql);
 		  }
 
 		 public function view(){
-			$sql="SELECT * FROM integrante WHERE DOCUMENTO='{$this->documento}'";
-			$row= $this->db->consultaRetorno($sql);			
+			$sql="SELECT i.*, YEAR(CURDATE())-YEAR(i.FECHA_NACIMIENTO) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(i.FECHA_NACIMIENTO,'%m-%d'), 0, -1) AS EDAD_ACTUAL FROM integrante i WHERE DOCUMENTO='{$this->documento}'";
+			$datos = $this->db->consultaRetorno($sql);
+			$row = mysqli_fetch_assoc($datos);
 			return $row;
-
 		}
 
 
