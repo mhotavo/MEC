@@ -15,7 +15,7 @@ function goLogin(){
 				result+='<p><strong>Espera un momento por favor.</strong></p>';
 				result+=' </div>';  
 				__('_AJAX_LOGIN_').innerHTML = result;	 
-				window.location='/Integrantes';
+				window.location='Integrantes';
 				//location.reload();
 			}else {
 			__('_AJAX_LOGIN_').innerHTML = connect.responseText;
@@ -34,7 +34,7 @@ function goLogin(){
 
 
 	}
-	connect.open('POST', 'ajax.php?mode=login', true);
+	connect.open('POST', 'GoLogin', true);
 	connect.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
 	connect.send(form);
 

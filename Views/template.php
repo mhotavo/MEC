@@ -1,5 +1,5 @@
 <?php namespace Views;
-	//$template=new Template();
+	#$template=new Template();
 
 	class Template 
 	{
@@ -12,7 +12,7 @@
 				<title>MEC</title>
 			 <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/bootstrap/bootstrap.min.css">
 			 <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/css/general.css">
-
+  		     <link rel="stylesheet" href="<?php echo URL; ?>Views/fontawesome/css/font-awesome.min.css">
 			 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 			</head>
 			<body>
@@ -25,7 +25,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="<?php echo URL; ?>">Misioneros en Camino</a>
+			      <a class="navbar-brand" href="<?php echo URL; ?>Integrantes">Misioneros en Camino</a>
 			    </div>
 
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -46,9 +46,9 @@
 			        </div>
 			        <button type="submit" class="btn btn-default">Buscar</button>
 			      </form>
-			     <!-- <ul class="nav navbar-nav navbar-right">
-			        <li><a href="#">Link</a></li>
-			      </ul>-->
+			      <ul class="nav navbar-nav navbar-right">
+			        <li><a href="<?php echo URL; ?>Logout"> Salir  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+			      </ul>
 			    </div>
 			  </div>
 			</nav>

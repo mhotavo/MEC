@@ -3,10 +3,10 @@
 	class Conexion{
 
 		private $datos= array (
-				"host"=>"localhost",
-				"user"=> "root",
-				"pass"=>"",
-				"db"=>"mec"
+				"host"=>DB_HOST,
+				"user"=>DB_USER,
+				"pass"=>DB_PASS,
+				"db"=>DB_NAME
 			);
 		private $db;
 
@@ -29,6 +29,18 @@
 			$datos = $this->db->query($sql);
 			return $datos;
 		}
+
+		public function row($sql){
+			$datos =  mysqli_fetch_array($sql);
+			return $datos;
+		}
+
+
+		public function total_rows($sql){
+			return mysqli_num_rows($sql);
+		}
+
+		
 
 	}
 
