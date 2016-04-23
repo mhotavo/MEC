@@ -1,6 +1,6 @@
 <?php  
 
-	session_start();
+session_start();
 
 
 #Constantes de la conexion FE5C3EE9

@@ -1,5 +1,6 @@
 <?php namespace Core\Controllers;
 	use Core\Models\Familiar as Familiar;
+	use Core\Models\Integrante as Integrante;
 
 
 	class FamiliaresController{
@@ -8,6 +9,8 @@
 
 		public function __construct(){
 			$this->Familiar = new Familiar();
+			$this->Integrante = new Integrante();
+			
 		}
 
 		public function index(){
@@ -19,30 +22,19 @@
 
 		public function agregar(){
 			if ($_POST) {
-					$permitidos=array("image/jpeg", "image/png", "image/jpg");
-					$limite = 700;
-					if (in_array($_FILES['inputImagen']['type'], $permitidos) and $_FILES['inputImagen']['size']<= $limite*1024 ) 
-					{
-					 	$nombre = date("is") . $_FILES['inputImagen']['name'];
-					 	$ruta= "HTML/Familiares/avatars/" . $nombre;
-					 	move_uploaded_file($_FILES['inputImagen']['tmp_name'], $ruta);
-					 
-					 } 
-					 else {
-					 	$nombre = null;
-					 }
-					$this->Familiar->__set("nombres", $_POST['inputNombres']);
-				 	$this->Familiar->__set("primerApellido", $_POST['inputPrimerApellido']);
-				 	$this->Familiar->__set("segundoApellido", $_POST['inputSegundoApellido']);
-				 	$this->Familiar->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
+					$this->Familiar->__set("documentoIntegrante", $_POST['integrante']);
+					$this->Familiar->__set("nombres", strtolower(ucwords($_POST['inputNombres'])) );
+				 	$this->Familiar->__set("primerApellido", strtolower(ucwords($_POST['inputPrimerApellido'])) )  ;
+				 	$this->Familiar->__set("segundoApellido", strtolower(ucwords($_POST['inputSegundoApellido'])) );
 				 	$this->Familiar->__set("direccion", $_POST['inputDireccion']);
 				 	$this->Familiar->__set("celular", $_POST['inputCelular']);
 				 	$this->Familiar->__set("correo", $_POST['inputEmail']);
-				 	$this->Familiar->__set("acolito", $_POST['Acolito']);
-				 	$this->Familiar->__set("coordinador", $_POST['Coordinador']);
-				 	$this->Familiar->__set("imagen", $nombre);
+				 	$this->Familiar->__set("parentesco", $_POST['parentesco']);
 				 	$this->Familiar->add();
 				 	header("Location:" . URL . "Familiares");
+			} else{
+			$datos = $this->Integrante->listar(); 
+ 			return $datos;
 			}
  			
 
@@ -54,9 +46,9 @@
 				$datos=$this->Familiar->view();
 				return $datos;
 			} else {
-				$this->Familiar->__set("documento", $_POST['Documento']);
-				$this->Familiar->__set("nombres", $_POST['inputNombres']);
-			 	$this->Familiar->__set("primerApellido", $_POST['inputPrimerApellido']);
+				$this->Familiar->__set("documento", strtolower(ucwords($_POST['Documento'])) );
+				$this->Familiar->__set("nombres", strtolower(ucwords($_POST['inputNombres'])) );
+			 	$this->Familiar->__set("primerApellido", strtolower(ucwords($_POST['inputPrimerApellido'])) );
 			 	$this->Familiar->__set("segundoApellido", $_POST['inputSegundoApellido']);
 			 	$this->Familiar->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
 			 	$this->Familiar->__set("direccion", $_POST['inputDireccion']);

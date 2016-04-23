@@ -1,7 +1,7 @@
 
 
 <div class="container">
-<h2 align="center">Nuevo Integrante</h2>
+<h2 align="center">Nuevo Familiar</h2>
 <br>
   <div class="row">
     <div class="col-md-2"></div>
@@ -23,15 +23,36 @@
 		    <div class="form-group">
 		      <label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
 		      <div class="col-lg-10">
-		        <input type="text" class="form-control" name="inputSegundoApellido" placeholder="Segundo Apellido" >
+		        <input type="text" class="form-control" name="inputSegundoApellido" placeholder="Segundo Apellido" required>
 		      </div>
 		    </div>			    	        
+
 		    <div class="form-group">
-		      <label for="inputFechaNacimiento" class="col-lg-2 control-label">Fecha Nacimiento</label>
+		      <label for="inputEmail" class="col-lg-2 control-label">Familiar de:</label>
 		      <div class="col-lg-10">
-		        <input type="date" class="form-control" name="inputFechaNacimiento" required>
+		        <select class="form-control" name="integrante">
+		        	<option value="">[...]</option>
+		        	<?php 
+		        	while($row = mysqli_fetch_array($datos)){ ?>
+		        	<option value="<?php  echo $row['DOCUMENTO']; ?>"><?php  echo $row['NOMBRES'] . " " . $row['PRIMER_APELLIDO']; ?></option>
+		        	<?php } ?>
+		        </select>
 		      </div>
-		    </div>
+		    </div> 
+		    <div class="form-group">
+		      <label for="inputEmail" class="col-lg-2 control-label">Parentesco</label>
+		      <div class="col-lg-10">
+		        <select class="form-control" name="parentesco">
+		        	<option value="">[...]</option>
+		        	<option value="Mama">Mamá</option>
+		        	<option value="Papa">Papá</option>
+		        	<option value="Hermano(a)">Hermano(a)</option>
+		        	<option value="Abuelo(a)">Abuelo(a)</option>
+		        	<option value="Tio(a)">Tio(a)</option>
+		        	<option value="Otro">Otro</option>
+		        </select>
+		      </div>
+		    </div> 		    
 		    <div class="form-group">
 		      <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
 		      <div class="col-lg-10">
@@ -49,46 +70,7 @@
 		      <div class="col-lg-10">
 		        <input type="text" class="form-control" name="inputEmail" placeholder="Email" required>
 		      </div>
-		    </div>
-		    <div class="form-group">
-		      <label for="inputImagen" class="col-lg-2 control-label">Imagen</label>
-		      <div class="col-lg-10">
-		        <input type="file" class="form-control" name="inputImagen" >
-		      </div>
-		    </div>
-
-		    <div class="form-group">
-		      <label class="col-lg-2 control-label">Acolito</label>
-		      <div class="col-lg-10">
-		        <div class="radio">
-		          <label>
-		            <input type="radio" name="Acolito" id="optionsRadios1" value="1" >
-		            Si
-		          </label>
- 
-		          <label>
-		            <input type="radio" name="Acolito" id="optionsRadios2" value="0" checked="">
-		            No
-		          </label>
-		        </div>
-		      </div>
-		    </div>
-		    <div class="form-group">
-		      <label class="col-lg-2 control-label">Coordinador</label>
-		      <div class="col-lg-10">
-		        <div class="radio">
-		          <label>
-		            <input type="radio" name="Coordinador" id="optionsRadios1" value="1" >
-		            Si
-		          </label>
-	
-		          <label>
-		            <input type="radio" name="Coordinador" id="optionsRadios2" value="0" checked="">
-		            No
-		          </label>
-		        </div>
-		      </div>
-		    </div>		    
+		    </div>    
 		    
 		    <div class="form-group">
 		      <div class="col-lg-10 col-lg-offset-2">

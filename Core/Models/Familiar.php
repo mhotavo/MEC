@@ -9,19 +9,27 @@
 		private $parentesco;
 		private $celular;
 		private $direccion;	
+		private $correo;	
 		private $db;
 
 		public function __construct(){
 			$this->db = new Conexion();
 		}
 
-		public function set($atributo, $contenido){
-			$this->atributo = $contenido;
-		}
+		public function __set($var, $valor) {  
+		     if (property_exists(__CLASS__, $var)) {  
+		       $this->$var = $valor;  
+		     } else {  
+		       echo "No existe el atributo $var.";  
+		     }  
+		   }  
 
-		public function get($atributo){
-			return $this->atributo;
-		}
+		public function __get($var) {  
+		     if (property_exists(__CLASS__, $var)) {  
+		       return $this->$var;  
+		     }  
+		     return NULL;  
+		   }  
 
 		public function listar(){
 			$sql="SELECT * FROM familiar";
@@ -30,7 +38,7 @@
 		}
 
 		public function add(){
-			$sql="INSERT INTO familiar 
+			echo $sql="INSERT INTO familiar 
 					(DOCUMENTO,
 					 IDENTIFICACION_INTEGRANTE,
 					 NOMBRES,
@@ -46,8 +54,8 @@
 					'{$this->primerApellido}', 
 					'{$this->segundoApellido}', 
 					'{$this->parentesco}', 
-					'{$this->direccion}', 
-					'{$this->celular}'); ";
+					'{$this->celular}', 
+					'{$this->direccion}'); ";
 			$this->db->consultaSimple($sql);
 
 		}
@@ -73,8 +81,8 @@
 
 		 public function view(){
 			$sql="SELECT * FROM familiar WHERE DOCUMENTO='{$this->documento}'";
-			$datos=$this->db->consultaRetorno($sql);
-			$row=mysqli_fetch_assoc($datos);
+			$datos = $this->db->consultaRetorno($sql);
+			$row = mysqli_fetch_assoc($datos);
 			return $row;
 
 		}
