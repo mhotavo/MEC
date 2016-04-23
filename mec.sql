@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2016 a las 22:52:34
+-- Tiempo de generación: 23-04-2016 a las 18:40:05
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.5.30
 
@@ -64,8 +64,7 @@ CREATE TABLE `integrante` (
 
 INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `FECHA_NACIMIENTO`, `DIRECCION`, `CELULAR`, `CORREO`, `ACOLITO`, `COORDINADOR`, `IMAGEN`, `FECHA_INGRESO`) VALUES
 (1, 'Milton', 'Hernando', 'Otavo Varon', '1995-11-04', 'MZ 33 CASA 21 PROTECHO B a', 3112002546, 'MILTON.OTAVO@GMAIL.COM', 1, 1, '1-3254avatar.jpg', '2016-04-22 11:26:23'),
-(2, 'Hugo', 'Ferney', 'Otavo', '2016-04-13', 'MZ 33 CASA 21 PROTECHO B', 3112002546, '', 0, 0, '2-3303avatar2.jpg', '2016-04-21 11:33:03'),
-(4, 'Nicol Dahiana', 'Mesa', 'Rengifo', '2001-11-28', 'SP MZ 1 MZ 2 CASA 3 NUEVA CASTILLA', 3222195580, 'nicol.mesa@gmail.com', 1, 0, '4-010916215_10203344202754048_8237009553896869607_n.jpg', '2016-04-21 15:01:09');
+(2, 'Hugo', 'Ferney', 'Otavo Varon', '2016-04-13', 'MZ 33 CASA 21 PROTECHO B', 3112002546, 'hug.', 0, 0, '2-3303avatar2.jpg', '2016-04-23 08:52:24');
 
 -- --------------------------------------------------------
 
@@ -93,7 +92,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `DOC`, `USER`, `PASS`, `EMAIL`, `ROL`, `NOMBRES`, `P_APELLIDO`, `S_APELLIDO`, `KEYPASS`, `NEWPASS`, `ULTIMA_CONEXION`) VALUES
-(1, 1110540682, 'admin', 'FE5C3EE9', 'milton.otavo@gmail.com', 2, 'MILTON', 'OTAVO', 'VARON', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0);
+(1, 1110540682, 'admin', 'd9529dbe59fa02092ee87e645ab6a516', 'milton.otavo@gmail.com', 2, 'MILTON', 'OTAVO', 'VARON', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0);
 
 --
 -- Índices para tablas volcadas
@@ -127,7 +126,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `integrante`
 --
 ALTER TABLE `integrante`
-  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

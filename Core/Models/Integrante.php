@@ -76,7 +76,7 @@
 		}
 
 		 public function edit() {
-		    echo   $sql="UPDATE integrante SET 
+		       $sql="UPDATE integrante SET 
 		            NOMBRES='{$this->nombres}',
 		            PRIMER_APELLIDO ='{$this->primerApellido}',
 		            SEGUNDO_APELLIDO ='{$this->segundoApellido}',

@@ -14,11 +14,22 @@ class GoLogin
 		 $this->db = new Conexion();
 	}
 
+	protected function encrypt ($string){
+		  $long = strlen($string);
+		  $str = '';
+		  for($x = 0; $x < $long; $x++) {
+		    $str .= ($x % 2) != 0 ? md5($string[$x]) : $x;
+		  }
+		  return md5($str);
+	}
+
+
 	public function validar(){
 			#$pass = Encrypt($_POST['pass']);
 		if ( !empty($this->user) and !empty( $this->pass)) {
 
-			$sql="SELECT ID FROM usuarios WHERE (USER='{$this->user}' OR EMAIL='{$this->user}') AND PASS='{$this->pass}' LIMIT 1;";
+
+			$sql="SELECT ID FROM usuarios WHERE (USER='{$this->user}' OR EMAIL='{$this->user}') AND PASS='{$this->encrypt($this->pass)}' LIMIT 1;";
 			$datos=  $this->db->consultaRetorno($sql);
 		    $row =   $this->db->row($datos);
 		    $total = $this->db->total_rows($datos);

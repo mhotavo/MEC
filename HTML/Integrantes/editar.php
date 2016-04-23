@@ -10,7 +10,7 @@
 	    	<div class="col-md-4">
 	  			<div class="panel panel-default">
 				  <div class="panel-body">
-				    <img class="img-responsive" src="<?php echo URL;?>HTML/Integrantes/avatars/<?php echo $datos['IMAGEN']; ?>" required>
+				    <img class="img-responsive" src="<?php echo URL;?>HTML/Integrantes/avatars/<?php echo  !empty($row['IMAGEN']) ? $row['IMAGEN'] : 'no-image.png'    ; ?>" required>
 				  </div>
 				</div>
 	  		</div>

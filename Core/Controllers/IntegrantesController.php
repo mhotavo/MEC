@@ -21,24 +21,28 @@
 			if ($_POST) {
 					$permitidos=array("image/jpeg", "image/png", "image/jpg");
 					$limite = 700;
-					if (in_array($_FILES['inputImagen']['type'], $permitidos) and $_FILES['inputImagen']['size']<= $limite*1024 ) {
-					 	$nombre = $_POST['Documento'] . "-" . date("is") . $_FILES['inputImagen']['name'];
+					if (in_array($_FILES['inputImagen']['type'], $permitidos) and $_FILES['inputImagen']['size']<= $limite*1024 ) 
+					{
+					 	$nombre = date("is") . $_FILES['inputImagen']['name'];
 					 	$ruta= "HTML/Integrantes/avatars/" . $nombre;
 					 	move_uploaded_file($_FILES['inputImagen']['tmp_name'], $ruta);
-					 	$this->integrante->__set("nombres", $_POST['inputNombres']);
-					 	$this->integrante->__set("primerApellido", $_POST['inputPrimerApellido']);
-					 	$this->integrante->__set("segundoApellido", $_POST['inputSegundoApellido']);
-					 	$this->integrante->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
-					 	$this->integrante->__set("direccion", $_POST['inputDireccion']);
-					 	$this->integrante->__set("celular", $_POST['inputCelular']);
-					 	$this->integrante->__set("correo", $_POST['inputEmail']);
-					 	$this->integrante->__set("acolito", $_POST['Acolito']);
-					 	$this->integrante->__set("coordinador", $_POST['Coordinador']);
-					 	$this->integrante->__set("imagen", $nombre);
-					 	$this->integrante->add();
-					 	header("Location:" . URL . "Integrantes");
-
+					 
 					 } 
+					 else {
+					 	$nombre = null;
+					 }
+					$this->integrante->__set("nombres", $_POST['inputNombres']);
+				 	$this->integrante->__set("primerApellido", $_POST['inputPrimerApellido']);
+				 	$this->integrante->__set("segundoApellido", $_POST['inputSegundoApellido']);
+				 	$this->integrante->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
+				 	$this->integrante->__set("direccion", $_POST['inputDireccion']);
+				 	$this->integrante->__set("celular", $_POST['inputCelular']);
+				 	$this->integrante->__set("correo", $_POST['inputEmail']);
+				 	$this->integrante->__set("acolito", $_POST['Acolito']);
+				 	$this->integrante->__set("coordinador", $_POST['Coordinador']);
+				 	$this->integrante->__set("imagen", $nombre);
+				 	$this->integrante->add();
+				 	header("Location:" . URL . "Integrantes");
 			}
  			
 
@@ -65,7 +69,7 @@
 		 		$permitidos=array("image/jpeg", "image/png", "image/jpg");
 				$limite = 700;
 				if (in_array($_FILES['inputImagen']['type'], $permitidos) and $limite>0 and $_FILES['inputImagen']['size']<= $limite*1024 ) {
-				 	$nombre = $_POST['Documento'] .  "-" . date("is") . $_FILES['inputImagen']['name'];
+				 	$nombre = date("is") . $_FILES['inputImagen']['name'];
 				 	$ruta= "HTML/Integrantes/avatars/" . $nombre;
 				 	move_uploaded_file($_FILES['inputImagen']['tmp_name'], $ruta);
 				 	$this->integrante->__set("imagen", $nombre);	
@@ -88,7 +92,12 @@
 
 		public function eliminar($id){
 				$this->integrante->__set("documento", $id);
-				$this->integrante->delete();
+				$datos=$this->integrante->view();
+				$ruta= "HTML/Integrantes/avatars/" . $datos['IMAGEN'];
+				if (file_exists($ruta) and $datos['IMAGEN']!='') {
+					unlink($ruta);
+				}
+				$this->integrante->delete(); 
 				header("Location:" . URL . "Integrantes");
 		}					
 
