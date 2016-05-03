@@ -23,26 +23,27 @@
 			<script type="text/javascript">
 
 					$(document).ready(function() {
-					$('#dataTable').DataTable({
+					$('.dataTable').DataTable({
 						 "iDisplayLength": -1,
-				//		 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-						 "autoWidth": false,
-				/*		  "columns": [                // there must be an entry for every column
-				            {"width": "30%", "orderable": true},     
+						 "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+						 "autoWidth": true,
+					  "columns": [{ "orderable": true},     
 				            null,
 				            null,
 				            null,
-				            {"width": "10%", "orderable": true},
-				            {"width": "19%", "orderable": true},
 				            null
-				          ],
-				 */
-				          "order": [[ 1, "desc" ]],
-				          "sPaginationType": "full_numbers",
+				          ],				         
+				        "sPaginationType": "full_numbers",
+				        "order": [[ 0, 'asc' ], [ 1, 'asc' ]]
 				/*           'bPaginate': false*/
 
 					});
+
+
+
+
 				} );
+
 
 			</script>
 

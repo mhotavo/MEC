@@ -32,7 +32,7 @@
 			    <div class="form-group">
 			      <label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
 			      <div class="col-lg-10">
-			        <input type="text" class="form-control" name="inputSegundoApellido" value="<?php echo $datos['SEGUNDO_APELLIDO']; ?>" required>
+			        <input type="text" class="form-control" name="inputSegundoApellido" value="<?php echo $datos['SEGUNDO_APELLIDO']; ?>" >
 			      </div>
 			    </div>			    	        
 			    <div class="form-group">
@@ -44,19 +44,19 @@
 			    <div class="form-group">
 			      <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
 			      <div class="col-lg-10">
-			        <input type="text" class="form-control" name="inputDireccion" value="<?php echo $datos['DIRECCION']; ?>" required>
+			        <input type="text" class="form-control" name="inputDireccion" value="<?php echo $datos['DIRECCION']; ?>" >
 			      </div>
 			    </div>
 			    <div class="form-group">
 			      <label for="inputCelular" class="col-lg-2 control-label">Celular</label>
 			      <div class="col-lg-10">
-			        <input type="text" class="form-control" name="inputCelular" value="<?php echo $datos['CELULAR']; ?>" required>
+			        <input type="text" class="form-control" name="inputCelular" value="<?php echo $datos['CELULAR']; ?>" >
 			      </div>
 			    </div>
 			    <div class="form-group">
 			      <label for="inputEmail" class="col-lg-2 control-label">Correo</label>
 			      <div class="col-lg-10">
-			        <input type="text" class="form-control" name="inputEmail" value="<?php echo $datos['CORREO']; ?>" required>
+			        <input type="text" class="form-control" name="inputEmail" value="<?php echo $datos['CORREO']; ?>" >
 			      </div>
 			    </div>
 			    <div class="form-group">

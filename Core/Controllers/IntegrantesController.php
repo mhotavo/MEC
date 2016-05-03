@@ -31,9 +31,9 @@
 					 else {
 					 	$nombre = null;
 					 }
-					$this->integrante->__set("nombres", strtolower(ucwords($_POST['inputNombres'])) );
-				 	$this->integrante->__set("primerApellido", strtolower(ucwords($_POST['inputPrimerApellido'])) );
-				 	$this->integrante->__set("segundoApellido", strtolower(ucwords($_POST['inputSegundoApellido'])) );
+					$this->integrante->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
+				 	$this->integrante->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) );
+				 	$this->integrante->__set("segundoApellido", ucwords(strtolower($_POST['inputSegundoApellido'])) );
 				 	$this->integrante->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
 				 	$this->integrante->__set("direccion", $_POST['inputDireccion']);
 				 	$this->integrante->__set("celular", $_POST['inputCelular']);
@@ -55,9 +55,9 @@
 				return $datos;
 			} else {
 				$this->integrante->__set("documento", $_POST['Documento']);
-				$this->integrante->__set("nombres", strtolower(ucwords($_POST['inputNombres'])) );
-			 	$this->integrante->__set("primerApellido", strtolower(ucwords($_POST['inputPrimerApellido'])) );
-			 	$this->integrante->__set("segundoApellido", strtolower(ucwords($_POST['inputSegundoApellido'])) );
+				$this->integrante->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
+			 	$this->integrante->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) );
+			 	$this->integrante->__set("segundoApellido", ucwords(strtolower($_POST['inputSegundoApellido'])) );
 			 	$this->integrante->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
 			 	$this->integrante->__set("direccion", $_POST['inputDireccion']);
 			 	$this->integrante->__set("celular", $_POST['inputCelular']);

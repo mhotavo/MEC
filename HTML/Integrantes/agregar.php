@@ -35,19 +35,19 @@
 		    <div class="form-group">
 		      <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
 		      <div class="col-lg-10">
-		        <input type="text" class="form-control" name="inputDireccion" placeholder="Direccion" required>
+		        <input type="text" class="form-control" name="inputDireccion" placeholder="Direccion" >
 		      </div>
 		    </div>
 		    <div class="form-group">
 		      <label for="inputCelular" class="col-lg-2 control-label">Celular</label>
 		      <div class="col-lg-10">
-		        <input type="text" class="form-control" name="inputCelular" placeholder="Celular" required>
+		        <input type="text" class="form-control" name="inputCelular" placeholder="Celular" >
 		      </div>
 		    </div>
 		    <div class="form-group">
 		      <label for="inputEmail" class="col-lg-2 control-label">Correo ó Facebook</label>
 		      <div class="col-lg-10">
-		        <input type="text" class="form-control" name="inputEmail" placeholder="Email" required>
+		        <input type="text" class="form-control" name="inputEmail" placeholder="Email" >
 		      </div>
 		    </div>
 		    <div class="form-group">

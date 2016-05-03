@@ -23,7 +23,7 @@
 		    <div class="form-group">
 		      <label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
 		      <div class="col-lg-10">
-		        <input type="text" class="form-control" name="inputSegundoApellido" placeholder="Segundo Apellido" required>
+		        <input type="text" class="form-control" name="inputSegundoApellido" placeholder="Segundo Apellido">
 		      </div>
 		    </div>			    	        
 

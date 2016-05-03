@@ -6,7 +6,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-10">
 
-      <table class="table table-striped table-hover " id="dataTable">
+      <table class="table table-striped table-hover dataTable" id="">
         <thead>
           <tr>
             <th>Imagen</th>

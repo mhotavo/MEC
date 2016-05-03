@@ -23,9 +23,9 @@
 		public function agregar(){
 			if ($_POST) {
 					$this->Familiar->__set("documentoIntegrante", $_POST['integrante']);
-					$this->Familiar->__set("nombres", strtolower(ucwords($_POST['inputNombres'])) );
-				 	$this->Familiar->__set("primerApellido", strtolower(ucwords($_POST['inputPrimerApellido'])) )  ;
-				 	$this->Familiar->__set("segundoApellido", strtolower(ucwords($_POST['inputSegundoApellido'])) );
+					$this->Familiar->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
+				 	$this->Familiar->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) )  ;
+				 	$this->Familiar->__set("segundoApellido", ucwords(strtolower($_POST['inputSegundoApellido'])) );
 				 	$this->Familiar->__set("direccion", $_POST['inputDireccion']);
 				 	$this->Familiar->__set("celular", $_POST['inputCelular']);
 				 	$this->Familiar->__set("correo", $_POST['inputEmail']);
@@ -46,9 +46,9 @@
 				$datos=$this->Familiar->view();
 				return $datos;
 			} else {
-				$this->Familiar->__set("documento", strtolower(ucwords($_POST['Documento'])) );
-				$this->Familiar->__set("nombres", strtolower(ucwords($_POST['inputNombres'])) );
-			 	$this->Familiar->__set("primerApellido", strtolower(ucwords($_POST['inputPrimerApellido'])) );
+				$this->Familiar->__set("documento", ucwords(strtolower($_POST['Documento'])) );
+				$this->Familiar->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
+			 	$this->Familiar->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) );
 			 	$this->Familiar->__set("segundoApellido", $_POST['inputSegundoApellido']);
 			 	$this->Familiar->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
 			 	$this->Familiar->__set("direccion", $_POST['inputDireccion']);
