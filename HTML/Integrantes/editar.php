@@ -10,7 +10,7 @@
 	    	<div class="col-md-4">
 	  			<div class="panel panel-default">
 				  <div class="panel-body">
-				    <img class="img-responsive" src="<?php echo URL;?>HTML/Integrantes/avatars/<?php echo  !empty($row['IMAGEN']) ? $row['IMAGEN'] : 'no-image.png'    ; ?>" required>
+				    <img class="img-responsive" src="<?php echo URL;?>HTML/Integrantes/avatars/<?php echo  !empty($datos['IMAGEN']) ? $datos['IMAGEN'] : 'no-image.png'    ; ?>" required>
 				  </div>
 				</div>
 	  		</div>
@@ -54,7 +54,7 @@
 			      </div>
 			    </div>
 			    <div class="form-group">
-			      <label for="inputEmail" class="col-lg-2 control-label">Correo</label>
+			      <label for="inputEmail" class="col-lg-2 control-label">Correo ó Facebook</label>
 			      <div class="col-lg-10">
 			        <input type="text" class="form-control" name="inputEmail" value="<?php echo $datos['CORREO']; ?>" >
 			      </div>
