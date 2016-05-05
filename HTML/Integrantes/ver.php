@@ -54,9 +54,11 @@
 			      </div>
 			    </div>
 			    <div class="form-group">
-			      <label for="inputEmail" class="col-lg-2 control-label">Correo</label>
+			      <label for="inputEmail" class="col-lg-2 control-label">Facebook</label>
 			      <div class="ver col-lg-10">
-			        <?php echo $datos['CORREO']; ?>
+			       <a href="https://www.facebook.com/<?php echo $datos['CORREO']; ?>" target="_blank">
+			       		<img src="<?php echo URL; ?>Views/images/Facebook_logo.png" width="30px">
+			       </a> 
 			      </div>
 			    </div>
 

@@ -20,6 +20,7 @@ session_start();
 		if (isset($_SESSION['app_id'])) {
 
 			$template=new Views\Template();
+			$template->menu();
 		 	require_once "Core/Models/Conexion.php";
 		 	require_once "vendor/autoload.php";
 		}
