@@ -32,13 +32,13 @@
 		   }  
 
 		public function listar(){
-			$sql="SELECT * FROM familiar";
+			$sql="SELECT f.*, CONCAT ( i.NOMBRES, i.PRIMER_APELLIDO) AS INTEGRANTE from familiar f INNER JOIN integrante i ON i.DOCUMENTO=f.IDENTIFICACION_INTEGRANTE";
 			$datos=$this->db->consultaRetorno($sql);
 			return $datos;
 		}
 
 		public function add(){
-			echo $sql="INSERT INTO familiar 
+			$sql="INSERT INTO familiar 
 					(DOCUMENTO,
 					 IDENTIFICACION_INTEGRANTE,
 					 NOMBRES,
@@ -67,7 +67,7 @@
 		}
 
 		 public function edit() {
-		      $sql="UPDATE familiar SET 
+		        $sql="UPDATE familiar SET 
 		            IDENTIFICACION_INTEGRANTE='{$this->documentoIntegrante}',
 		            NOMBRES='{$this->nombres}',
 		            PRIMER_APELLIDO ='{$this->primerApellido}',
@@ -80,7 +80,7 @@
 		  }
 
 		 public function view(){
-			$sql="SELECT * FROM familiar WHERE DOCUMENTO='{$this->documento}'";
+			$sql="SELECT f.*, CONCAT ( i.NOMBRES, i.PRIMER_APELLIDO) AS INTEGRANTE from familiar f INNER JOIN integrante i ON i.DOCUMENTO=f.IDENTIFICACION_INTEGRANTE WHERE f.DOCUMENTO='{$this->documento}'";
 			$datos = $this->db->consultaRetorno($sql);
 			$row = mysqli_fetch_assoc($datos);
 			return $row;

@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2016 a las 17:43:49
--- Versión del servidor: 10.1.13-MariaDB
+-- Tiempo de generación: 11-05-2016 a las 00:22:43
+-- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.5.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -30,12 +30,19 @@ CREATE TABLE `familiar` (
   `DOCUMENTO` int(11) NOT NULL,
   `IDENTIFICACION_INTEGRANTE` int(11) NOT NULL,
   `NOMBRES` varchar(50) NOT NULL,
-  `PRIMER_APELLIDO` int(25) NOT NULL,
+  `PRIMER_APELLIDO` varchar(25) NOT NULL,
   `SEGUNDO_APELLIDO` varchar(25) DEFAULT NULL,
   `PARENTESCO` varchar(20) NOT NULL,
   `CELULAR` int(30) NOT NULL,
   `DIRECCION` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `familiar`
+--
+
+INSERT INTO `familiar` (`DOCUMENTO`, `IDENTIFICACION_INTEGRANTE`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `PARENTESCO`, `CELULAR`, `DIRECCION`) VALUES
+(12, 13, 'Luz Miriam', 'Varon', '', 'Mama', 2147483647, 'MZ 33 CASA 21 PROTECHO B a');
 
 -- --------------------------------------------------------
 
@@ -52,7 +59,7 @@ CREATE TABLE `integrante` (
   `FECHA_NACIMIENTO` date NOT NULL,
   `DIRECCION` varchar(50) DEFAULT NULL,
   `CELULAR` varchar(200) DEFAULT NULL,
-  `CORREO` varchar(30) DEFAULT NULL,
+  `CORREO` varchar(50) DEFAULT NULL,
   `ACOLITO` tinyint(1) DEFAULT NULL,
   `COORDINADOR` tinyint(1) DEFAULT NULL,
   `IMAGEN` longtext,
@@ -64,8 +71,8 @@ CREATE TABLE `integrante` (
 --
 
 INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_APELLIDO`, `GENERO`, `FECHA_NACIMIENTO`, `DIRECCION`, `CELULAR`, `CORREO`, `ACOLITO`, `COORDINADOR`, `IMAGEN`, `FECHA_INGRESO`) VALUES
-(1, 'Andres Leonardo ', 'Blandon', '', 'M', '1999-05-21', 'SMZ 6 MZ 12 CASA 2 N/CASTILLA', '3132890052', 'andresleonardo.blandonsanchez.', 1, 0, '5107Captura.PNG', '2016-05-04 14:51:07'),
-(2, 'Anggie Natalia ', 'Amortegui', '', 'F', '2000-05-09', 'MZ L CASA 15 LA CIMA', '3005266552', 'angiie.amortegiie', 0, 0, '241111863477_679681212133147_3084591168974849065_n.jpg', '2016-05-04 11:24:11'),
+(1, 'Andres Leonardo ', 'Blandon', '', 'M', '1999-05-21', 'SMZ 6 MZ 12 CASA 2 N/CASTILLA', '3132890052', 'andresleonardo.blandonsanchez.1', 1, 0, '5107Captura.PNG', '2016-05-05 10:48:15'),
+(2, 'Anggie Natalia ', 'Amortegui', '', 'F', '2000-05-09', 'MZ L CASA 15 LA CIMA', '3005266552', 'angiie.amortegiie', 0, 0, '355311863477_679681212133147_3084591168974849065_n.jpg', '2016-05-10 16:35:53'),
 (3, 'Angie Tatiana ', 'Gonzalez', 'Romero', 'F', '2001-07-06', 'MZ 33 CASA 7 PROTECHO B', '3124333821', 'tataGonzlez', 0, 0, '112513062929_789314097868712_2174203745417511915_o.jpg', '2016-05-04 11:11:52'),
 (4, 'Cesar ', 'Augusto', '', 'M', '2000-07-03', 'SMZ 11 MZ 7 CASA 3 N/CASTILLA', '0', '', 0, 0, '563912075072_10204855573937383_7624382963983629073_n.jpg', '2016-05-04 11:56:39'),
 (5, 'Cesar Luis  ', 'Ortiz', 'Montoya', 'M', '2001-01-10', 'SMZ 4 MZ 1 CASA 7 N/CASTILLA', '3134322973', 'cesar.ortizmontoya', 1, 0, '192013043392_1011381138949442_117251748371728975_n.jpg', '2016-05-04 11:19:20'),
@@ -109,7 +116,9 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (44, 'Yuliana  ', 'Mosquera', 'Varon', 'F', '2001-07-26', 'MZ 24 CASA 3 PROTECHO B', '3108048927', 'yuliana.romero.777', 0, 0, '374812310566_930288843727129_1494953296721950439_n.jpg', '2016-05-04 14:37:48'),
 (45, 'Jhon Freddy ', 'Gonzalez', 'Ducuara', 'M', '2001-12-26', '', '320 2064485', 'profile.php?id=100008986006297', 0, 0, '183011130087_863230430409215_349477948245326008_n.jpg', '2016-05-04 11:18:30'),
 (46, 'Catalina ', 'Gonzalez', 'Ducuara', 'F', '2002-11-06', '', '320 2064485', 'natilomej', 0, 0, '133012495167_970380193056162_9198080529780381870_n.jpg', '2016-05-04 11:13:30'),
-(47, 'Juan David', 'Varon', 'Rengifo', NULL, '1998-05-18', 'SMZ4 MZ 9 CASA 2 N/CASTILLA', '310 8698788', 'juanda.varon.9', 0, 0, '440113015593_1011787298904799_6980326812170386042_n.jpg', '2016-05-04 10:44:23');
+(47, 'Juan David', 'Varon', 'Rengifo', NULL, '1998-05-18', 'SMZ4 MZ 9 CASA 2 N/CASTILLA', '310 8698788', 'juanda.varon.9', 0, 0, '440113015593_1011787298904799_6980326812170386042_n.jpg', '2016-05-04 10:44:23'),
+(48, 'Laura', 'Rubio', 'Rico', NULL, '2000-01-01', '', '', '', 0, 0, '', '2016-05-06 09:58:53'),
+(49, 'Milton Hernando', 'Otavo', 'Varon', NULL, '1993-11-04', 'MZ 33 CASA 21 PROTECHO B', '3112002546', 'mhotavo', 1, 1, '0409pp.jpg', '2016-05-10 17:04:35');
 
 -- --------------------------------------------------------
 
@@ -168,10 +177,15 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `familiar`
+--
+ALTER TABLE `familiar`
+  MODIFY `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
 -- AUTO_INCREMENT de la tabla `integrante`
 --
 ALTER TABLE `integrante`
-  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --

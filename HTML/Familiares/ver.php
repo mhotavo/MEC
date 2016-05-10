@@ -3,14 +3,14 @@
 <br>
 	<div class="panel panel-success">
 	  <div class="panel-heading">
-	    <h3 class="panel-title" align="center"> <?php echo  $datos['EDAD_ACTUAL'] . " " . "Años";    ?></h3>
+	    <h3 class="panel-title" align="center"> <?php echo  $datos['PARENTESCO'] . " de  " . $datos['INTEGRANTE'] ;    ?></h3>
 	  </div>
 	  <div class="panel-body">
 	  <div class="row">
 	    	<div class="col-md-4">
 	  			<div class="panel panel-default">
 				  <div class="panel-body">
-				    <img class="img-responsive" src="<?php echo URL;?>HTML/Integrantes/avatars/<?php echo  !empty($row['IMAGEN']) ? $row['IMAGEN'] : 'no-image.png'    ; ?>" required>
+				    <img class="img-responsive" src="<?php echo URL;?>HTML/Familiares/avatars/<?php echo  !empty($row['IMAGEN']) ? $row['IMAGEN'] : 'no-image.png'    ; ?>" required>
 				  </div>
 				</div>
 	  		</div>
@@ -35,12 +35,7 @@
 			      	<?php echo $datos['SEGUNDO_APELLIDO']; ?>
 			      </div>
 			    </div>			    	        
-			    <div class="form-group">
-			      <label for="inputFechaNacimiento" class="col-lg-2 control-label">Fecha Nacimiento</label>
-			      <div class="ver col-lg-10">
-			        <?php echo $datos['FECHA_NACIMIENTO']; ?>
-			      </div>
-			    </div>
+	 
 			    <div class="form-group">
 			      <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
 			      <div class="ver col-lg-10">
@@ -53,19 +48,9 @@
 			        <?php echo $datos['CELULAR']; ?>
 			      </div>
 			    </div>
-			    <div class="form-group">
-			      <label for="inputEmail" class="col-lg-2 control-label">Correo</label>
-			      <div class="ver col-lg-10">
-			        <?php echo $datos['CORREO']; ?>
-			      </div>
-			    </div>
+ 
 
-			    <div class="form-group">
-			      <label class="col-lg-2 control-label">Acolito</label>
-			      <div class="ver col-lg-10">
-	 					<?php echo ($datos['ACOLITO']=='1') ? "SI" : "NO" ?>
-			        </div>
-			      </div>
+	 
 			    </div>
 	    
 			   

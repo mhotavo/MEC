@@ -10,9 +10,9 @@
         <thead>
           <tr>
             <th>Imagen</th>
-            <th>Nombres</th>
-            <th>Primer Apellido</th>
-            <th>Segundo Apellido</th>
+            <th>Nombre</th>
+            <th>Parentesco</th>
+            <th>Integrante</th>
             <th>Celular</th>
             <th>Acción</th>
           </tr>
@@ -20,13 +20,13 @@
         <tbody> 
       <?php while($row = mysqli_fetch_array($datos)){ ?>
             <tr>
-            <td> <a href="<?php echo URL; ?>Integrantes/ver/<?php echo $row['DOCUMENTO']; ?>"><img class="avatar" src="<?php  echo URL; ?>HTML/Integrantes/avatars/<?php echo  !empty($row['IMAGEN']) ? $row['IMAGEN'] : 'no-image.png'    ; ?>"> </a></td>
-            <td><?php  echo $row['NOMBRES']; ?></td>
-            <td><?php  echo $row['PRIMER_APELLIDO']; ?></td>
-            <td><?php  echo $row['SEGUNDO_APELLIDO']; ?></td>
+            <td> <a href="<?php echo URL; ?>Familiares/ver/<?php echo $row['DOCUMENTO']; ?>"><img class="avatar" src="<?php  echo URL; ?>HTML/Integrantes/avatars/<?php echo  !empty($row['IMAGEN']) ? $row['IMAGEN'] : 'no-image.png'    ; ?>"> </a></td>
+            <td><?php  echo $row['NOMBRES'] . " " . $row['PRIMER_APELLIDO']; ?></td>
+            <td><?php  echo $row['PARENTESCO']  ?></td>
+            <td><?php  echo $row['INTEGRANTE']; ?></td>
             <td><?php  echo $row['CELULAR']; ?></td>
-            <td><a  class="btn btn-warning" href="<?php echo URL; ?>Integrantes/editar/<?php echo $row['DOCUMENTO']; ?>">Editar</a> 
-                <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este Integrante?','<?php echo URL; ?>Integrantes/eliminar/<?php echo $row['DOCUMENTO']; ?>')" >Eliminar</a> </td>
+            <td><a  class="btn btn-warning" href="<?php echo URL; ?>Familiares/editar/<?php echo $row['DOCUMENTO']; ?>">Editar</a> 
+                <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este familiar?','<?php echo URL; ?>Familiares/eliminar/<?php echo $row['DOCUMENTO']; ?>')" >Eliminar</a> </td>
           </tr>
       <?php 
           }

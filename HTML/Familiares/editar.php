@@ -1,9 +1,12 @@
+<?php 
+	$lista=$Familiares->listarIntegrante();
+ ?>
 <div  class="container box-principal">
 <h3  align="center"><?php echo $datos['NOMBRES'] ." ". $datos['PRIMER_APELLIDO']." ". $datos['SEGUNDO_APELLIDO'] ; ?></h3>
 <br>
 	<div class="panel panel-success">
 	  <div class="panel-heading">
-	    <h3 class="panel-title" align="center"> <?php echo  $datos['EDAD_ACTUAL'] . " " . "Años";    ?></h3>
+	    <h3 class="panel-title" align="center"> <?php echo  $datos['PARENTESCO'] . " de  " . $datos['INTEGRANTE'] ;    ?></h3>
 	  </div>
 	  <div class="panel-body">
 	  <div class="row">
@@ -32,15 +35,35 @@
 			    <div class="form-group">
 			      <label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
 			      <div class="col-lg-10">
-			        <input type="text" class="form-control" name="inputSegundoApellido" value="<?php echo $datos['SEGUNDO_APELLIDO']; ?>" required>
+			        <input type="text" class="form-control" name="inputSegundoApellido" value="<?php echo $datos['SEGUNDO_APELLIDO']; ?>" >
 			      </div>
 			    </div>			    	        
-			    <div class="form-group">
-			      <label for="inputFechaNacimiento" class="col-lg-2 control-label">Fecha Nacimiento</label>
-			      <div class="col-lg-10">
-			        <input type="date" class="form-control" name="inputFechaNacimiento" value="<?php echo $datos['FECHA_NACIMIENTO']; ?>" required>
-			      </div>
-			    </div>
+		    <div class="form-group">
+		      <label for="inputEmail" class="col-lg-2 control-label">Familiar de:</label>
+		      <div class="col-lg-10">
+		        <select class="form-control" name="integrante">
+		        	<option value="">[...]</option>
+		        	<?php 
+		        	while($row = mysqli_fetch_array($lista)){ ?>
+		        	<option   <?php echo ($datos['IDENTIFICACION_INTEGRANTE']== $row['DOCUMENTO']) ? "selected" : null;  ?>  value="<?php  echo $row['DOCUMENTO']; ?>"><?php  echo $row['NOMBRES'] . " " . $row['PRIMER_APELLIDO']; ?></option>
+		        	<?php } ?>
+		        </select>
+		      </div>
+		    </div> 
+		    <div class="form-group">
+		      <label for="inputEmail" class="col-lg-2 control-label">Parentesco</label>
+		      <div class="col-lg-10">
+		        <select class="form-control" name="parentesco">
+		        	<option value="">[...]</option>
+		        	<option <?php  echo ($datos['PARENTESCO']=="Mama") ?  'selected': null; ?>  value="Mama">Mamá</option>
+		        	<option <?php  echo ($datos['PARENTESCO']=="Papa") ?  "selected": null; ?> value="Papa">Papá</option>
+		        	<option <?php  echo ($datos['PARENTESCO']=="Hermano(a)") ?  "selected": null; ?> value="Hermano(a)">Hermano(a)</option>
+		        	<option <?php  echo ($datos['PARENTESCO']=="Abuelo(a)") ?  "selected": null; ?> value="Abuelo(a)">Abuelo(a)</option>
+		        	<option <?php  echo ($datos['PARENTESCO']=="Tio(a)") ?  "selected": null; ?> value="Tio(a)">Tio(a)</option>
+		        	<option <?php  echo ($datos['PARENTESCO']=="Otro") ?  "selected": null; ?> value="Otro">Otro</option>
+		        </select>
+		      </div>
+		    </div> 		    
 			    <div class="form-group">
 			      <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
 			      <div class="col-lg-10">
@@ -53,51 +76,7 @@
 			        <input type="text" class="form-control" name="inputCelular" value="<?php echo $datos['CELULAR']; ?>" required>
 			      </div>
 			    </div>
-			    <div class="form-group">
-			      <label for="inputEmail" class="col-lg-2 control-label">Correo</label>
-			      <div class="col-lg-10">
-			        <input type="text" class="form-control" name="inputEmail" value="<?php echo $datos['CORREO']; ?>" required>
-			      </div>
-			    </div>
-			    <div class="form-group">
-			      <label for="inputImagen" class="col-lg-2 control-label">Imagen</label>
-			      <div class="col-lg-10">
-			        <input type="file" class="form-control" name="inputImagen" >
-			      </div>
-			    </div>
-
-			    <div class="form-group">
-			      <label class="col-lg-2 control-label">Acolito</label>
-			      <div class="col-lg-10">
-			        <div class="radio">
-			          <label>
-			            <input type="radio" name="Acolito" id="optionsRadios1" value="1"  <?php echo ($datos['ACOLITO']=='1') ? "checked" : NULL ?> >
-			            Si
-			          </label>
-	 
-			          <label>
-			            <input type="radio" name="Acolito" id="optionsRadios2" value="0"  <?php echo ($datos['ACOLITO']=='0') ? "checked" : NULL ?> >
-			            No
-			          </label>
-			        </div>
-			      </div>
-			    </div>
-			    <div class="form-group">
-			      <label class="col-lg-2 control-label">Coordinador</label>
-			      <div class="col-lg-10">
-			        <div class="radio">
-			          <label>
-			            <input type="radio" name="Coordinador" id="optionsRadios1" value="1" <?php echo ($datos['COORDINADOR']=='1') ? "checked" : NULL ?>>
-			            Si
-			          </label>
-		
-			          <label>
-			            <input type="radio" name="Coordinador" id="optionsRadios2" value="0" <?php echo ($datos['COORDINADOR']=='0') ? "checked" : NULL ?>>
-			            No
-			          </label>
-			        </div>
-			      </div>
-			    </div>		    
+    
 			    
 			    <div class="form-group">
 			      <div class="col-lg-10 col-lg-offset-2">

@@ -7,11 +7,13 @@
 			<html>
 			<head>
 			<title>MEC</title>
+
 			<link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/bootstrap/css/bootstrap.min.css">
 			<link rel="stylesheet" type="text/css" href="<?php echo URL; ?>Views/css/general.css">
   		    <link rel="stylesheet" href="<?php echo URL; ?>Views/fontawesome/css/font-awesome.min.css">
 			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 			<script src="<?php echo URL; ?>Views/js/jquery.min.js"></script>
+
 		<?php  
 		} 
 
@@ -43,6 +45,7 @@
 
 		public function menu()
 		{?>	
+			<script src="<?php echo URL; ?>Views/bootstrap/js/bootstrap.min.js"></script> 	
 			</head>
 					<body>
 					<nav class="navbar navbar-inverse">
@@ -70,13 +73,19 @@
 				          </ul>
 				        </li>
 				      </ul>
+	 				     <ul class="nav navbar-nav">
 	 
-				      <form class="navbar-form navbar-left" role="search">
-				        <div class="form-group">
-				          <input type="text" class="form-control" placeholder="">
-				        </div>
-				        <button type="submit" class="btn btn-default">Buscar</button>
-				      </form>
+				        <li class="dropdown">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Listar <span class="caret"></span></a>
+				          <ul class="dropdown-menu" role="menu">
+				            <li><a href="<?php echo URL; ?>Integrantes">Integrantes</a></li>
+				            <li class="divider"></li>
+				            <li><a href="<?php echo URL; ?>Familiares">Familiares</a></li>
+
+				          </ul>
+				        </li>
+				      </ul>
+
 				      <ul class="nav navbar-nav navbar-right">
 				        <li><a href="<?php echo URL; ?>Logout"> Salir  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 				      </ul>
@@ -88,7 +97,7 @@
 
 		function __destruct()
 		{ ?>
-			<script src="<?php echo URL; ?>Views/bootstrap/js/bootstrap.min.js"></script> 	
+			
 			<script src="<?php echo URL; ?>Views/js/generales.js"></script> 	
 			</body>
 			</html>			
