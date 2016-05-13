@@ -69,6 +69,8 @@
 				            <li><a href="<?php echo URL; ?>Integrantes/agregar">Integrante</a></li>
 				            <li class="divider"></li>
 				            <li><a href="<?php echo URL; ?>Familiares/agregar">Familiar</a></li>
+				            <li class="divider"></li>
+				            <li><a href="<?php echo URL; ?>Temas/agregar">Tema</a></li>
 
 				          </ul>
 				        </li>
@@ -81,6 +83,8 @@
 				            <li><a href="<?php echo URL; ?>Integrantes">Integrantes</a></li>
 				            <li class="divider"></li>
 				            <li><a href="<?php echo URL; ?>Familiares">Familiares</a></li>
+				            <li class="divider"></li>
+				            <li><a href="<?php echo URL; ?>Temas">Temas</a></li>
 
 				          </ul>
 				        </li>

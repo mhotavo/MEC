@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2016 a las 00:22:43
+-- Tiempo de generación: 14-05-2016 a las 00:24:39
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.5.34
 
@@ -123,6 +123,29 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tema`
+--
+
+CREATE TABLE `tema` (
+  `ID_TEMA` int(11) NOT NULL,
+  `TEMA` varchar(50) NOT NULL,
+  `DESCRIPCION` text NOT NULL,
+  `FECHA` date DEFAULT NULL,
+  `USUARIOLOG` bigint(11) NOT NULL,
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tema`
+--
+
+INSERT INTO `tema` (`ID_TEMA`, `TEMA`, `DESCRIPCION`, `FECHA`, `USUARIOLOG`, `FECHALOG`) VALUES
+(1, 'PENTECOSTES', 'Se reparte el tema entre:\r\n\r\nHugo\r\nSandra\r\nMateo\r\nAndres\r\nPaula\r\n\r\nVideo de pastoral de la salud', '2016-05-14', 1, '2016-05-13 21:45:59'),
+(5, 'Prueba', 'aslkdajsdas', '2016-05-07', 1, '2016-05-13 22:12:28');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -167,6 +190,13 @@ ALTER TABLE `integrante`
   ADD PRIMARY KEY (`DOCUMENTO`);
 
 --
+-- Indices de la tabla `tema`
+--
+ALTER TABLE `tema`
+  ADD PRIMARY KEY (`ID_TEMA`),
+  ADD KEY `USUARIOLOG` (`USUARIOLOG`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -180,12 +210,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `familiar`
 --
 ALTER TABLE `familiar`
-  MODIFY `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `integrante`
 --
 ALTER TABLE `integrante`
   MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+--
+-- AUTO_INCREMENT de la tabla `tema`
+--
+ALTER TABLE `tema`
+  MODIFY `ID_TEMA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
@@ -200,6 +235,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `familiar`
   ADD CONSTRAINT `FK_FAMILIAR` FOREIGN KEY (`IDENTIFICACION_INTEGRANTE`) REFERENCES `integrante` (`DOCUMENTO`);
+
+--
+-- Filtros para la tabla `tema`
+--
+ALTER TABLE `tema`
+  ADD CONSTRAINT `FK_TEMA_USUARIO` FOREIGN KEY (`USUARIOLOG`) REFERENCES `usuarios` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
