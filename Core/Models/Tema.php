@@ -66,7 +66,7 @@
 		  }
 
 		 public function view(){
-			$sql="SELECT * FROM tema WHERE ID_TEMA='{$this->idTema}'";
+			$sql="SELECT t.*, u.* FROM tema t  INNER JOIN usuarios u ON t.USUARIOLOG=u.ID  WHERE ID_TEMA='{$this->idTema}'";
 			$datos = $this->db->consultaRetorno($sql);
 			$row = mysqli_fetch_assoc($datos);
 			return $row;

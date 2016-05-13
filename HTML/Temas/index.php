@@ -17,7 +17,7 @@
         <tbody> 
           <?php while($row = mysqli_fetch_array($datos)){ ?>
           <tr>           
-          <td><?php  echo $row['TEMA']  ?></td>
+          <td><a style="text-decoration: none;" href="<?php echo URL; ?>Temas/ver/<?php echo $row['ID_TEMA']; ?>"> <?php  echo $row['TEMA']  ?> </a></td>
             <td><?php  echo $row['FECHA']; ?></td>
             <td><a  class="btn btn-warning" href="<?php echo URL; ?>Temas/editar/<?php echo $row['ID_TEMA']; ?>">Editar</a> 
               <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este familiar?','<?php echo URL; ?>Temas/eliminar/<?php echo $row['ID_TEMA']; ?>')" >Eliminar</a> </td>
