@@ -1,8 +1,7 @@
 <?php  
 
 session_start();
-
-
+ 
 #Constantes de la conexion FE5C3EE9
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
@@ -20,7 +19,11 @@ session_start();
 		if (isset($_SESSION['app_id'])) {
 
 			$template=new Views\Template();
-			$template->menu();
+			if ($_SESSION['app_id']==1) {
+				$template->menuAdmin();
+			}else{
+				$template->menuMembers();
+			}
 		 	require_once "Core/Models/Conexion.php";
 		 	require_once "vendor/autoload.php";
 		}

@@ -29,7 +29,7 @@ class GoLogin
 		if ( !empty($this->user) and !empty( $this->pass)) {
 
 
-			$sql="SELECT ID FROM usuarios WHERE (USER='{$this->user}' OR EMAIL='{$this->user}') AND PASS='{$this->encrypt($this->pass)}' LIMIT 1;";
+			$sql="SELECT ID,ROL FROM usuarios WHERE (USER='{$this->user}' OR EMAIL='{$this->user}') AND PASS='{$this->encrypt($this->pass)}' LIMIT 1;";
 			$datos=  $this->db->consultaRetorno($sql);
 		    $row =   $this->db->row($datos);
 		    $total = $this->db->total_rows($datos);
@@ -37,6 +37,7 @@ class GoLogin
 			if ($total>0) {
 				    if($_POST['sesion']) { ini_set('session.cookie_lifetime', time() + (60)); }
 				    $_SESSION['app_id'] = $row['ID'];
+				    $_SESSION['rol'] = $row['ROL'];
 				    $_SESSION['time_online'] = time() - (60);
 				    echo 1;
 	  		} else {
