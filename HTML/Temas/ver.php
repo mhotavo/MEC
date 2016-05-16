@@ -25,7 +25,7 @@
 						<div class="form-group">
 							<label for="inputPrimerApellido" class="col-lg-2 control-label">Descripción</label>
 							<div class="ver col-lg-10">
-								<?php echo $datos['DESCRIPCION']; ?>
+								<?php echo str_replace("\n", "<br>", $datos['DESCRIPCION']) ; ?>
 							</div>
 						</div>		
 						<div class="form-group">

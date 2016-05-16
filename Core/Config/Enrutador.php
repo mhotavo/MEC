@@ -5,7 +5,7 @@
 
 		public static function run(Request $request){
 				$controlador = ucwords($request->getControlador()) . "Controller";
-			    $ruta = ROOT . "Core\Controllers" . DS . $controlador .".php";
+			    $ruta = ROOT . "Core". DS . "Controllers" . DS . $controlador .".php";
 				$metodo = $request->getMetodo();
 			#Ejecuta enrutador solo cuando se inicia sesion y para el Login	
 			if ( isset($_SESSION['app_id']) or  ucwords($request->getControlador())=="Login" or $request->getControlador()=="gologin" ) 
