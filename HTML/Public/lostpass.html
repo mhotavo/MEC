@@ -1,0 +1,43 @@
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MEC </title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="Views/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Views/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Views/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="Views/css/skins/_all-skins.min.css">
+    <script src="Views/js/generales.js"></script>
+    <script src="Views/js/login.js"></script>
+<style type="text/css">
+    .login-page, .register-page {background-color: #149c82;}
+</style>
+  </head>
+  <body class="hold-transition login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <a href=""><b>Misioneros </b>en Camino</a>
+      </div>
+      <div class="login-box-body">
+        <p class="login-box-msg"> Recuperar contraseña </p>
+        <div role="form" onkeypress="return runScriptLogin(event)">
+          <div class="form-group has-feedback">
+            <input type="email" class="form-control" placeholder="Correo" id="Email" required>
+            <span class="fa fa-user form-control-feedback"></span>
+          </div>
+          <div class="row">
+  
+            <div class="col-xs-12">
+              <button  class="btn btn-success btn-block btn-flat" onclick="goLostpass();" >Recuperar</button>
+            </div>
+          </div>
+        </div>
+       <div id="_AJAX_LOSTPASS_" style="padding-top:10px;"></div>  
+      </div>
+    </div>
+         <script src="Views/js/jquery.min.js"></script>
+        <script src="Views/bootstrap/css/bootstrap.min.js"></script>
+  </body>
+</html>

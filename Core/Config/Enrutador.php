@@ -8,12 +8,11 @@
 			    $ruta = ROOT . "Core". DS . "Controllers" . DS . $controlador .".php";
 				$metodo = $request->getMetodo();
 			#Ejecuta enrutador solo cuando se inicia sesion y para el Login	
-			if ( isset($_SESSION['app_id']) or  ucwords($request->getControlador())=="Login" or $request->getControlador()=="gologin" ) 
+			if ( isset($_SESSION['app_id']) or  ucwords($request->getControlador())=="Login" or $request->getControlador()=="gologin" or ucwords($request->getControlador())=="Lostpass" ) 
 			{
 				if($metodo == "index.php"){
 					$metodo = "index";
 				}
-
 				$argumento = $request->getArgumento();
 				if(is_readable($ruta)){
 					require_once $ruta;
@@ -32,7 +31,7 @@
 		 
 
 				#Para todas las vistas, excepto login
-				if (ucwords($request->getControlador())!="Login" and $request->getControlador()!="gologin") 
+				if (ucwords($request->getControlador())!="Login"  and $request->getControlador()!="gologin" and ucwords($request->getControlador())!="Lostpass") 
 				{
 					//Cargar vista
 					$ruta = ROOT . "HTML" . DS . ucwords($request->getControlador()) . DS . $request->getMetodo() . ".php";
