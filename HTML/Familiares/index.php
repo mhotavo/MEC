@@ -14,7 +14,7 @@
             <th>Parentesco</th>
             <th>Integrante</th>
             <th>Celular</th>
-            <?php if ($_SESSION['rol']==1) { ?><th>Acción</th><?php } ?>
+            <th>Acción</th>
           </tr>
         </thead>
         <tbody> 
@@ -25,11 +25,9 @@
             <td><?php  echo $row['PARENTESCO']  ?></td>
             <td><?php  echo $row['INTEGRANTE']; ?></td>
             <td><?php  echo $row['CELULAR']; ?></td>
-            <?php if ($_SESSION['rol']==1) { ?>
             <td><a  class="btn btn-warning" href="<?php echo URL; ?>Familiares/editar/<?php echo $row['DOCUMENTO']; ?>">Editar</a> 
               <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este familiar?','<?php echo URL; ?>Familiares/eliminar/<?php echo $row['DOCUMENTO']; ?>')" >Eliminar</a> 
             </td>
-            <?php } ?>
           </tr>
           <?php 
         }

@@ -11,7 +11,7 @@
           <tr>
             <th>Tema</th>
             <th>Fecha</th>
-           <?php if ($_SESSION['rol']==1) { ?>  <th>Acción</th> <?php } ?>
+            <th>Acción</th>
           </tr>
         </thead>
         <tbody> 
@@ -19,11 +19,9 @@
           <tr>           
             <td><a style="text-decoration: none;" href="<?php echo URL; ?>Temas/ver/<?php echo $row['ID_TEMA']; ?>"> <?php  echo $row['TEMA']  ?> </a></td>
             <td><?php  echo $row['FECHA']; ?></td>
-            <?php if ($_SESSION['rol']==1) { ?>
             <td><a  class="btn btn-warning" href="<?php echo URL; ?>Temas/editar/<?php echo $row['ID_TEMA']; ?>">Editar</a> 
               <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este familiar?','<?php echo URL; ?>Temas/eliminar/<?php echo $row['ID_TEMA']; ?>')" >Eliminar</a> 
             </td>
-            <?php } ?>
           </tr>
           <?php 
         }
