@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-05-2016 a las 23:54:20
+-- Tiempo de generación: 17-06-2016 a las 23:52:47
 -- Versión del servidor: 10.1.9-MariaDB
 -- Versión de PHP: 5.5.34
 
@@ -11,11 +11,82 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
-
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `mec`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asistencia`
+--
+
+CREATE TABLE `asistencia` (
+  `ID` int(11) NOT NULL,
+  `FECHA` date NOT NULL,
+  `ID_INTEGRANTE` int(11) NOT NULL,
+  `ASISTENCIA` tinyint(1) NOT NULL,
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `asistencia`
+--
+
+INSERT INTO `asistencia` (`ID`, `FECHA`, `ID_INTEGRANTE`, `ASISTENCIA`, `FECHALOG`) VALUES
+(1, '2016-06-17', 1, 1, '2016-06-17 21:51:41'),
+(2, '2016-06-17', 2, 1, '2016-06-17 21:51:41'),
+(3, '2016-06-17', 3, 1, '2016-06-17 21:51:41'),
+(4, '2016-06-17', 4, 1, '2016-06-17 21:51:41'),
+(5, '2016-06-17', 5, 1, '2016-06-17 21:51:41'),
+(6, '2016-06-17', 6, 1, '2016-06-17 21:51:41'),
+(7, '2016-06-17', 7, 1, '2016-06-17 21:51:41'),
+(8, '2016-06-17', 8, 1, '2016-06-17 21:51:41'),
+(9, '2016-06-17', 9, 1, '2016-06-17 21:51:41'),
+(10, '2016-06-17', 10, 1, '2016-06-17 21:51:41'),
+(11, '2016-06-17', 11, 1, '2016-06-17 21:51:41'),
+(12, '2016-06-17', 12, 1, '2016-06-17 21:51:41'),
+(13, '2016-06-17', 13, 1, '2016-06-17 21:51:41'),
+(14, '2016-06-17', 14, 1, '2016-06-17 21:51:41'),
+(15, '2016-06-17', 15, 1, '2016-06-17 21:51:41'),
+(16, '2016-06-17', 16, 1, '2016-06-17 21:51:41'),
+(17, '2016-06-17', 17, 1, '2016-06-17 21:51:41'),
+(18, '2016-06-17', 18, 1, '2016-06-17 21:51:41'),
+(19, '2016-06-17', 19, 1, '2016-06-17 21:51:41'),
+(20, '2016-06-17', 20, 1, '2016-06-17 21:51:41'),
+(21, '2016-06-17', 21, 1, '2016-06-17 21:51:41'),
+(22, '2016-06-17', 22, 1, '2016-06-17 21:51:41'),
+(23, '2016-06-17', 23, 1, '2016-06-17 21:51:41'),
+(24, '2016-06-17', 24, 1, '2016-06-17 21:51:41'),
+(25, '2016-06-17', 25, 1, '2016-06-17 21:51:41'),
+(26, '2016-06-17', 26, 1, '2016-06-17 21:51:41'),
+(27, '2016-06-17', 27, 1, '2016-06-17 21:51:41'),
+(28, '2016-06-17', 28, 1, '2016-06-17 21:51:41'),
+(29, '2016-06-17', 30, 1, '2016-06-17 21:51:41'),
+(30, '2016-06-17', 31, 1, '2016-06-17 21:51:41'),
+(31, '2016-06-17', 32, 1, '2016-06-17 21:51:41'),
+(32, '2016-06-17', 33, 1, '2016-06-17 21:51:41'),
+(33, '2016-06-17', 34, 1, '2016-06-17 21:51:41'),
+(34, '2016-06-17', 35, 1, '2016-06-17 21:51:41'),
+(35, '2016-06-17', 36, 1, '2016-06-17 21:51:41'),
+(36, '2016-06-17', 37, 1, '2016-06-17 21:51:41'),
+(37, '2016-06-17', 38, 1, '2016-06-17 21:51:41'),
+(38, '2016-06-17', 39, 1, '2016-06-17 21:51:41'),
+(39, '2016-06-17', 40, 1, '2016-06-17 21:51:41'),
+(40, '2016-06-17', 41, 1, '2016-06-17 21:51:41'),
+(41, '2016-06-17', 42, 1, '2016-06-17 21:51:41'),
+(42, '2016-06-17', 43, 1, '2016-06-17 21:51:41'),
+(43, '2016-06-17', 44, 1, '2016-06-17 21:51:41'),
+(44, '2016-06-17', 45, 1, '2016-06-17 21:51:41'),
+(45, '2016-06-17', 46, 1, '2016-06-17 21:51:41'),
+(46, '2016-06-17', 47, 1, '2016-06-17 21:51:41'),
+(47, '2016-06-17', 48, 1, '2016-06-17 21:51:41'),
+(48, '2016-06-17', 49, 1, '2016-06-17 21:51:41');
 
 -- --------------------------------------------------------
 
@@ -172,6 +243,13 @@ INSERT INTO `usuarios` (`ID`, `DOC`, `USER`, `PASS`, `EMAIL`, `ROL`, `NOMBRES`, 
 --
 
 --
+-- Indices de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  ADD PRIMARY KEY (`ID`) USING BTREE,
+  ADD KEY `ID_INTEGRANTE` (`ID_INTEGRANTE`);
+
+--
 -- Indices de la tabla `familiar`
 --
 ALTER TABLE `familiar`
@@ -203,6 +281,11 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+--
 -- AUTO_INCREMENT de la tabla `familiar`
 --
 ALTER TABLE `familiar`
@@ -227,6 +310,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Filtros para la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  ADD CONSTRAINT `FK_ASISTENCIA_INTEGRANTE` FOREIGN KEY (`ID_INTEGRANTE`) REFERENCES `integrante` (`DOCUMENTO`);
+
+--
 -- Filtros para la tabla `familiar`
 --
 ALTER TABLE `familiar`
@@ -238,4 +327,6 @@ ALTER TABLE `familiar`
 ALTER TABLE `tema`
   ADD CONSTRAINT `FK_TEMA_USUARIO` FOREIGN KEY (`USUARIOLOG`) REFERENCES `usuarios` (`ID`);
 
- 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
