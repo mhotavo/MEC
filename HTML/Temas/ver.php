@@ -1,11 +1,17 @@
-<div  class="container box-principal">
-	<br>
-	<div class="panel panel-success">
-		<div class="panel-heading">
-			<h3 class="panel-title" align="center"> <?php echo  $datos['TEMA'] ;    ?></h3>
-		</div>
-		<div class="panel-body">
-			<div class="row">
+  <html>
+  <head>
+  	<?php include(HTML_DIR.'/overall/header.php') ?>
+  </head>
+  <body>
+  	<?php include(HTML_DIR.'/overall/nav.php') ?>
+  	<div  class="container box-principal">
+  		<br>
+  		<div class="panel panel-success">
+  			<div class="panel-heading">
+  				<h3 class="panel-title" align="center"> <?php echo  $datos['TEMA'] ;    ?></h3>
+  			</div>
+  			<div class="panel-body">
+  				<div class="row">
 	    	<!--<div class="col-md-4">
 	  			<div class="panel panel-default">
 				  <div class="panel-body">
@@ -38,7 +44,7 @@
 						<div class="form-group">
 							<label for="inputDireccion" class="col-lg-2 control-label">Registrado por</label>
 							<div class="ver col-lg-10">
-							<?php echo ucwords(strtolower($datos['NOMBRES'] . " " . $datos['P_APELLIDO'])) ; ?>
+								<?php echo ucwords(strtolower($datos['NOMBRES'] . " " . $datos['P_APELLIDO'])) ; ?>
 							</div>
 						</div> 
 					</div>
@@ -52,5 +58,6 @@
 		<div class="col-md-2"></div>
 	</div>
 </div>  
-</div>
-</div>
+<?php include(HTML_DIR.'/overall/footer.php') ?> 
+</body>
+</html>   

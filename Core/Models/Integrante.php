@@ -35,7 +35,7 @@
  
 
 		public function listar(){
-			$sql="SELECT * FROM integrante";
+			$sql="SELECT * FROM integrante ORDER BY DOCUMENTO ASC ";
 			$datos=$this->db->consultaRetorno($sql);
 			return $datos;
 		}

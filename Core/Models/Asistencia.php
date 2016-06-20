@@ -42,7 +42,15 @@ class Asistencia {
 
 	}
 
-	
+	public function ver(){
+	    $sql="SELECT ID_INTEGRANTE, ASISTENCIA  FROM asistencia WHERE FECHA = '{$this->fecha}'  ORDER BY ID_INTEGRANTE ASC ";
+		$data = $this->db->consultaRetorno($sql);
+		$datos=array();
+		while ($row = mysqli_fetch_assoc($data)) {
+			$datos[]=$row;
+		}
+		return $datos;
+	}
 
 
 

@@ -1,7 +1,6 @@
 <?php namespace Core\Controllers;
 use Core\Models\Integrante as Integrante;
 use Core\Models\Asistencia as Asistencia;
-use Views\template as Template;
 
 
 class AsistenciaController{
@@ -26,16 +25,20 @@ class AsistenciaController{
 			header("Location:" . URL . "asistencia");
 		}else {
 			#listar Asistencia
-			$this->template = new Template();
-			$this->template->dataTable();
 			$datos=$this->integrante->listar();
 			return $datos;
 		}
 	}
 
+	public function listarAsistencia(){
+		if (!empty($_GET['fecha'])) {
+			$this->asistencia->__set("fecha", $_GET['fecha']);
+			$datos=$this->asistencia->ver(); 
+			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 
+		} 
 
-
+	}
 
 }
 

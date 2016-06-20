@@ -17,7 +17,7 @@ class Template
 			<?php  
 		} 
 
-		public function dataTable()
+		public function dataTaable()
 		{ ?>
 			<!-- DataTables-->
 			<link rel="stylesheet" type="text/css" href="Views/DataTables/media/css/dataTables.bootstrap.css">
@@ -28,7 +28,7 @@ class Template
 					$('.dataTable').DataTable({
 						"iDisplayLength": -1,
 						"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-						"autoWidth": true,
+						"autoWidth": true
 						/*"columns": [{ "orderable": true},     
 						null,
 						null,
@@ -88,9 +88,19 @@ class Template
 								</ul>
 							</li>
 						</ul>
+
 						<ul class="nav navbar-nav">
-						<li><a href="<?php echo URL; ?>asistencia"> Asistencia  <i class="fa fa-user" aria-hidden="true"></i></a></li>
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Asistencia <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="<?php echo URL; ?>asistencia">Registrar Asistencia</a></li>
+									<li class="divider"></li>
+									<li><a href="<?php echo URL; ?>asistencia">Ver Asistencia</a></li>
+								</ul>
+							</li>
 						</ul>
+
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="<?php echo URL; ?>Logout"> Salir  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 						</ul>

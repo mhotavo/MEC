@@ -1,6 +1,5 @@
 <?php namespace Core\Controllers;
 use Core\Models\Integrante as Integrante;
-use Views\template as Template;
 
 
 class IntegrantesController{
@@ -13,8 +12,6 @@ class IntegrantesController{
 
 	public function index(){
 			#listar integrantes
-		$this->template = new Template();
-		$this->template->dataTable();
 		$datos=$this->integrante->listar();
 		return $datos;
 
