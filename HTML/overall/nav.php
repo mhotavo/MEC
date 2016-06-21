@@ -46,7 +46,7 @@
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="<?php echo URL; ?>asistencia">Registrar Asistencia</a></li>
                   <li class="divider"></li>
-                  <li><a href="<?php echo URL; ?>asistencia">Ver Asistencia</a></li>
+                  <li><a href="<?php echo URL; ?>asistencia/ver">Ver Asistencia</a></li>
                 </ul>
               </li>
             </ul>

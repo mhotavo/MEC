@@ -13,17 +13,19 @@
             <table class="table table-striped table-hover" id="integrantesTabla" >
               <thead>
                 <tr>
-                 <div class="form-group">
-                   <label for="fechaAsistencia">Fecha:</label>
-                   <input type="date" name="fechaAsistencia" id="fechaAsistencia" value="<?php echo date('Y-m-d'); ?>" onblur="cargarAsistencia();">
-                  <div id="alert"></div>
+                 <div class="form-group col-md-3" >
+                   <label for="fechaAsistencia">Fecha: <i class="fa fa-calendar" aria-hidden="true"></i></label>
+                   <input type="date" name="fechaAsistencia" id="fechaAsistencia" class="form-control" value="<?php echo date('Y-m-d'); ?>" onblur="cargarAsistencia();">
                  </div>
                </tr>
-               <tr>
+               <tr><br>
+                <div id="alert"  class="col-md-4"></div>
+              </tr>
+              <tr>
                 <th>Nombres</th>
                 <th>Primer Apellido</th>
                 <th>Genero</th>
-                <th>Asistio</th>
+                <th>Asistencia</th>
               </tr>
             </thead>
             <tbody> 
@@ -53,6 +55,6 @@
       <div class="col-md-2"></div>
     </div>  
   </div>
-    <?php include(HTML_DIR.'/overall/footer.php') ?> 
-  </body>
-  </html>   
+  <?php include(HTML_DIR.'/overall/footer.php') ?> 
+</body>
+</html>   

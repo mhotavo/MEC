@@ -14,7 +14,6 @@ define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('URL', "http://localhost/MEC/");
 define('HTML_DIR', 'HTML/');
 
-require_once "Views/template.php";
 
 #Solo se define luego de iniciar sesion 
 if (isset($_SESSION['app_id'])) {

@@ -39,6 +39,8 @@ class IntegrantesController{
 			$this->integrante->__set("correo", $_POST['inputEmail']);
 			$this->integrante->__set("acolito", $_POST['Acolito']);
 			$this->integrante->__set("coordinador", $_POST['Coordinador']);
+			$this->integrante->__set("genero", $_POST['selectGenero']);
+			$this->integrante->__set("fechaIngreso", $_POST['fechaIngreso']);
 			$this->integrante->__set("imagen", $nombre);
 			$this->integrante->add();
 			header("Location:" . URL . "Integrantes");
@@ -63,6 +65,8 @@ class IntegrantesController{
 			$this->integrante->__set("correo", $_POST['inputEmail']);
 			$this->integrante->__set("acolito", $_POST['Acolito']);
 			$this->integrante->__set("coordinador", $_POST['Coordinador']);
+			$this->integrante->__set("genero", $_POST['selectGenero']);
+			$this->integrante->__set("fechaIngreso", $_POST['fechaIngreso']);
 			
 
 			$permitidos=array("image/jpeg", "image/png", "image/jpg");
@@ -98,7 +102,13 @@ class IntegrantesController{
 		}
 		$this->integrante->delete(); 
 		header("Location:" . URL . "Integrantes");
-	}					
+	}
+
+	public function listarJSON(){
+		$datos=$this->integrante->listarJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
 
 
 }

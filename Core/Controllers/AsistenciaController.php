@@ -24,22 +24,35 @@ class AsistenciaController{
 			}
 			header("Location:" . URL . "asistencia");
 		}else {
-			#listar Asistencia
+			#listar Integrantes
 			$datos=$this->integrante->listar();
 			return $datos;
 		}
 	}
 
-	public function listarAsistencia(){
+	public function verJSON(){
 		if (!empty($_GET['fecha'])) {
 			$this->asistencia->__set("fecha", $_GET['fecha']);
-			$datos=$this->asistencia->ver(); 
+			$datos=$this->asistencia->verJSON(); 
+			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+
+		} 
+
+	}	
+	public function verJSONporID(){
+		if (!empty($_GET['id'])) {
+			$this->asistencia->__set("id", $_GET['id']);
+			$datos=$this->asistencia->verJSONporID(); 
 			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 
 		} 
 
 	}
-
+	public function ver(){
+			#listar Asistencia
+		//$datos=$this->integrante->listar();
+		//return $datos;
+	}
 }
 
 $Asistencia= new AsistenciaController();
