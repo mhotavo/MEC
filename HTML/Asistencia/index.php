@@ -9,13 +9,14 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-          <form class="form-horizontal" enctype="multipart/form-data" method="POST">
+          <form class="form-horizontal" enctype="multipart/form-data" method="POST" id="formAsistencia" name="formAsistencia">
             <table class="table table-striped table-hover" id="integrantesTabla" >
               <thead>
                 <tr>
                  <div class="form-group">
                    <label for="fechaAsistencia">Fecha:</label>
                    <input type="date" name="fechaAsistencia" id="fechaAsistencia" value="<?php echo date('Y-m-d'); ?>" onblur="cargarAsistencia();">
+                  <div id="alert"></div>
                  </div>
                </tr>
                <tr>

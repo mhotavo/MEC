@@ -43,11 +43,21 @@ class Asistencia {
 	}
 
 	public function ver(){
-	    $sql="SELECT ID_INTEGRANTE, ASISTENCIA  FROM asistencia WHERE FECHA = '{$this->fecha}'  ORDER BY ID_INTEGRANTE ASC ";
+		$sql="SELECT ID_INTEGRANTE, ASISTENCIA  FROM asistencia WHERE FECHA = '{$this->fecha}'  ORDER BY ID_INTEGRANTE ASC ";
 		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
 		$datos=array();
-		while ($row = mysqli_fetch_assoc($data)) {
-			$datos[]=$row;
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		} else {
+			$this->integrante = new Integrante();
+			$lista=$this->integrante->listar();
+			while ($row = mysqli_fetch_assoc($lista)) {
+				$datos[]=$row['DOCUMENTO'];
+			}
+
 		}
 		return $datos;
 	}
