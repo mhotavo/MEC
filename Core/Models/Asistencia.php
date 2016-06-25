@@ -55,6 +55,19 @@ class Asistencia {
 			}
 		}  
 		return $datos;
+	}	
+
+	public function fechasJSON(){
+		$sql="SELECT FECHA FROM asistencia GROUP BY FECHA ORDER BY FECHA ASC";
+		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
+		$datos=array();
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		}  
+		return $datos;
 	}
 
 	public function verJSONporID(){

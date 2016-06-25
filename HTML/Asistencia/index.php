@@ -36,7 +36,7 @@
                   <td><?php  echo $row['GENERO']; ?></td>
                   <td>  
                     <input type="hidden" required value="<?php echo $row['DOCUMENTO'] ?>" name="documento_<?php echo $row['DOCUMENTO'] ?>">
-                    <input type="radio"  required name="asistencia_<?php echo $row['DOCUMENTO'] ?>"  id="si_<?php echo $row['DOCUMENTO'] ?>" value="1"> <span style="color:green;font-weight: bold">Si</span>
+                    <input type="radio"  checked required name="asistencia_<?php echo $row['DOCUMENTO'] ?>"  id="si_<?php echo $row['DOCUMENTO'] ?>" value="1"> <span style="color:green;font-weight: bold">Si</span>
                     <input type="radio" required name="asistencia_<?php echo $row['DOCUMENTO'] ?>" id="no_<?php echo $row['DOCUMENTO'] ?>" value="0"> <span style="color:red;font-weight: bold">No</span>
 
                   </td>

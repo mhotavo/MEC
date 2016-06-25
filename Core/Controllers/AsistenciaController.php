@@ -48,11 +48,10 @@ class AsistenciaController{
 		} 
 
 	}
-	public function ver(){
-			#listar Asistencia
-		//$datos=$this->integrante->listar();
-		//return $datos;
-	}
+	public function fechasJSON(){
+			$datos=$this->asistencia->fechasJSON(); 
+			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}	
 }
 
 $Asistencia= new AsistenciaController();

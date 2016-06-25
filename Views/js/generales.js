@@ -36,32 +36,50 @@ function cargarAsistencia(){
 
 
 function asistencia(){
+	//LISTAMOS INTEGRANTES
 	$.getJSON('../Integrantes/listarJSON', function(resp){
 		//console.log(resp);
-		var fecha="";
+		
 		for (var i in resp) 
 		{
 			$("#tablaAsistencia > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRE+"</td></tr>");
-			var id=resp[i].DOCUMENTO;
-			$.getJSON('../asistencia/verJSONporID',{id:id}, function(data){
 
-				for (var x in data) 
-					/*if (fecha!=data[x].FECHA) {
-						$("#tablaAsistencia > thead > tr").append("<th>"+data[x].FECHA+"</th>");
-					}
-					fecha=data[x].FECHA; */
-					$("#"+data[x].ID_INTEGRANTE).append("<td>"+data[x].ASISTENCIA+"</td></tr>");
-				}
-			}).error(function(e){
-				console.log(e);
-			})
 		}
 	}).error(function(e){
 		console.log(e);
 	})
+	//LISTAMOS FECHAS
+	$.getJSON('../asistencia/fechasJSON', function(data)
+	{
+		for (var x in data) 
+		{
+			$("#tablaAsistencia > thead > tr").append("<th>"+data[x].FECHA+"</th>");
+			var fecha=data[x].FECHA;
+				//LISTAMOS ASISTENCIA
+				$.getJSON('../asistencia/verJSON',{fecha:fecha}, function(resp){
+					//console.log(resp);
+					var fecha="";
+					for (var i in resp) 
+					{
+						if (resp[i].ASISTENCIA==1) {
+							$("#"+resp[i].ID_INTEGRANTE).append("<td class='success'>Si</td>");
+						} else {
+							$("#"+resp[i].ID_INTEGRANTE).append("<td class='danger'>No</td>");
+						}
+						
+					}
+				}).error(function(e){
+					console.log(e);
+				})
 
 
 
-}
+			}
+		}).error(function(e){
+			console.log(e);
+		})
+
+
+	}
 
 
