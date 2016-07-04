@@ -109,7 +109,10 @@ class IntegrantesController{
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
-
+	public function birthdayJSON(){
+		$datos=$this->integrante->birthdayJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
 
 }
 

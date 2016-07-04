@@ -42,8 +42,22 @@ class Integrante {
 		return $datos;
 	}
 
+	public function birthdayJSON(){
+		// $sql="SELECT * FROM integrante WHERE MONTH(FECHA_NACIMIENTO) = MONTH(DATE_ADD(CURDATE(),INTERVAL 1 MONTH)) OR MONTH(FECHA_NACIMIENTO) = MONTH(CURDATE()) AND DAY( FECHA_NACIMIENTO ) > DAY(CURDATE())  ";
+		$sql="SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE MONTH(FECHA_NACIMIENTO) >= MONTH(CURDATE()) AND DAY(FECHA_NACIMIENTO) >= DAY(CURDATE()) ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)";
+		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
+		$datos=array();
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		}  
+		return $datos;
+	}
+
 	public function add(){
-	$sql="INSERT INTO integrante 
+		$sql="INSERT INTO integrante 
 		(DOCUMENTO,
 		NOMBRES,
 		PRIMER_APELLIDO, 
