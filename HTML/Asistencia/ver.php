@@ -7,8 +7,8 @@
     <div id="container">
       <h2 align="center">Registro de Asistencia</h2>
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
           <table class="table table-striped" id="tablaAsistencia" >
             <thead>
               <tr>
@@ -20,7 +20,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
       </div>  
     </div>
     <?php include(HTML_DIR.'/overall/footer.php') ?> 

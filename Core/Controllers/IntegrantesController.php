@@ -42,7 +42,7 @@ class IntegrantesController{
 			$this->integrante->__set("genero", $_POST['selectGenero']);
 			$this->integrante->__set("fechaIngreso", $_POST['fechaIngreso']);
 			$this->integrante->__set("imagen", $nombre);
-			$this->integrante->add();
+			$this->integrante->add(); 
 			header("Location:" . URL . "Integrantes");
 		}
 		

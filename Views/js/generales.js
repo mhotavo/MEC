@@ -45,6 +45,9 @@ function asistencia(){
 			$("#tablaAsistencia > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRE+"</td></tr>");
 
 		}
+		$("#tablaAsistencia > tbody").append("<tr id='totalAsistencias'><td><b>ASISTENCIAS</b></td></tr>");
+		$("#tablaAsistencia > tbody").append("<tr id='totalFallas'><td><b>FALLAS</b></td></tr>");
+
 	}).error(function(e){
 		console.log(e);
 	})
@@ -52,9 +55,11 @@ function asistencia(){
 	$.getJSON('../asistencia/fechasJSON', function(data)
 	{
 		for (var x in data) 
-		{
+		{	
 			$("#tablaAsistencia > thead > tr").append("<th>"+data[x].FECHA+"</th>");
 			var fecha=data[x].FECHA;
+			var asistencias=0;
+			var fallas=0;
 				//LISTAMOS ASISTENCIA
 				$.getJSON('../asistencia/verJSON',{fecha:fecha}, function(resp){
 					//console.log(resp);
@@ -62,24 +67,26 @@ function asistencia(){
 					for (var i in resp) 
 					{
 						if (resp[i].ASISTENCIA==1) {
-							$("#"+resp[i].ID_INTEGRANTE).append("<td class='success'>Si</td>");
+							$("#"+resp[i].ID_INTEGRANTE).append("<td class='success'><b style='color:green;'>SI</b></td>");
+							asistencias=asistencias+1;
 						} else {
-							$("#"+resp[i].ID_INTEGRANTE).append("<td class='danger'>No</td>");
+							$("#"+resp[i].ID_INTEGRANTE).append("<td class='danger'><b style='color:red;'>NO</b></td>");
+							fallas=fallas+1;
 						}
-						
 					}
+					$("#totalAsistencias").append("<td class='success'><b style='color:green;'>"+asistencias+"</b></td>");
+					$("#totalFallas").append("<td class='danger'><b style='color:red;'>"+fallas+"</b></td>");
+					asistencias=0;
+					fallas=0;
+
 				}).error(function(e){
 					console.log(e);
 				})
-
-
-
 			}
+
 		}).error(function(e){
 			console.log(e);
 		})
 
 
 	}
-
-

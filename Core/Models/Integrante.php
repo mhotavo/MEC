@@ -37,13 +37,13 @@ class Integrante {
 
 
 	public function listar(){
-		$sql="SELECT * FROM integrante ORDER BY DOCUMENTO ASC ";
+		$sql="SELECT * FROM integrante ORDER BY NOMBRES ASC ";
 		$datos=$this->db->consultaRetorno($sql);
 		return $datos;
 	}
 
 	public function add(){
-		$sql="INSERT INTO integrante 
+	$sql="INSERT INTO integrante 
 		(DOCUMENTO,
 		NOMBRES,
 		PRIMER_APELLIDO, 
@@ -55,7 +55,7 @@ class Integrante {
 		CORREO, 
 		ACOLITO,
 		COORDINADOR,
-		IMAGEN,) 
+		IMAGEN,
 		FECHA_INGRESO) 
 		VALUES 
 		(NULL, 
@@ -70,7 +70,7 @@ class Integrante {
 		'{$this->acolito}',
 		'{$this->coordinador}',
 		'{$this->imagen}',
-		'{$this->fechaIngreso}',
+		'{$this->fechaIngreso}'
 
 		); ";
 		$this->db->consultaSimple($sql);
@@ -109,7 +109,7 @@ class Integrante {
 	}
 
 	public function listarJSON(){
-		$sql="SELECT DOCUMENTO, CONCAT(NOMBRES, '', PRIMER_APELLIDO) as NOMBRE FROM integrante ORDER BY NOMBRE ASC ";
+		$sql="SELECT DOCUMENTO, CONCAT(NOMBRES, ' ', PRIMER_APELLIDO) as NOMBRE FROM integrante ORDER BY NOMBRE ASC ";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
