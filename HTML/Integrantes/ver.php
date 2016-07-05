@@ -84,8 +84,4 @@
 <?php include(HTML_DIR.'/overall/footer.php') ?> 
 
 </body>
-<blockquote  class="blockquote-reverse">
-  <p>Parroquia Santa Teresita Del Niño Jesús</p>
-  <footer>Milton Otavo <?php echo date("Y"); ?>  &copy; </footer>
-</blockquote>
 </html>   

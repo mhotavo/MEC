@@ -50,7 +50,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $('.dataTable').DataTable({
-        "iDisplayLength": -1,
+        "iDisplayLength": 25,
         "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "autoWidth": true,           
         "sPaginationType": "full_numbers",

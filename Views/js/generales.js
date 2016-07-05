@@ -43,7 +43,6 @@ function asistencia(){
 		for (var i in resp) 
 		{
 			$("#tablaAsistencia > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRE+"</td></tr>");
-
 		}
 		$("#tablaAsistencia > tbody").append("<tr id='totalAsistencias'><td><b>ASISTENCIAS</b></td></tr>");
 		$("#tablaAsistencia > tbody").append("<tr id='totalFallas'><td><b>FALLAS</b></td></tr>");
@@ -142,3 +141,47 @@ function asistencia(){
 
 	}
 
+	function validarPasswords(){
+		var nueva= $("#nueva").val();
+		var confir= $("#confirmar").val();
+		var actual= $("#actual").val();
+		$("#msjConfirmar").empty();
+		if (actual==nueva) {
+			$("#actual").val("");
+			$("#nueva").val("");
+			$("#confirmar").val("");
+			$( "#actual" ).focus();
+			$("#msjConfirmar").append('<span style="color:orange;font-size:14px;font-weight:bold">La contraseña debe ser diferente a la anterior. <i class="fa fa-key" aria-hidden="true"></i></span>');
+		}else{
+
+			if($("#nueva").val().length < 5) {  
+				$("#nueva").val("");
+				$("#confirmar").val("");
+				$( "#nueva" ).focus();
+				$("#msjConfirmar").append('<span style="color:orange;font-size:14px;font-weight:bold">Min. 5 caracteres <i class="fa fa-key" aria-hidden="true"></i></span>');
+			} else{
+				if (nueva!=confir) {
+					$("#nueva").val("");
+					$("#confirmar").val("");
+					$( "#nueva" ).focus();
+					$("#msjConfirmar").append('<span style="color:orange;font-size:14px;font-weight:bold">Las contraseñas no coinciden <i class="fa fa-key" aria-hidden="true"></i></span>');
+				} 
+			}
+		}
+	}
+
+	function validarPasswordActual(){
+		$("#msjActual").empty();
+		var actual= $("#actual").val();
+		var id= $("#id").val();
+		$.get('GoLogin/validarPassword',{actual:actual, id:id}, function(resp,estado,jqXHR){
+			if (resp!=1) {
+				$("#actual").val("");
+				$( "#actual" ).focus();
+				$("#msjActual").append('<span style="color:orange;font-size:14px;font-weight:bold">Contraseña incorrecta <i class="fa fa-key" aria-hidden="true"></i></span>');
+
+
+			}  
+
+		});
+	}
