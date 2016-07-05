@@ -5,7 +5,7 @@
   <body>
   	<?php include(HTML_DIR.'/overall/nav.php') ?>
   	<div class="container">
-  		<h2 align="center">Nuevo Integrante</h2>
+  		<h3 align="center">Nuevo Integrante</h3>
   		<br>
   		<div class="row">
   			<div class="col-md-2"></div>

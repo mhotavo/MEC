@@ -4,7 +4,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-07-2016 a las 12:36:30
+-- Tiempo de generación: 05-07-2016 a las 09:58:10
 -- Versión del servidor: 5.1.73
 -- Versión de PHP: 5.2.17
 
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `integrante` (
   `FECHA_INGRESO` date DEFAULT NULL,
   `FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`DOCUMENTO`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
 
 --
 -- Volcado de datos para la tabla `integrante`
@@ -302,7 +302,7 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (28, 'Lizeth  Natalia', 'Gonzalez', '', 'F', '2001-10-26', 'MZ 19 CASA 18 PROTECHO B', '3127819071', 'lizethnatalia.gonzalezcocoma', 1, 0, '535510891874_475655855908313_238106892298809048_n.jpg', '2016-01-01', '2016-06-21 15:48:25'),
 (30, 'Maicol Steven  ', 'Guzman', '', 'M', '2003-04-30', 'MZ 34 CASA 4 PROTECHO B', '3204024355', '', 0, 0, '414110917318_567900273346545_5259684330951652483_n.jpg', '2016-01-01', '2016-06-21 15:48:25'),
 (31, 'Maria Camila ', 'Tangarife', '', 'F', '2002-03-31', '', '3124507085', 'camila.cardenas.902266', 0, 0, '402112976674_952557114864038_663085497_n(1).jpg', '2016-01-01', '2016-06-21 15:48:25'),
-(32, 'Maria Paula ', 'Barrios', '', 'F', '2002-07-04', '', '3003218696', 'mariapaula.barriostrilleras.9', 0, 0, '504512417605_1671514893109127_6172349296654209961_n.jpg', '2016-01-01', '2016-06-21 15:48:25'),
+(32, 'Maria Paula ', 'Barrios', '', 'F', '2004-07-04', '', '3003218696', 'mariapaula.barriostrilleras.9', 0, 0, '504512417605_1671514893109127_6172349296654209961_n.jpg', '2016-01-01', '2016-07-05 03:47:39'),
 (33, 'Mariam Paola ', 'Betancourt', '', 'F', '2002-08-11', 'MZ 31 CASA 9 PROTECHO B', '3008075178', 'mariiam.bettancourt', 0, 0, '511312795412_1746105812285448_823808909556973390_n.jpg', '2016-01-01', '2016-06-21 15:48:25'),
 (34, 'Mateo  ', 'Cortes', 'Perez', 'M', '2000-10-31', 'SMZ 4 MZ 5 CASA 6 N/CASTILLA', '2672517', 'profile.php?id=100008943496513', 1, 0, '515312250078_1480965348878234_5132347312022774896_n.jpg', '2016-01-01', '2016-06-21 15:48:25'),
 (35, 'Monica Alejandra ', 'Palacios', '', 'F', '2003-06-26', 'SMZ 26MZ 8 CASA 6 N/CASTILLA', '3015412925', 'monicaalejandra.palacios.6', 1, 0, '530713012634_702940669808484_2522712948787906065_n.jpg', '2016-01-01', '2016-06-21 15:48:25'),

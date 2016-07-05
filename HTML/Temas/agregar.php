@@ -6,7 +6,7 @@
   	<?php include(HTML_DIR.'/overall/nav.php') ?>
 
   	<div class="container">
-  		<h2 align="center">Nuevo Tema</h2>
+  		<h3 align="center">Nuevo Tema</h3>
   		<br>
   		<div class="row">
   			<div class="col-md-2"></div>

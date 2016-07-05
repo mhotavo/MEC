@@ -1,28 +1,28 @@
-  <html>
-  <head>
-    <?php include(HTML_DIR.'/overall/header.php') ?>
-    <link rel="stylesheet" type="text/css" href="Views/DataTables/media/css/dataTables.bootstrap.css">
-  </head>
-  <body>
-    <?php include(HTML_DIR.'/overall/nav.php') ?>
-    <div id="container-fluid">
-      <h2 align="center">Misioneros en Camino</h2>
-      <div class="col-sm-1 col-md-1"></div>
-      <div class="col-xs-12 col-sm-10 col-md-10">
+<html>
+<head>
+  <?php include(HTML_DIR.'/overall/header.php') ?>
+  <link rel="stylesheet" type="text/css" href="Views/DataTables/media/css/dataTables.bootstrap.css">
+</head>
+<body>
+  <?php include(HTML_DIR.'/overall/nav.php') ?>
+  <div id="container-fluid">
+    <h2 align="center">Integrantes</h2>
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
 
-        <table class="table table-striped table-hover dataTable" id="integrantesTabla" >
-          <thead>
-            <tr>
-              <th>Imagen</th>
-              <th>Nombres</th>
-              <th class="hidden-xs">Primer Apellido</th>
-              <th class="hidden"></th>
-              <th class="hidden-xs">Celular</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          <tbody> 
-            <?php while($row = mysqli_fetch_array($datos)){ ?>
+      <table class="table table-striped table-hover dataTable" id="integrantesTabla" >
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombres</th>
+            <th class="hidden-xs">Primer Apellido</th>
+            <th class="hidden"></th>
+            <th class="hidden-xs">Celular</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <?php while($row = mysqli_fetch_array($datos)){ ?>
             <tr>
               <td> <a href="<?php echo URL; ?>Integrantes/ver/<?php echo $row['DOCUMENTO']; ?>"><img class="avatar" src="<?php  echo URL; ?>HTML/Integrantes/avatars/<?php echo  !empty($row['IMAGEN']) ? $row['IMAGEN'] : 'no-image.png'    ; ?>"> </a></td>
               <td  class="hidden-xs"><?php  echo $row['NOMBRES']; ?></td>
@@ -41,7 +41,7 @@
       </table>
 
     </div>
-    <div class=" col-sm-1 col-md-1"></div>
+    <div class="col-md-1"></div>
   </div>  
 
   <?php include(HTML_DIR.'/overall/footer.php') ?> 
@@ -59,4 +59,4 @@
     } );
   </script>
 </body>
-</html>   
+</html>

@@ -34,5 +34,7 @@
     <script type="text/javascript">
       $(document).ready(birthday);
     </script>
+
   </body>
+
   </html>   

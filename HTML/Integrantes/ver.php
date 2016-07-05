@@ -23,64 +23,69 @@
   					<div class="col-md-8">
   						<div class="form-horizontal" >
   							
-  								<div class="form-group">
-  									<label for="inputNombres" class="col-lg-2 control-label">Nombres</label>
-  									<div class="ver col-lg-10">
-  										<?php echo $datos['NOMBRES']; ?>
-  									</div>
-  								</div>		
-  								<div class="form-group">
-  									<label for="inputPrimerApellido" class="col-lg-2 control-label">Primer Apellido</label>
-  									<div class="ver col-lg-10">
-  										<?php echo $datos['PRIMER_APELLIDO']; ?>
-  									</div>
-  								</div>		
-  								<div class="form-group">
-  									<label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
-  									<div class="ver col-lg-10">
-  										<?php echo $datos['SEGUNDO_APELLIDO']; ?>
-  									</div>
-  								</div>			    	        
-  								<div class="form-group">
-  									<label for="inputFechaNacimiento" class="col-lg-2 control-label">Fecha Nacimiento</label>
-  									<div class="ver col-lg-10">
-  										<?php echo $datos['FECHA_NACIMIENTO']; ?>
-  									</div>
-  								</div>
-  								<div class="form-group">
-  									<label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
-  									<div class="ver col-lg-10">
-  										<?php echo $datos['DIRECCION']; ?>
-  									</div>
-  								</div>
-  								<div class="form-group">
-  									<label for="inputCelular" class="col-lg-2 control-label">Celular</label>
-  									<div class="ver col-lg-10">
-  										<?php echo $datos['CELULAR']; ?>
-  									</div>
-  								</div>
-  								<div class="form-group">
-  									<label for="inputEmail" class="col-lg-2 control-label">Facebook</label>
-  									<div class="ver col-lg-10">
-  										<a href="https://www.facebook.com/<?php echo $datos['CORREO']; ?>" target="_blank">
-  											<img src="<?php echo URL; ?>Views/images/Facebook_logo.png" width="30px">
-  										</a> 
-  									</div>
-  								</div>
+                <div class="form-group">
+                 <label for="inputNombres" class="col-lg-2 control-label">Nombres</label>
+                 <div class="ver col-lg-10">
+                  <?php echo $datos['NOMBRES']; ?>
+                </div>
+              </div>		
+              <div class="form-group">
+               <label for="inputPrimerApellido" class="col-lg-2 control-label">Primer Apellido</label>
+               <div class="ver col-lg-10">
+                <?php echo $datos['PRIMER_APELLIDO']; ?>
+              </div>
+            </div>		
+            <div class="form-group">
+             <label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
+             <div class="ver col-lg-10">
+              <?php echo $datos['SEGUNDO_APELLIDO']; ?>
+            </div>
+          </div>			    	        
+          <div class="form-group">
+           <label for="inputFechaNacimiento" class="col-lg-2 control-label">Fecha Nacimiento</label>
+           <div class="ver col-lg-10">
+            <?php echo $datos['FECHA_NACIMIENTO']; ?>
+          </div>
+        </div>
+        <div class="form-group">
+         <label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
+         <div class="ver col-lg-10">
+          <?php echo $datos['DIRECCION']; ?>
+        </div>
+      </div>
+      <div class="form-group">
+       <label for="inputCelular" class="col-lg-2 control-label">Celular</label>
+       <div class="ver col-lg-10">
+        <?php echo $datos['CELULAR']; ?>
+      </div>
+    </div>
+    <div class="form-group">
+     <label for="inputEmail" class="col-lg-2 control-label">Facebook</label>
+     <div class="ver col-lg-10">
+      <a href="https://www.facebook.com/<?php echo $datos['CORREO']; ?>" target="_blank">
+       <img src="<?php echo URL; ?>Views/images/Facebook_logo.png" width="30px">
+     </a> 
+   </div>
+ </div>
 
-  								<div class="form-group">
-  									<label class="col-lg-2 control-label">Acolito</label>
-  									<div class="ver col-lg-10">
-  										<?php echo ($datos['ACOLITO']=='1') ? "SI" : "NO" ?>
-  									</div>
-  								</div>
-  							</div>
-  				</div>
- 
-  			</div>
-  		</div>  
-  	</div>
+ <div class="form-group">
+   <label class="col-lg-2 control-label">Acolito</label>
+   <div class="ver col-lg-10">
+    <?php echo ($datos['ACOLITO']=='1') ? "SI" : "NO" ?>
   </div>
-  <?php include(HTML_DIR.'/overall/footer.php') ?> 
+</div>
+</div>
+</div>
+
+</div>
+</div>  
+</div>
+</div>
+<?php include(HTML_DIR.'/overall/footer.php') ?> 
+
 </body>
+<blockquote  class="blockquote-reverse">
+  <p>Parroquia Santa Teresita Del Niño Jesús</p>
+  <footer>Milton Otavo <?php echo date("Y"); ?>  &copy; </footer>
+</blockquote>
 </html>   

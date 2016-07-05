@@ -11,7 +11,8 @@ define('DB_NAME', 'mec');
 #Constantes app
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
-define('URL', "http://192.168.1.8/MEC/");
+#define('URL', "http://192.168.1.8/MEC/");
+define('URL', "http://localhost/MEC/");
 define('HTML_DIR', 'HTML/');
 
 
