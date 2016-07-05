@@ -4,7 +4,7 @@
   </head>
   <body>
   	<?php include(HTML_DIR.'/overall/nav.php') ?>
-  	<div  class="container box-principal">
+  	<div  class="container">
   		<br>
   		<div class="panel panel-success">
   			<div class="panel-heading">
@@ -23,26 +23,26 @@
 				<div class="form-horizontal" >
 					<fieldset>
 						<div class="form-group">
-							<label for="inputNombres" class="col-lg-2 control-label">Tema</label>
+							<label for="inputNombres" class="col-lg-2 control-label"><b>Tema</b></label>
 							<div class="ver col-lg-10">
 								<?php echo $datos['TEMA']; ?>
 							</div>
 						</div>		
 						<div class="form-group">
-							<label for="inputPrimerApellido" class="col-lg-2 control-label">Descripción</label>
+							<label for="inputPrimerApellido" class="col-lg-2 control-label"><b>Descripción</b></label>
 							<div class="ver col-lg-10">
 								<?php echo str_replace("\n", "<br>", $datos['DESCRIPCION']) ; ?>
 							</div>
 						</div>		
 						<div class="form-group">
-							<label for="inputSegundoApellido" class="col-lg-2 control-label">Fecha</label>
+							<label for="inputSegundoApellido" class="col-lg-2 control-label"><b>Fecha<b></label>
 							<div class="ver col-lg-10">
 								<?php echo $datos['FECHA']; ?>
 							</div>
 						</div>			    	        
 
 						<div class="form-group">
-							<label for="inputDireccion" class="col-lg-2 control-label">Registrado por</label>
+							<label for="inputDireccion" class="col-lg-2 control-label"><b>Registrado por</b></label>
 							<div class="ver col-lg-10">
 								<?php echo ucwords(strtolower($datos['NOMBRES'] . " " . $datos['P_APELLIDO'])) ; ?>
 							</div>

@@ -4,7 +4,7 @@
   </head>
   <body>
   	<?php include(HTML_DIR.'/overall/nav.php') ?>
-  	<div  class="container box-principal">
+  	<div  class="container-fluid"> <!--box-principal -->
   		<h3  align="center"><?php echo $datos['NOMBRES'] ." ". $datos['PRIMER_APELLIDO']." ". $datos['SEGUNDO_APELLIDO'] ; ?></h3>
   		<br>
   		<div class="panel panel-success">
@@ -22,7 +22,7 @@
   					</div>
   					<div class="col-md-8">
   						<div class="form-horizontal" >
-  							<fieldset>
+  							
   								<div class="form-group">
   									<label for="inputNombres" class="col-lg-2 control-label">Nombres</label>
   									<div class="ver col-lg-10">
@@ -75,12 +75,8 @@
   									</div>
   								</div>
   							</div>
-
-
-  						</fieldset>
-  					</form>
   				</div>
-  				<div class="col-md-2"></div>
+ 
   			</div>
   		</div>  
   	</div>

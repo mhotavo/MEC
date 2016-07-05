@@ -5,27 +5,27 @@
 <body>
 	<?php include(HTML_DIR.'/overall/nav.php') ?>
 	<div class="container">
-		<h2 align="center">Tema - <?php echo ucwords(strtolower($datos['TEMA'])); ?></h2>
+		<h3 align="center"><?php echo ucwords(strtolower($datos['TEMA'])); ?></h3>
 		<br>
-		<div class="row">
+		<div class="">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<form class="form-horizontal" enctype="multipart/form-data" method="POST">
 					<fieldset>
 						<div class="form-group">
-							<label for="inputNombres" class="col-lg-2 control-label">Tema</label>
+							<label for="inputNombres" class="col-lg-2 control-label" style="font-weight: bold;">Tema</label>
 							<div class="col-lg-10">
 								<input type="text" class="form-control" name="inputTema" placeholder="Tema" required value="<?php echo $datos['TEMA'] ?>">
 							</div>
 						</div>		
 						<div class="form-group">
-							<label for="inputPrimerApellido" class="col-lg-2 control-label">Descripcion</label>
+							<label for="inputPrimerApellido" class="col-lg-2 control-label" style="font-weight: bold;">Descripcion</label>
 							<div class="col-lg-10">
 								<textarea  type="text" class="form-control" name="inputDescripcion" rows="10" required><?php echo $datos['DESCRIPCION'] ?></textarea>
 							</div>
 						</div>		
 						<div class="form-group">
-							<label for="inputSegundoApellido" class="col-lg-2 control-label" >Fecha</label>
+							<label for="inputSegundoApellido" class="col-lg-2 control-label"  style="font-weight: bold;">Fecha</label>
 							<div class="col-lg-10">
 								<input type="date" class="form-control" name="inputFecha" value="<?php echo $datos['FECHA'] ?>">
 							</div>

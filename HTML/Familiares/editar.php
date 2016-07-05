@@ -7,7 +7,7 @@ $lista=$Familiares->listarIntegrante();
 </head>
 <body>
 	<?php include(HTML_DIR.'/overall/nav.php') ?>
-	<div  class="container box-principal">
+	<div  class="container">
 		<h3  align="center"><?php echo $datos['NOMBRES'] ." ". $datos['PRIMER_APELLIDO']." ". $datos['SEGUNDO_APELLIDO'] ; ?></h3>
 		<br>
 		<div class="panel panel-success">
@@ -27,25 +27,25 @@ $lista=$Familiares->listarIntegrante();
 						<form class="form-horizontal" enctype="multipart/form-data" method="POST">
 							<fieldset>
 								<div class="form-group">
-									<label for="inputNombres" class="col-lg-2 control-label">Nombres</label>
+									<label for="inputNombres" class="col-lg-2 control-label"><b>Nombres</b></label>
 									<div class="col-lg-10">
 										<input type="text" class="form-control" name="inputNombres" value="<?php echo $datos['NOMBRES']; ?>" required>
 									</div>
 								</div>		
 								<div class="form-group">
-									<label for="inputPrimerApellido" class="col-lg-2 control-label">Primer Apellido</label>
+									<label for="inputPrimerApellido" class="col-lg-2 control-label"><b>Primer Apellido</b></label>
 									<div class="col-lg-10">
 										<input type="text" class="form-control" name="inputPrimerApellido" value="<?php echo $datos['PRIMER_APELLIDO']; ?>" required>
 									</div>
 								</div>		
 								<div class="form-group">
-									<label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
+									<label for="inputSegundoApellido" class="col-lg-2 control-label"><b>Segundo Apellido</b></label>
 									<div class="col-lg-10">
 										<input type="text" class="form-control" name="inputSegundoApellido" value="<?php echo $datos['SEGUNDO_APELLIDO']; ?>" >
 									</div>
 								</div>			    	        
 								<div class="form-group">
-									<label for="inputEmail" class="col-lg-2 control-label">Familiar de:</label>
+									<label for="inputEmail" class="col-lg-2 control-label"><b>Familiar de:</b></label>
 									<div class="col-lg-10">
 										<select class="form-control" name="integrante">
 											<option value="">[...]</option>
@@ -57,7 +57,7 @@ $lista=$Familiares->listarIntegrante();
 										</div>
 									</div> 
 									<div class="form-group">
-										<label for="inputEmail" class="col-lg-2 control-label">Parentesco</label>
+										<label for="inputEmail" class="col-lg-2 control-label"><b>Parentesco</b></label>
 										<div class="col-lg-10">
 											<select class="form-control" name="parentesco">
 												<option value="">[...]</option>

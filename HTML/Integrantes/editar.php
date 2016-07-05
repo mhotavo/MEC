@@ -4,7 +4,7 @@
   </head>
   <body>
   	<?php include(HTML_DIR.'/overall/nav.php') ?>
-  	<div  class="container box-principal">
+  	<div  class="container"> <!-- box-principal -->
   		<h3  align="center"><?php echo $datos['NOMBRES'] ." ". $datos['PRIMER_APELLIDO']." ". $datos['SEGUNDO_APELLIDO'] ; ?></h3>
   		<br>
   		<div class="panel panel-success">

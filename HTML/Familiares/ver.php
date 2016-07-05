@@ -4,7 +4,7 @@
   </head>
   <body>
   	<?php include(HTML_DIR.'/overall/nav.php') ?>
-  	<div  class="container box-principal">
+  	<div  class="container">
   		<h3  align="center"><?php echo $datos['NOMBRES'] ." ". $datos['PRIMER_APELLIDO']." ". $datos['SEGUNDO_APELLIDO'] ; ?></h3>
   		<br>
   		<div class="panel panel-success">
@@ -24,32 +24,32 @@
   						<div class="form-horizontal" >
   							<fieldset>
   								<div class="form-group">
-  									<label for="inputNombres" class="col-lg-2 control-label">Nombres</label>
+  									<label for="inputNombres" class="col-lg-2 control-label"  style="font-weight: bold;">Nombres</label>
   									<div class="ver col-lg-10">
   										<?php echo $datos['NOMBRES']; ?>
   									</div>
   								</div>		
   								<div class="form-group">
-  									<label for="inputPrimerApellido" class="col-lg-2 control-label">Primer Apellido</label>
+  									<label for="inputPrimerApellido" class="col-lg-2 control-label" style="font-weight: bold;">Primer Apellido</label>
   									<div class="ver col-lg-10">
   										<?php echo $datos['PRIMER_APELLIDO']; ?>
   									</div>
   								</div>		
   								<div class="form-group">
-  									<label for="inputSegundoApellido" class="col-lg-2 control-label">Segundo Apellido</label>
+  									<label for="inputSegundoApellido" class="col-lg-2 control-label" style="font-weight: bold;">Segundo Apellido</label>
   									<div class="ver col-lg-10">
   										<?php echo $datos['SEGUNDO_APELLIDO']; ?>
   									</div>
   								</div>			    	        
 
   								<div class="form-group">
-  									<label for="inputDireccion" class="col-lg-2 control-label">Dirección</label>
+  									<label for="inputDireccion" class="col-lg-2 control-label" style="font-weight: bold;">Dirección</label>
   									<div class="ver col-lg-10">
   										<?php echo $datos['DIRECCION']; ?>
   									</div>
   								</div>
   								<div class="form-group">
-  									<label for="inputCelular" class="col-lg-2 control-label">Celular</label>
+  									<label for="inputCelular" class="col-lg-2 control-label" style="font-weight: bold;">Celular</label>
   									<div class="ver col-lg-10">
   										<?php echo $datos['CELULAR']; ?>
   									</div>

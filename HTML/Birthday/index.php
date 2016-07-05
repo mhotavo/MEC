@@ -7,7 +7,7 @@
     <?php include(HTML_DIR.'/overall/nav.php') ?>
     <div id="container">
       <h2 align="center">Cumpleaños</h2>
-      <div class="row">
+      <div class="">
         <div class="col-md-3"></div>
         <div class="col-md-6">
 

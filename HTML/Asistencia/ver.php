@@ -5,8 +5,8 @@
   <body>
     <?php include(HTML_DIR.'/overall/nav.php') ?>
     <div id="container">
-      <h2 align="center">Registro de Asistencia</h2>
-      <div class="row">
+      <h3 align="center">Registro de Asistencia</h3>
+      <div class="">
         <div class="col-md-1"></div>
         <div class="col-md-10">
           <table class="table table-striped" id="tablaAsistencia" >

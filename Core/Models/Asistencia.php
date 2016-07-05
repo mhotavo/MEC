@@ -58,7 +58,7 @@ class Asistencia {
 	}	
 
 	public function fechasJSON(){
-		$sql="SELECT FECHA FROM asistencia GROUP BY FECHA ORDER BY FECHA ASC";
+		$sql="SELECT FECHA FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC LIMIT 3";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
