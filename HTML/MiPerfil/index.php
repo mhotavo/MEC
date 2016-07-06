@@ -1,4 +1,4 @@
-  <html>
+<html>
   <head>
   	<?php include(HTML_DIR.'/overall/header.php') ?>
   </head>
@@ -128,4 +128,4 @@
      // $(document).ready(validarPasswordActual);
    </script>
  </body>
- </html>   
+ </html>
