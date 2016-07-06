@@ -12,6 +12,7 @@ class Usuario extends GoLogin {
 	private $segundoApellido;
 	private $ultimaConexion;
 	private $db;
+	private $imagen;
 	private $GoLogin;
 
 	public function __construct(){
@@ -45,7 +46,8 @@ class Usuario extends GoLogin {
 		NOMBRES ='{$this->nombres}',
 		P_APELLIDO ='{$this->primerApellido}',
 		S_APELLIDO ='{$this->segundoApellido}',
-		GENERO ='{$this->genero}'
+		GENERO ='{$this->genero}',
+		IMAGEN ='{$this->imagen}'
 		WHERE ID='{$this->id}';";  
 		$this->db->consultaSimple($sql);
 	}

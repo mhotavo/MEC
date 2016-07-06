@@ -20,10 +20,22 @@ class MiperfilController{
 			$this->Usuario->__set("nombres", $_POST['inputNombres']);
 			$this->Usuario->__set("primerApellido", $_POST['inputPrimerApellido']);
 			$this->Usuario->__set("segundoApellido", $_POST['inputSegundoApellido']);
-			$this->Usuario->edit();
+
+			$permitidos=array("image/jpeg", "image/png", "image/jpg");
+			$limite = 700;
+			if (in_array($_FILES['inputImagen']['type'], $permitidos) and $limite>0 and $_FILES['inputImagen']['size']<= $limite*1024 ) {
+				unlink("HTML/Usuarios/avatars/". $_POST['nombreImagen']);
+			    $nombre = date("is") . $_FILES['inputImagen']['name'];
+				$ruta= "HTML/Usuarios/avatars/" . $nombre;
+				move_uploaded_file($_FILES['inputImagen']['tmp_name'], $ruta);
+				$this->Usuario->__set("imagen", $nombre);	
+			} else{
+				$this->Usuario->__set("imagen", $_POST['nombreImagen']);	
+			}		
+			$this->Usuario->__set("imagen", $nombre);
+			$this->Usuario->edit(); 
 			header("Location:" . URL . "miperfil");
 
-			exit();
 		}else{
 			$this->Usuario->__set("id", $_SESSION['app_id']);
 			$datos=$this->Usuario->view();  

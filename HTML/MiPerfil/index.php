@@ -16,7 +16,7 @@
          <div class="col-md-4">
           <div class="panel panel-default">
            <div class="panel-body">
-            <img class="img-responsive" src="<?php echo URL;?>HTML/Integrantes/avatars/<?php echo  !empty($datos['IMAGEN']) ? $datos['IMAGEN'] : 'no-image.png'    ; ?>" required>
+            <img class="img-responsive" src="<?php echo URL;?>HTML/Usuarios/avatars/<?php echo  !empty($datos['IMAGEN']) ? $datos['IMAGEN'] : 'no-image.png'    ; ?>" required>
           </div>
         </div>
       </div>
@@ -63,12 +63,12 @@
     <div class="form-group">
       <label for="inputSegundoApellido" class="col-md-3 control-label">Nueva Contraseña</label>
       <div class="col-md-6">
-        <input type="password" class="form-control" id="nueva"  name="nueva"  required>
+        <input type="password" class="form-control" id="nueva"  name="nueva"  >
       </div>
 
     </div>  
     <div class="form-group">
-      <label for="inputSegundoApellido" class="col-md-3 control-label" required>Confirmar Contraseña</label>
+      <label for="inputSegundoApellido" class="col-md-3 control-label" >Confirmar Contraseña</label>
       <div class="col-md-6">
         <input type="password" class="form-control" id="confirmar" onblur="validarPasswords();">
       </div>
