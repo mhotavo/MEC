@@ -12,6 +12,7 @@ class IntegrantesController{
 
 	public function index(){
 			#listar integrantes
+		//echo $_SERVER['REMOTE_ADDR'];
 		$datos=$this->integrante->listar();
 		return $datos;
 

@@ -47,6 +47,8 @@ class GoLogin
 				$_SESSION['rol'] = $row['ROL'];
 				$_SESSION['nombre'] = $row['NOMBRE'];
 				$_SESSION['time_online'] = time() - (60);
+				$sql="INSERT INTO logs (ID, IP, USER) VALUES (NULL, '".$_SERVER['REMOTE_ADDR']."', '".$row['ID']."');";
+				$this->db->consultaSimple($sql);
 				echo 1;
 			} else {
 				echo '
@@ -65,12 +67,12 @@ class GoLogin
 		}
 
 	}
- 
+
 	public function validarPass(){
-	    $sql="SELECT * FROM usuarios WHERE ID='{$this->id}'  AND PASS='{$this->encrypt($this->pass)}' LIMIT 1;";
+		$sql="SELECT * FROM usuarios WHERE ID='{$this->id}'  AND PASS='{$this->encrypt($this->pass)}' LIMIT 1;";
 		$datos=  $this->db->consultaRetorno($sql);
-	    $total = $this->db->total_rows($datos);
-	    $datos=$total;
+		$total = $this->db->total_rows($datos);
+		$datos=$total;
 		return $datos;
 	}
 
