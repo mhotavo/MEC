@@ -36,12 +36,17 @@ class Usuario extends GoLogin {
 	}  
 
 	public function edit() {
+		if ($this->password!="") {
+			$pass=$this->GoLogin->encrypt($this->password);
+			$sql="UPDATE usuarios SET 
+			PASS ='{$pass}'
+			WHERE ID='{$this->id}';";  
+			$this->db->consultaSimple($sql);
+		} 
 		
-		$pass=$this->GoLogin->encrypt($this->password);
 		$sql="UPDATE usuarios SET 
 		DOC='{$this->documento}',
 		USER ='{$this->user}',
-		PASS ='{$pass}',
 		EMAIL ='{$this->email}',
 		NOMBRES ='{$this->nombres}',
 		P_APELLIDO ='{$this->primerApellido}',
@@ -49,7 +54,7 @@ class Usuario extends GoLogin {
 		GENERO ='{$this->genero}',
 		IMAGEN ='{$this->imagen}'
 		WHERE ID='{$this->id}';";  
-		$this->db->consultaSimple($sql);
+		$this->db->consultaSimple($sql); 
 	}
 
 	public function view(){

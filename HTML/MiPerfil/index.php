@@ -1,11 +1,11 @@
 <html>
   <head>
-  	<?php include(HTML_DIR.'/overall/header.php') ?>
+    <?php include(HTML_DIR.'/overall/header.php') ?>
   </head>
   <body>
-  	<?php include(HTML_DIR.'/overall/nav.php') ?>
-  	<div  class="container"> <!-- box-principal -->
-  		<h3  align="center">Mi Perfil</h3>
+    <?php include(HTML_DIR.'/overall/nav.php') ?>
+    <div  class="container"> <!-- box-principal -->
+      <h3  align="center">Mi Perfil</h3>
       <br>
       <div class="panel panel-success">
        <div class="panel-heading">
@@ -16,7 +16,7 @@
          <div class="col-md-4">
           <div class="panel panel-default">
            <div class="panel-body">
-            <img class="img-responsive" src="<?php echo URL;?>HTML/Usuarios/avatars/<?php echo  !empty($datos['IMAGEN']) ? $datos['IMAGEN'] : 'no-image.png'    ; ?>" required>
+            <img class="img-responsive" src="<?php echo URL;?>HTML/Miperfil/avatars/<?php echo  !empty($datos['IMAGEN']) ? $datos['IMAGEN'] : 'no-image.png'    ; ?>" required>
           </div>
         </div>
       </div>
@@ -40,19 +40,19 @@
            <div class="col-md-9">
             <input type="text" class="form-control" name="inputNombres" value="<?php echo $datos['NOMBRES']; ?>" required>
           </div>
-        </div>		
+        </div>    
         <div class="form-group">
          <label for="inputPrimerApellido" class="col-md-3 control-label">Primer Apellido</label>
          <div class="col-md-9">
           <input type="text" class="form-control" name="inputPrimerApellido" value="<?php echo $datos['P_APELLIDO']; ?>" required>
         </div>
-      </div>		
+      </div>    
       <div class="form-group">
        <label for="inputSegundoApellido" class="col-md-3 control-label">Segundo Apellido</label>
        <div class="col-md-9">
         <input type="text" class="form-control" name="inputSegundoApellido" value="<?php echo $datos['S_APELLIDO']; ?>" >
       </div>
-    </div>	
+    </div>  
     <div class="form-group">
       <label for="inputSegundoApellido" class="col-md-3 control-label">Contraseña Actual</label>
       <div class="col-md-6">
@@ -84,10 +84,10 @@
          <option value="M"  <?php echo ($datos['GENERO']=='M') ? "selected" : NULL ?>>Masculino</option>
        </select>
      </div>
-   </div>		    	        
+   </div>                 
    <div class="form-group">
-   <label for="inputEmail" class="col-md-3 control-label">E-mail:</label>
-    <div class="col-md-9">
+     <label for="inputEmail" class="col-md-3 control-label">E-mail:</label>
+     <div class="col-md-9">
       <input type="email" class="form-control" name="inputEmail" value="<?php echo $datos['EMAIL']; ?>" required>
     </div>
   </div>   
@@ -108,7 +108,7 @@
 <div class="form-group">
  <div class="col-md-9 col-md-offset-2">
   <input type="hidden" class="form-control" id="id"  name="id" required value="<?php echo $datos['ID']; ?>" >
-  <input type="hidden" class="form-control" id="nombreImagen" name="nombreImagen"  required value="<?php echo $datos['IMAGEN']; ?>" >
+  <input type="hidden" class="form-control" id="nombreImagen" name="nombreImagen"   value="<?php echo $datos['IMAGEN']; ?>" >
   <button type="reset" class="btn btn-default">Cancelar</button>
   <button type="submit" class="btn btn-success">Editar</button>
 </div>
