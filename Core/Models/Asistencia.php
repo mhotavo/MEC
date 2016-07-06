@@ -5,6 +5,7 @@ class Asistencia {
 	private $fecha;
 	private $integrante;
 	private $asistencia;
+	private $comentario;
 	private $db;
 
 	public function __construct(){
@@ -31,21 +32,24 @@ class Asistencia {
 		(
 		ID_INTEGRANTE,
 		FECHA,
-		ASISTENCIA 
+		ASISTENCIA,
+		COMENTARIO
 		) 
 		VALUES 
 		(
 		'{$this->integrante}', 
 		'{$this->fecha}', 
-		'{$this->asistencia}')
-		ON DUPLICATE KEY UPDATE ASISTENCIA='{$this->asistencia}'
+		'{$this->asistencia}',
+		'{$this->comentario}'
+		)
+		ON DUPLICATE KEY UPDATE ASISTENCIA='{$this->asistencia}', COMENTARIO='{$this->comentario}' ;
 		";  
 		$this->db->consultaSimple($sql);
 
 	}
 
 	public function verJSON(){
-		$sql="SELECT ID_INTEGRANTE, ASISTENCIA  FROM asistencia WHERE FECHA = '{$this->fecha}'  ORDER BY ID_INTEGRANTE ASC ";
+		$sql="SELECT ID_INTEGRANTE, ASISTENCIA, COMENTARIO  FROM asistencia WHERE FECHA = '{$this->fecha}'  ORDER BY ID_INTEGRANTE ASC ";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
@@ -58,7 +62,7 @@ class Asistencia {
 	}	
 
 	public function fechasJSON(){
-		$sql="SELECT FECHA FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC LIMIT 3";
+		$sql="SELECT FECHA, COMENTARIO FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC LIMIT 3";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
@@ -70,18 +74,7 @@ class Asistencia {
 		return $datos;
 	}
 
-	public function verJSONporID(){
-		$sql="SELECT ID_INTEGRANTE, ASISTENCIA, FECHA  FROM asistencia WHERE ID_INTEGRANTE = '{$this->id}'  ORDER BY FECHA desc ";
-		$data = $this->db->consultaRetorno($sql);
-		$total= $this->db->total_rows($data);
-		$datos=array();
-		if ($total>0) {
-			while ($row = mysqli_fetch_assoc($data)) {
-				$datos[]=$row;
-			}
-		}  
-		return $datos;
-	}
+
 
 
 } 

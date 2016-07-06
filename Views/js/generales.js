@@ -12,16 +12,19 @@ function cargarAsistencia(){
 	$("#alert").empty();
 	var fecha= $("#fechaAsistencia").val();
 	$.getJSON('asistencia/verJSON',{fecha:fecha}, function(resp){
-		// console.log(resp.length);
+
 		if (resp.length>0) {
-			$("#alert").append('<div class="alert alert-success"><strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Asistencia registrada</strong> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </div>');
+			$("#alert").append('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Asistencia registrada</strong> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </div>');
+			var comentario="";
 			for (var i in resp) {
 				if (resp[i].ASISTENCIA==1) {
 					$("#si_"+resp[i].ID_INTEGRANTE).attr('checked', true);
 				} else {
 					$("#no_"+resp[i].ID_INTEGRANTE).attr('checked', true);
 				}
+				comentario=resp[i].COMENTARIO;
 			}
+			$("#comentario").val(comentario);
 		} else{
 			$( "input[name^='asistencia']" ).attr('checked', false);
 		}
@@ -52,13 +55,16 @@ function asistencia(){
 	})
 	//LISTAMOS FECHAS
 	$.getJSON('../asistencia/fechasJSON', function(data)
-	{
-		for (var x in data) 
-		{	
-			$("#tablaAsistencia > thead > tr").append("<th>"+data[x].FECHA+"</th>");
-			var fecha=data[x].FECHA;
-			var asistencias=0;
-			var fallas=0;
+		{console.log(data);
+			for (var x in data) 
+			{	
+				if(data[x].COMENTARIO==null){
+					data[x].COMENTARIO="";
+				}
+				$("#tablaAsistencia > thead > tr").append("<th>"+data[x].FECHA+" <br><span class='TextSmall'>"+data[x].COMENTARIO+"</span></th>");
+				var fecha=data[x].FECHA;
+				var asistencias=0;
+				var fallas=0;
 				//LISTAMOS ASISTENCIA
 				$.getJSON('../asistencia/verJSON',{fecha:fecha}, function(resp){
 					//console.log(resp);
@@ -113,20 +119,20 @@ function asistencia(){
 						$("#birthdays > tbody").append("<tr  class='danger'><td colspan='4' align='center' style='font-weight:bold;color:#B21800'> HOY <i class='fa fa-phone' aria-hidden='true'></i></td></tr>");
 						hoyCumple=false;
 					}
-					$("#birthdays > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRES+" "+resp[i].PRIMER_APELLIDO+"</td><td>"+resp[i].FECHA_NACIMIENTO+" </td><td style='color:#ad3232; font-weight:bold;font-size:14px;'> "+resp[i].EDAD+" AÑOS  <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
+					$("#birthdays > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td><a href='Integrantes/ver/"+resp[i].DOCUMENTO+"'>"+resp[i].NOMBRES+" "+resp[i].PRIMER_APELLIDO+"</a></td><td>"+resp[i].FECHA_NACIMIENTO+" </td><td style='color:#ad3232; font-weight:bold;font-size:14px;'> "+(resp[i].EDAD-1)+" AÑOS  <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
 				} else if (mm==month) {
 					if (esteMes==true) {
 						$("#birthdays > tbody").append("<tr class='warning'><td colspan='4' align='center' style='font-weight:bold;color:#897604'> ESTE MES <i class='fa fa-clock-o' aria-hidden='true'></td></tr>");
 						esteMes=false;
 					}
 					var falta=dd-day;
-					$("#birthdays > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRES+" "+resp[i].PRIMER_APELLIDO+"</td><td>"+resp[i].FECHA_NACIMIENTO+" <span style='color:#48A8CC; font-size:14px;font-weight:bold;'> - Faltan "+Math.abs(falta)+" día(s) - </span></td><td style='color:#ad3232; font-weight:bold;'>  "+resp[i].EDAD+" AÑOS <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
+					$("#birthdays > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td><a href='Integrantes/ver/"+resp[i].DOCUMENTO+"'>"+resp[i].NOMBRES+" "+resp[i].PRIMER_APELLIDO+"</a></td><td>"+resp[i].FECHA_NACIMIENTO+" <span style='color:#48A8CC; font-size:14px;font-weight:bold;'> - Faltan "+Math.abs(falta)+" día(s) </span></td><td style='color:#ad3232; font-weight:bold;'>  "+resp[i].EDAD+" AÑOS <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
 				} else {
 					if (proximos==true) {
 						$("#birthdays > tbody").append("<tr  class='info'><td colspan='4' align='center' style='font-weight:bold;color:#3B246A'> PROXIMOS <i class='fa fa-calendar' aria-hidden='true'></i></td></tr>");
 						proximos=false;
 					}
-					$("#birthdays > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRES+" "+resp[i].PRIMER_APELLIDO+"</td><td>"+resp[i].FECHA_NACIMIENTO+"</td><td style='color:#ad3232; font-weight:bold;'>"+resp[i].EDAD+" AÑOS <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
+					$("#birthdays > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td><a href='Integrantes/ver/"+resp[i].DOCUMENTO+"'>"+resp[i].NOMBRES+" "+resp[i].PRIMER_APELLIDO+"</a></td><td>"+resp[i].FECHA_NACIMIENTO+"</td><td style='color:#ad3232; font-weight:bold;'>"+resp[i].EDAD+" AÑOS <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
 
 				}
 			}

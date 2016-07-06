@@ -5,7 +5,7 @@
 <body>
 	<?php include(HTML_DIR.'/overall/nav.php') ?>
 	<div class="container">
-		<h3 align="center"><?php echo ucwords(strtolower($datos['TEMA'])); ?></h3>
+		<h3 align="center"> <?php echo  $datos['TEMA'] ;  ?></h3>
 		<br>
 		<div class="">
 			<div class="col-md-2"></div>

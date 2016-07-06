@@ -88,9 +88,12 @@ class IntegrantesController{
 	}
 
 	public function ver($id){
-		$this->integrante->__set("documento", $id);
-		$datos=$this->integrante->view();
-		return $datos;
+		if (isset($id)) {
+			$this->integrante->__set("documento", $id);
+			$datos=$this->integrante->view();
+			return $datos;
+		}
+		
 	}
 
 	public function eliminar($id){

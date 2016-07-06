@@ -13,9 +13,14 @@
             <table class="table table-striped table-hover" id="integrantesTabla" >
               <thead>
                 <tr>
-                 <div class="form-group col-md-3" >
+                 <div class="form-group col-md-3"  >
                    <label for="fechaAsistencia">Fecha: <i class="fa fa-calendar" aria-hidden="true"></i></label>
-                   <input type="date" name="fechaAsistencia" id="fechaAsistencia" class="form-control" value="<?php echo date('Y-m-d'); ?>" onchange="cargarAsistencia();">
+                   <input type="date" name="fechaAsistencia" id="fechaAsistencia" class="form-control" value="<?php echo date('Y-m-d'); ?>" onchange="cargarAsistencia();" onblur="cargarAsistencia();">
+                 </div>
+                 <div class="form-group col-md-1" ></div>
+                 <div class="form-group col-md-4 has-success" >
+                 <label for="fechaAsistencia">Comentario: <i class="fa fa-calendar" aria-hidden="true"></i></label>
+                   <input type="text" name="comentario" id="comentario" class="form-control">
                  </div>
                </tr>
                <tr><br>
@@ -24,7 +29,7 @@
               <tr>
                 <th class="hidden-xs">Nombres</th>
                 <th class="hidden-xs">Primer Apellido</th>
-                <th>Nombre</th>
+                <th  class="visible-xs">Nombre</th>
                 <th class="hidden-xs">Genero</th>
                 <th>Asistencia</th>
               </tr>
@@ -34,7 +39,7 @@
                 <tr>
                   <td class="hidden-xs"><?php  echo $row['NOMBRES']; ?></td>
                   <td class="hidden-xs"><?php  echo $row['PRIMER_APELLIDO']; ?></td>
-                  <td><?php  echo $row['NOMBRES']." ".$row['PRIMER_APELLIDO']; ?></td>
+                  <td class="visible-xs"><?php  echo $row['NOMBRES']." ".$row['PRIMER_APELLIDO']; ?></td>
                   <td class="hidden-xs"><?php  echo $row['GENERO']; ?></td>
                   <td>  
                     <input type="hidden" required value="<?php echo $row['DOCUMENTO'] ?>" name="documento_<?php echo $row['DOCUMENTO'] ?>">

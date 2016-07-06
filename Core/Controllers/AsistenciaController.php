@@ -20,8 +20,10 @@ class AsistenciaController{
 				$this->asistencia->__set("fecha", $_POST['fechaAsistencia']);
 				$this->asistencia->__set("integrante",  $_POST['documento_'.$id]);
 				$this->asistencia->__set("asistencia", $_POST['asistencia_'.$id] );
+				$this->asistencia->__set("comentario", $_POST['comentario'] );
 				$this->asistencia->add(); 
-			}
+			 }
+			 
 			header("Location:" . URL . "asistencia");
 		}else {
 			#listar Integrantes
@@ -39,15 +41,6 @@ class AsistenciaController{
 		} 
 
 	}	
-	public function verJSONporID(){
-		if (!empty($_GET['id'])) {
-			$this->asistencia->__set("id", $_GET['id']);
-			$datos=$this->asistencia->verJSONporID(); 
-			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
-
-		} 
-
-	}
 	public function fechasJSON(){
 			$datos=$this->asistencia->fechasJSON(); 
 			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
