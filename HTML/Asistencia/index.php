@@ -15,11 +15,11 @@
                 <tr>
                  <div class="form-group col-md-3"  >
                    <label for="fechaAsistencia">Fecha: <i class="fa fa-calendar" aria-hidden="true"></i></label>
-                   <input type="date" name="fechaAsistencia" id="fechaAsistencia" class="form-control" value="<?php echo date('Y-m-d'); ?>" onchange="cargarAsistencia();" onblur="cargarAsistencia();">
+                   <input type="date" name="fechaAsistencia" id="fechaAsistencia" class="form-control" value="<?php echo date('Y-m-d'); ?>" >
                  </div>
                  <div class="form-group col-md-1" ></div>
                  <div class="form-group col-md-4 has-success" >
-                 <label for="fechaAsistencia">Comentario: <i class="fa fa-calendar" aria-hidden="true"></i></label>
+                   <label for="comentario">Comentario: <i class="fa fa-calendar" aria-hidden="true"></i></label>
                    <input type="text" name="comentario" id="comentario" class="form-control">
                  </div>
                </tr>
@@ -63,5 +63,10 @@
     </div>  
   </div>
   <?php include(HTML_DIR.'/overall/footer.php') ?> 
+  <script>
+    $("#fechaAsistencia").blur(function(){
+      cargarAsistencia( $("#fechaAsistencia").val() );
+    });
+  </script>
 </body>
 </html>   
