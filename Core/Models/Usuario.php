@@ -65,7 +65,7 @@ class Usuario extends GoLogin {
 	}
 
 	public function logs(){
-		$sql="SELECT l.*, u.USER FROM logs l INNER JOIN usuarios u ON (u.ID=l.USER) WHERE (l.IP!='::1' OR l.IP!='186.87.108.230' OR l.IP!='186.114.253.46') ORDER BY FECHA DESC";
+		$sql="SELECT l.*, u.USER FROM logs l INNER JOIN usuarios u ON (u.ID=l.USER) WHERE (l.IP!='::1' AND l.IP!='186.87.108.230' AND l.IP!='186.114.253.46') ORDER BY FECHA DESC";
 		$datos=$this->db->consultaRetorno($sql);
 		return $datos;
 	}
