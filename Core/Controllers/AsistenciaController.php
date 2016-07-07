@@ -13,23 +13,28 @@ class AsistenciaController{
 	}
 
 	public function index(){
-		if ($_POST) {
-			$datos=$this->integrante->listar();
-			while($row = mysqli_fetch_array($datos)){
-				$id=$row['DOCUMENTO'];
-				$this->asistencia->__set("fecha", $_POST['fechaAsistencia']);
-				$this->asistencia->__set("integrante",  $_POST['documento_'.$id]);
-				$this->asistencia->__set("asistencia", $_POST['asistencia_'.$id] );
-				$this->asistencia->__set("comentario", $_POST['comentario'] );
-				$this->asistencia->add(); 
-			 }
-			 
-			header("Location:" . URL . "asistencia");
-		}else {
+		if (!empty($_SESSION['app_id'])) {
+			if ($_POST) {
+				$datos=$this->integrante->listar();
+				while($row = mysqli_fetch_array($datos)){
+					$id=$row['DOCUMENTO'];
+					$this->asistencia->__set("fecha", $_POST['fechaAsistencia']);
+					$this->asistencia->__set("integrante",  $_POST['documento_'.$id]);
+					$this->asistencia->__set("asistencia", $_POST['asistencia_'.$id] );
+					$this->asistencia->__set("comentario", $_POST['comentario'] );
+					$this->asistencia->add(); 
+				}
+				
+				header("Location:" . URL . "asistencia");
+			}else {
 			#listar Integrantes
-			$datos=$this->integrante->listar();
-			return $datos;
+				$datos=$this->integrante->listar();
+				return $datos;
+			}
+		}else {
+			header("Location:" . URL . "Integrantes");
 		}
+		
 	}
 
 	public function verJSON(){
@@ -42,8 +47,8 @@ class AsistenciaController{
 
 	}	
 	public function fechasJSON(){
-			$datos=$this->asistencia->fechasJSON(); 
-			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+		$datos=$this->asistencia->fechasJSON(); 
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}	
 }
 

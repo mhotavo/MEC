@@ -9,8 +9,10 @@ class BirthdayController{
 	}
 
 	public function index(){
-			#listar Integrantes
- 		}
+		if (empty($_SESSION['app_id'])) {
+			header("Location:" . URL . "Integrantes");
+		}
+	}
 }
 $Asistencia= new BirthdayController();
 
