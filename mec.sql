@@ -1,23 +1,24 @@
+
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2016 a las 00:46:36
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.5.34
+-- Servidor: localhost
+-- Tiempo de generación: 07-07-2016 a las 16:02:29
+-- Versión del servidor: 5.1.73
+-- Versión de PHP: 5.2.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `mec`
+-- Base de datos: `u307413022_mec`
 --
 
 -- --------------------------------------------------------
@@ -26,12 +27,14 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `asistencia`
 --
 
-CREATE TABLE `asistencia` (
+CREATE TABLE IF NOT EXISTS `asistencia` (
   `ID_INTEGRANTE` int(11) NOT NULL,
   `FECHA` date NOT NULL,
   `ASISTENCIA` tinyint(1) NOT NULL,
   `COMENTARIO` text,
-  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`FECHA`,`ID_INTEGRANTE`),
+  KEY `ID_INTEGRANTE` (`ID_INTEGRANTE`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -39,180 +42,180 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, `FECHALOG`) VALUES
-(50, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(1, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(2, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(3, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(46, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(4, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(5, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(6, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(53, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(54, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(7, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(52, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(8, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(9, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(10, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(11, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(12, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(13, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(14, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(15, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(16, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(45, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(18, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(19, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(20, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(21, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(47, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(22, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(23, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(59, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(24, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(48, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(25, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(26, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(58, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(27, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(28, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(56, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(30, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(57, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(31, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(32, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(33, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(34, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(49, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(35, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(36, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(37, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(55, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(51, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(38, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(39, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(40, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(41, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(42, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(43, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(17, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(44, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-06 21:25:44'),
-(50, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(1, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(2, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(3, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(46, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(4, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(5, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(6, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(53, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(54, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(7, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(52, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(8, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(9, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(10, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(11, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(12, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(13, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(14, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(15, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(16, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(45, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(18, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(19, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(20, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(21, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(47, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(22, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(23, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(59, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(24, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(48, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(25, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(26, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(58, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(27, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(28, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(56, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(30, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(57, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(31, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(32, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(33, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(34, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(49, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(35, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(36, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(37, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(55, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(51, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(38, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(39, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(40, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(41, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(42, '2016-06-25', 1, NULL, '2016-06-26 03:24:10'),
-(43, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(17, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(44, '2016-06-25', 0, NULL, '2016-06-26 03:24:10'),
-(50, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(1, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(2, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(3, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(46, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(4, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(5, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(6, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(53, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(54, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(7, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(52, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(8, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(9, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(10, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(11, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(12, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(13, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(14, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(15, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(16, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(45, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(18, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(19, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(20, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(21, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(47, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(22, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(23, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(59, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(24, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(48, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(25, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(26, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(58, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(27, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(28, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(56, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(30, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(57, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(31, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(32, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(33, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(34, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(49, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(35, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(36, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(37, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(55, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(51, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(38, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(39, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(40, '2016-07-02', 1, 'Visita RCC', '2016-07-06 21:14:14'),
-(41, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(42, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(43, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(17, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14'),
-(44, '2016-07-02', 0, 'Visita RCC', '2016-07-06 21:14:14');
+(50, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(1, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(2, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(3, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(46, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(4, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(5, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(6, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(53, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(54, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(7, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(52, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(8, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(9, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(10, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(11, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(12, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(13, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(14, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(15, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(16, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(45, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(18, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(19, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(20, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(21, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(47, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(22, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(23, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(59, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(24, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(48, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(25, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(26, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(58, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(27, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(28, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(56, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(30, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(57, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(31, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(32, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(33, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(34, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(49, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(35, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(36, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(37, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(55, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(51, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(38, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(39, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(40, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(41, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(42, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(43, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(17, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(44, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 01:25:44'),
+(50, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(1, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(2, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(3, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(46, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(4, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(5, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(6, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(53, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(54, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(7, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(52, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(8, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(9, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(10, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(11, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(12, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(13, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(14, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(15, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(16, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(45, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(18, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(19, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(20, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(21, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(47, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(22, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(23, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(59, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(24, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(48, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(25, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(26, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(58, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(27, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(28, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(56, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(30, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(57, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(31, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(32, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(33, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(34, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(49, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(35, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(36, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(37, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(55, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(51, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(38, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(39, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(40, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(41, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(42, '2016-06-25', 1, NULL, '2016-06-26 07:24:10'),
+(43, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(17, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(44, '2016-06-25', 0, NULL, '2016-06-26 07:24:10'),
+(50, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(1, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(2, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(3, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(46, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(4, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(5, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(6, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(53, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(54, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(7, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(52, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(8, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(9, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(10, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(11, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(12, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(13, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(14, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(15, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(16, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(45, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(18, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(19, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(20, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(21, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(47, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(22, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(23, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(59, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(24, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(48, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(25, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(26, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(58, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(27, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(28, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(56, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(30, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(57, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(31, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(32, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(33, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(34, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(49, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(35, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(36, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(37, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(55, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(51, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(38, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(39, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(40, '2016-07-02', 1, 'Visita RCC', '2016-07-07 01:14:14'),
+(41, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(42, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(43, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(17, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14'),
+(44, '2016-07-02', 0, 'Visita RCC', '2016-07-07 01:14:14');
 
 -- --------------------------------------------------------
 
@@ -220,16 +223,19 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 -- Estructura de tabla para la tabla `familiar`
 --
 
-CREATE TABLE `familiar` (
-  `DOCUMENTO` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `familiar` (
+  `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT,
   `IDENTIFICACION_INTEGRANTE` int(11) NOT NULL,
   `NOMBRES` varchar(50) NOT NULL,
   `PRIMER_APELLIDO` varchar(25) NOT NULL,
   `SEGUNDO_APELLIDO` varchar(25) DEFAULT NULL,
   `PARENTESCO` varchar(20) NOT NULL,
   `CELULAR` int(30) NOT NULL,
-  `DIRECCION` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `DIRECCION` varchar(50) NOT NULL,
+  PRIMARY KEY (`DOCUMENTO`),
+  KEY `FK_FAMILIAR` (`IDENTIFICACION_INTEGRANTE`),
+  KEY `IDENTIFICACION_INTEGRANTE` (`IDENTIFICACION_INTEGRANTE`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `familiar`
@@ -244,8 +250,8 @@ INSERT INTO `familiar` (`DOCUMENTO`, `IDENTIFICACION_INTEGRANTE`, `NOMBRES`, `PR
 -- Estructura de tabla para la tabla `integrante`
 --
 
-CREATE TABLE `integrante` (
-  `DOCUMENTO` int(12) NOT NULL,
+CREATE TABLE IF NOT EXISTS `integrante` (
+  `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT,
   `NOMBRES` varchar(25) NOT NULL,
   `PRIMER_APELLIDO` varchar(15) NOT NULL,
   `SEGUNDO_APELLIDO` varchar(15) DEFAULT NULL,
@@ -258,8 +264,9 @@ CREATE TABLE `integrante` (
   `COORDINADOR` tinyint(1) DEFAULT NULL,
   `IMAGEN` longtext,
   `FECHA_INGRESO` date DEFAULT NULL,
-  `FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`DOCUMENTO`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
 
 --
 -- Volcado de datos para la tabla `integrante`
@@ -314,7 +321,7 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (47, 'Juan David', 'Varon', 'Rengifo', 'M', '1998-05-18', 'SMZ4 MZ 9 CASA 2 N/CASTILLA', '310 8698788', 'juanda.varon.9', 0, 0, '440113015593_1011787298904799_6980326812170386042_n.jpg', '2016-01-01', '2016-06-21 15:48:25'),
 (48, 'Laura', 'Rubio', 'Rico', 'F', '2000-01-01', '', '', '', 0, 0, '', '2016-01-01', '2016-06-21 15:56:27'),
 (49, 'Milton Hernando', 'Otavo', 'Varon', 'M', '1993-11-04', 'MZ 33 CASA 21 PROTECHO B', '3112002546', 'mhotavo', 1, 1, '0409pp.jpg', '2013-06-24', '2016-06-21 16:01:10'),
-(50, 'Anderson David', 'Romero', '', 'M', '2002-04-23', 'MZ 12 CASA 23 PROTECHO B', '3186190149', 'andersondavid.romeroacosta', 0, 0, '232712814741_499539293552357_4468923369777411399_n.jpg', '2016-06-25', '2016-07-06 21:37:36'),
+(50, 'Anderson David', 'Romero', '', 'M', '2002-04-23', 'MZ 12 CASA 23 PROTECHO B', '3186190149', 'andersondavid.romeroacosta', 0, 0, '232712814741_499539293552357_4468923369777411399_n.jpg', '2016-06-25', '2016-06-25 18:23:27'),
 (51, 'Paula', 'Santa', '', 'F', '2000-02-27', 'SMZ 6 MZ 3 CASA  6 N/CASTILLA', '3115167251', 'pauliita.santa', 0, 0, '363513407316_1082955311762664_8518695332968360428_n.jpg', '2016-06-25', '2016-06-25 18:36:35'),
 (52, 'Danny Fabian', 'Endo', '', 'M', '1994-04-18', 'SAN GELATO CASA 12', '3214501143', 'dannyfabianendo95', 0, 0, '41091538711_423405824522000_3042095481032841269_n.jpg', '2016-06-25', '2016-06-25 18:41:09'),
 (53, 'Daniel', 'Pinilla', '', 'M', '1997-07-05', 'SMZ 8 MZ 6 CASA 8 N/CASTILLA', '3016457871', 'daniel.pinilla.5851', 0, 0, '442213412961_600995880067088_5331437935394550098_n.jpg', '2016-06-25', '2016-06-25 18:44:22'),
@@ -331,12 +338,25 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 -- Estructura de tabla para la tabla `logs`
 --
 
-CREATE TABLE `logs` (
-  `ID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `logs` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `IP` varchar(20) NOT NULL,
   `USER` int(11) NOT NULL,
-  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  KEY `USER` (`USER`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `logs`
+--
+
+INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
+(1, '186.87.108.230', 1, '2016-07-06 22:49:51'),
+(2, '186.114.253.46', 1, '2016-07-07 01:17:59'),
+(3, '186.114.253.46', 1, '2016-07-07 01:19:01'),
+(4, '186.114.253.46', 1, '2016-07-07 02:33:04'),
+(5, '186.87.108.230', 1, '2016-07-07 13:50:35');
 
 -- --------------------------------------------------------
 
@@ -344,23 +364,25 @@ CREATE TABLE `logs` (
 -- Estructura de tabla para la tabla `tema`
 --
 
-CREATE TABLE `tema` (
-  `ID_TEMA` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tema` (
+  `ID_TEMA` int(11) NOT NULL AUTO_INCREMENT,
   `TEMA` varchar(50) NOT NULL,
   `DESCRIPCION` text NOT NULL,
   `FECHA` date DEFAULT NULL,
   `USUARIOLOG` bigint(11) NOT NULL,
-  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID_TEMA`),
+  KEY `USUARIOLOG` (`USUARIOLOG`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `tema`
 --
 
 INSERT INTO `tema` (`ID_TEMA`, `TEMA`, `DESCRIPCION`, `FECHA`, `USUARIOLOG`, `FECHALOG`) VALUES
-(1, 'Pentecostés', 'Se reparte el tema entre:\r\n\r\nHugo\r\nSandra\r\nMateo\r\nAndres\r\nPaula\r\n\r\nVideo de pastoral de la salud.', '2016-05-14', 1, '2016-07-06 21:44:13'),
+(1, 'PENTECOSTES', 'Se reparte el tema entre:\r\n\r\nHugo\r\nSandra\r\nMateo\r\nAndres\r\nPaula\r\n\r\nVideo de pastoral de la salud.', '2016-05-14', 1, '2016-05-13 22:26:38'),
 (2, 'Bienaventuranzas', 'Dinamicas:\r\n22 el limon\r\n28 obj perdidos\r\n32 reloj despertador\r\n34 sin quemarse los dedos\r\n36 concurso canciones\r\n\r\nMaterial:\r\nSe entregan 9  pliegos de papel a 9 grupos, cada uno va trabajar una bienaventuranza \r\n\r\n1. Dibujo que represente \r\n2. Ejemplos\r\n\r\nhttp://www.laverdadcatolica.org/F33.htm\r\n\r\nOtros:\r\nActividad recoger dinero camisetas\r\nOrganizar quince Angie\r\n Visitas enfermos', '2016-06-25', 1, '2016-06-24 22:13:01'),
-(3, 'Cumpleaños Grupo', '-> 06:00PM Misa acción de gracias 3 años MEC\r\n     *Ofrendas (camisetas, pan, uvas, biblia, cirio) Moniciones\r\n->07:00PM  (Enramada) -> Cena\r\n    *Hablar mama valentina arroz \r\n   * Desechables\r\n   * Gaseosa\r\n   * Mesas & sillas\r\n   * Torta \r\n   *Copas, frutiñño de uva \r\n->Presentación Video\r\n->Baile, representación, un poema, una cancion, etc\r\n->Fotos chistosas, y videos\r\n\r\n->Ida a tierra firme (7:00AM)\r\n->Apartar pollos (confirmar asistencia)\r\n-> entrada $ 2.500\r\n->Caminando\r\n->invitar a Papás\r\n\r\n\r\n', '2016-07-30', 1, '2016-07-06 21:50:48'),
+(3, 'CUMPLEAÑOS GRUPO', '-> 06:00PM Misa acción de gracias 3 años MEC\r\n     *Ofrendas (camisetas, pan, uvas, biblia, cirio) Moniciones\r\n->07:00PM  (Enramada) -> Cena\r\n    *Hablar mama valentina arroz \r\n   * Desechables\r\n   * Gaseosa\r\n   * Mesas & sillas\r\n   * Torta \r\n   *Copas, frutiño de uva \r\n->Presentación Video\r\n->Baile, representación, un poema, una cancion, etc\r\n->Fotos chistosas, y videos\r\n\r\n->Ida a tierra firme (7:00AM)\r\n->Apartar pollos (confirmar asistencia)\r\n-> entrada $ 2.500\r\n->Caminando\r\n->invitar a Papás\r\n\r\n\r\n', '2016-07-30', 1, '2016-06-24 22:43:30'),
 (4, 'Visita RCC', 'Taller de oración', '2016-07-02', 1, '2016-07-02 15:01:59');
 
 -- --------------------------------------------------------
@@ -369,8 +391,8 @@ INSERT INTO `tema` (`ID_TEMA`, `TEMA`, `DESCRIPCION`, `FECHA`, `USUARIOLOG`, `FE
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
-  `ID` bigint(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `ID` bigint(255) NOT NULL AUTO_INCREMENT,
   `DOC` int(20) NOT NULL,
   `USER` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `PASS` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
@@ -384,90 +406,17 @@ CREATE TABLE `usuarios` (
   `IMAGEN` text COLLATE utf8_unicode_ci,
   `KEYPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `NEWPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID`, `DOC`, `USER`, `PASS`, `EMAIL`, `ROL`, `NOMBRES`, `P_APELLIDO`, `S_APELLIDO`, `GENERO`, `FECHA_REGISTRO`, `IMAGEN`, `KEYPASS`, `NEWPASS`, `ULTIMA_CONEXION`) VALUES
-(1, 1110540682, 'admin', 'de9fd5a771a37d06cbf841051c9c8aff', 'milton.otavo@gmail.com', 1, 'MILTON', 'OTAVO', 'VARON', 'M', '2016-07-03', '22130409pp.jpg', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0);
+(1, 1110540682, 'admin', 'de9fd5a771a37d06cbf841051c9c8aff', 'milton.otavo@gmail.com', 1, 'MILTON', 'OTAVO', 'VARON', 'M', '2016-07-03', '50550409pp.jpg', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0);
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `asistencia`
---
-ALTER TABLE `asistencia`
-  ADD PRIMARY KEY (`FECHA`,`ID_INTEGRANTE`),
-  ADD KEY `ID_INTEGRANTE` (`ID_INTEGRANTE`);
-
---
--- Indices de la tabla `familiar`
---
-ALTER TABLE `familiar`
-  ADD PRIMARY KEY (`DOCUMENTO`),
-  ADD KEY `FK_FAMILIAR` (`IDENTIFICACION_INTEGRANTE`),
-  ADD KEY `IDENTIFICACION_INTEGRANTE` (`IDENTIFICACION_INTEGRANTE`);
-
---
--- Indices de la tabla `integrante`
---
-ALTER TABLE `integrante`
-  ADD PRIMARY KEY (`DOCUMENTO`);
-
---
--- Indices de la tabla `logs`
---
-ALTER TABLE `logs`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `USER` (`USER`);
-
---
--- Indices de la tabla `tema`
---
-ALTER TABLE `tema`
-  ADD PRIMARY KEY (`ID_TEMA`),
-  ADD KEY `USUARIOLOG` (`USUARIOLOG`);
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `familiar`
---
-ALTER TABLE `familiar`
-  MODIFY `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT de la tabla `integrante`
---
-ALTER TABLE `integrante`
-  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
---
--- AUTO_INCREMENT de la tabla `logs`
---
-ALTER TABLE `logs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `tema`
---
-ALTER TABLE `tema`
-  MODIFY `ID_TEMA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `ID` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
