@@ -11,8 +11,12 @@ class TemasController{
 	}
 
 	public function index(){
-		$datos=$this->Tema->listar();
-		return $datos;
+		if (!empty($_SESSION['app_id'])) {
+			$datos=$this->Tema->listar();
+			return $datos;
+		}  else {
+			header("Location:" . URL . "Integrantes");
+		}
 	}
 
 	public function agregar(){

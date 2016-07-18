@@ -37,7 +37,7 @@ class Integrante {
 
 
 	public function listar(){
-		$sql="SELECT * FROM integrante ORDER BY NOMBRES ASC ";
+		$sql="SELECT * FROM integrante ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
 		$datos=$this->db->consultaRetorno($sql);
 		return $datos;
 	}
@@ -123,7 +123,7 @@ class Integrante {
 	}
 
 	public function listarJSON(){
-		$sql="SELECT DOCUMENTO, CONCAT(NOMBRES, ' ', PRIMER_APELLIDO) as NOMBRE FROM integrante ORDER BY NOMBRE ASC ";
+		$sql="SELECT DOCUMENTO, CONCAT(NOMBRES, ' ', PRIMER_APELLIDO) as NOMBRE FROM integrante WHERE ESTADO !='INASISTENTE' ORDER BY NOMBRE ASC ";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();

@@ -8,9 +8,9 @@ function DeleteItem(contenido, url){
 	}
 }
 
-function cargarAsistencia(){
+function cargarAsistencia(val){
 	$("#alert").empty();
-	var fecha= $("#fechaAsistencia").val();
+	var fecha= val;
 	$.getJSON('asistencia/verJSON',{fecha:fecha}, function(resp){
 
 		if (resp.length>0) {

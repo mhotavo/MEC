@@ -29,7 +29,7 @@ class Usuario extends GoLogin {
 	}  
 
 	public function __get($var) {  
-		if (property_exists(__CLASS__, $var)) {  
+		if (property_exists(__CLASS__, $var)) { 
 			return $this->$var;  
 		}  
 		return NULL;  
@@ -62,6 +62,12 @@ class Usuario extends GoLogin {
 		$datos = $this->db->consultaRetorno($sql);
 		$row = mysqli_fetch_assoc($datos);
 		return $row;
+	}
+
+	public function logs(){
+		$sql="SELECT l.*, u.USER FROM logs l INNER JOIN usuarios u ON (u.ID=l.USER) WHERE (l.IP!='::1' AND l.IP!='186.87.108.230' AND l.IP!='186.114.253.46') ORDER BY FECHA DESC";
+		$datos=$this->db->consultaRetorno($sql);
+		return $datos;
 	}
 
 } 

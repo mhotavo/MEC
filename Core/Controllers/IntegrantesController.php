@@ -11,10 +11,15 @@ class IntegrantesController{
 	}
 
 	public function index(){
+		if (!empty($_SESSION['app_id'])) {
 			#listar integrantes
-		//echo $_SERVER['REMOTE_ADDR'];
-		$datos=$this->integrante->listar();
-		return $datos;
+			//echo $_SERVER['REMOTE_ADDR'];
+			$datos=$this->integrante->listar();
+			return $datos;
+		}  else {
+			header("Location:" . URL . "Integrantes");
+		}
+
 
 	}
 

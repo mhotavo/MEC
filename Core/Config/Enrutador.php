@@ -21,7 +21,12 @@ class Enrutador
 		//Cargar vista
 		$ruta = ROOT . "HTML" . DS . ucwords($request->getControlador()) . DS . $request->getMetodo() . ".php";
 		if(is_readable($ruta)){
-			require_once $ruta;
+			if (!empty($_SESSION['app_id'])) {
+				require_once $ruta;
+			} else {
+				header("Location:" . URL);
+			}
+
 		}else{
 			if ($request->getMetodo()!='listarasistencia') {
 				#No se encontro la vista
