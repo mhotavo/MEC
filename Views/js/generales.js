@@ -8,6 +8,49 @@ function DeleteItem(contenido, url){
 	}
 }
 
+function mesLetras(mes){
+	
+	switch(mes) {
+		case '01':
+		return 'Ene';
+		break;
+		case '02':
+		return 'Fab';
+		break;
+		case '03':
+		return 'Mar';
+		break;
+		case '04':
+		return 'Abr';
+		break;
+		case '05':
+		return 'May';
+		break;
+		case '06':
+		return 'Jun';
+		break;
+		case '07':
+		return 'Jul';
+		break;
+		case '08':
+		return 'Ago';
+		break;
+		case '09':
+		return 'Sep';
+		break;
+		case '10':
+		return 'Oct';
+		break;
+		case '11':
+		return 'Nov';
+		break;
+		case '12':
+		return 'Dic';
+		break;
+	}
+}
+
+
 function cargarAsistencia(val){
 	$("#alert").empty();
 	var fecha= val;
@@ -17,6 +60,7 @@ function cargarAsistencia(val){
 			$("#alert").append('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Asistencia registrada</strong> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </div>');
 			var comentario="";
 			for (var i in resp) {
+				console.log(resp[i].ID_INTEGRANTE+" "+resp[i].ASISTENCIA);
 				if (resp[i].ASISTENCIA==1) {
 					$("#si_"+resp[i].ID_INTEGRANTE).attr('checked', true);
 				} else {
@@ -47,24 +91,27 @@ function asistencia(){
 		{
 			$("#tablaAsistencia > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRE+"</td></tr>");
 		}
-		$("#tablaAsistencia > tbody").append("<tr id='totalAsistencias'><td><b>ASISTENCIAS</b></td></tr>");
-		$("#tablaAsistencia > tbody").append("<tr id='totalFallas'><td><b>FALLAS</b></td></tr>");
+		$("#tablaAsistencia > tbody").append("<tr class='success' align='center' id='totalAsistencias'><td><b>ASISTENCIAS</b></td></tr>");
+		$("#tablaAsistencia > tbody").append("<tr class='danger' align='center' id='totalFallas'><td><b>FALLAS</b></td></tr>");
 
 	}).error(function(e){
 		console.log(e);
 	})
 	//LISTAMOS FECHAS
 	$.getJSON('../asistencia/fechasJSON', function(data)
-		{console.log(data);
-			for (var x in data) 
-			{	
-				if(data[x].COMENTARIO==null){
-					data[x].COMENTARIO="";
-				}
-				$("#tablaAsistencia > thead > tr").append("<th>"+data[x].FECHA+" <br><span class='TextSmall'>"+data[x].COMENTARIO+"</span></th>");
-				var fecha=data[x].FECHA;
-				var asistencias=0;
-				var fallas=0;
+	{
+
+		//console.log(); 
+		for (var x in data.reverse() ) 
+		{	
+			if(data[x].COMENTARIO==null){
+				data[x].COMENTARIO="Vacio";
+			}
+			$("#tablaAsistencia > thead > tr").append("<th style='text-align:center;'>"+mesLetras(data[x].FECHA.slice(5,7))+"-"+data[x].FECHA.slice(8,10)+" <br><span class='TextSmall'>"+data[x].COMENTARIO+"</span></th>");
+			var fecha=data[x].FECHA;
+			//console.log(fecha);
+			var asistencias=0;
+			var fallas=0;
 				//LISTAMOS ASISTENCIA
 				$.getJSON('../asistencia/verJSON',{fecha:fecha}, function(resp){
 					//console.log(resp);
@@ -72,15 +119,15 @@ function asistencia(){
 					for (var i in resp) 
 					{
 						if (resp[i].ASISTENCIA==1) {
-							$("#"+resp[i].ID_INTEGRANTE).append("<td class='success'><b style='color:green;'>SI</b></td>");
+							$("#"+resp[i].ID_INTEGRANTE).append("<td class='' align='center'><b style='color:green;'><img src='../Views/images/true.png' width='20'></b></td>");
 							asistencias=asistencias+1;
 						} else {
-							$("#"+resp[i].ID_INTEGRANTE).append("<td class='danger'><b style='color:red;'>NO</b></td>");
+							$("#"+resp[i].ID_INTEGRANTE).append("<td class='' align='center'><b style='color:red;'><img src='../Views/images/false.png' width='20'></b></td>");
 							fallas=fallas+1;
 						}
 					}
-					$("#totalAsistencias").append("<td class='success'><b style='color:green;'>"+asistencias+"</b></td>");
-					$("#totalFallas").append("<td class='danger'><b style='color:red;'>"+fallas+"</b></td>");
+					$("#totalAsistencias").append("<td class='success' align='center'><b style='color:green;'>"+asistencias+"</b></td>");
+					$("#totalFallas").append("<td class='danger'  align='center'><b style='color:red;'>"+fallas+"</b></td>");
 					asistencias=0;
 					fallas=0;
 

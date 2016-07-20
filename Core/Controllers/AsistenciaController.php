@@ -40,8 +40,8 @@ class AsistenciaController{
 	public function inasistentes(){
 		if (!empty($_SESSION['app_id'])) {
 			#listar integrantes
-			//echo $_SERVER['REMOTE_ADDR'];
-			$datos=$this->asistencia->inasistentes();
+			$integrantes=$this->integrante->listar();
+			$datos=$this->asistencia->inasistentes($integrantes);
 			return $datos;
 		}  else {
 			header("Location:" . URL . "Integrantes");
@@ -51,8 +51,9 @@ class AsistenciaController{
 	}
 	public function verJSON(){
 		if (!empty($_GET['fecha'])) {
+			$integrantes=$this->integrante->listar();
 			$this->asistencia->__set("fecha", $_GET['fecha']);
-			$datos=$this->asistencia->verJSON(); 
+			$datos=$this->asistencia->verJSON($integrantes); 
 			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 
 		} 

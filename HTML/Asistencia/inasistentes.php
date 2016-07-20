@@ -5,37 +5,39 @@
   <body>
   	<?php include(HTML_DIR.'/overall/nav.php') ?>
   	<div id="container">
-  	<h2 align="center">Inasistentes</h2>
-  		<div class="">
-  			<div class="col-md-2"></div>
-  			<div class="col-md-8">
+     <h2 align="center">Inasistentes</h2>
+     <div class="">
+       <div class="col-md-2"></div>
+       <div class="col-md-8">
 
-  				<table class="table table-striped table-hover" id="integrantesTabla" >
-  					<thead>
-  						<tr><br>
-  							<div id="alert"  class="col-md-4"></div>
-  						</tr>
-  						<tr>
-  							<th>Nombre</th>
-  							<th>Estado</th>
-  						</tr>
-  					</thead>
-  					<tbody> 
-  						<?php foreach ($datos as $key => $value) {  ?>
-  						<tr>
-  							<td class=""><?php  echo $value['Nombre']; ?></td>
-  							<td style="color:red;font-weight: bold;"><?php  echo $value['Estado']; ?></td>
-  						<?php 
-  					}
-  					?>
+        <table class="table table-striped table-hover" id="integrantesTabla" >
+         <thead>
+          <tr><br>
+           <div id="alert"  class="col-md-4"></div>
+         </tr>
+         <tr>
+          <th>Nro</th>
+          <th>Nombre</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody> 
+        <?php foreach ($datos as $key => $value) {  ?>
+        <tr>
+          <td class=""><?php  echo $key+1; ?></td>
+          <td class=""> <a href="<?php echo URL; ?>Integrantes/ver/<?php echo $value['Documento']; ?>"><?php  echo $value['Nombre']; ?> </a></td>
+          <td style="color:red;font-weight: bold;"><?php  echo $value['Estado']; ?></td>
+          <?php 
+        }
+        ?>
 
-  				</tbody>
-  			</table>
+      </tbody>
+    </table>
 
-  		</div>
-  		<div class="col-md-2"></div>
-  	</div>  
   </div>
-  <?php include(HTML_DIR.'/overall/footer.php') ?> 
+  <div class="col-md-2"></div>
+</div>  
+</div>
+<?php include(HTML_DIR.'/overall/footer.php') ?> 
 </body>
 </html>   

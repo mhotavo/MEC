@@ -1,16 +1,16 @@
 <?php namespace Core\Models;
 
-class Asistencia   {
+class Asistencia  {
 	private $id;
 	private $fecha;
-	private $integrante;
 	private $asistencia;
 	private $comentario;
+	private $integrante;
 	private $db;
 
 	public function __construct(){
 		$this->db = new Conexion();
-		$this->integrante = new Integrante();
+	//	$this->integrante = new Integrante();
 	}
 
 	public function __set($var, $valor) {  
@@ -49,12 +49,12 @@ class Asistencia   {
 
 	}
 
-	public function inasistentes(){
+	public function inasistentes($integrantes){
 		
-		$integrantes=$this->integrante->listar();
+		//$integrantes=$this->integrante->listar();
 		$datos=array();
 		while($inte = mysqli_fetch_array($integrantes)){
-			$sql="SELECT * FROM asistencia WHERE ID_INTEGRANTE = '".$inte['DOCUMENTO']."'  ORDER BY FECHA DESC LIMIT 4 ";
+			$sql="SELECT * FROM asistencia WHERE ID_INTEGRANTE = '".$inte['DOCUMENTO']."'  ORDER BY FECHA DESC LIMIT 3 ";
 			$asistencias=$this->db->consultaRetorno($sql);
 			$totalAsistencias=$this->db->total_rows($asistencias);
 			$fallas=0;
@@ -67,10 +67,10 @@ class Asistencia   {
 				if ($fallas==$totalAsistencias) {
 					//$datos[$inte['DOCUMENTO']] = $fallas;
 					$datos[]=array(
-					'Documento'=>$inte['DOCUMENTO'],
-					'Nombre'=>$inte['NOMBRES'] . " " . $inte['PRIMER_APELLIDO'] ,
-					'Estado'=>'Suspendido'
-					);
+						'Documento'=>$inte['DOCUMENTO'],
+						'Nombre'=>$inte['NOMBRES'] . " " . $inte['PRIMER_APELLIDO'] ,
+						'Estado'=>'Suspendido'
+						);
 					$sql="UPDATE integrante SET ESTADO ='INASISTENTE'  WHERE DOCUMENTO = '".$inte['DOCUMENTO']."'  ";
 					$asistencias=$this->db->consultaSimple($sql);
 				} else {
@@ -85,21 +85,24 @@ class Asistencia   {
 	}
 
 
-	public function verJSON(){
-		$sql="SELECT ID_INTEGRANTE, ASISTENCIA, COMENTARIO  FROM asistencia WHERE FECHA = '{$this->fecha}'  ORDER BY ID_INTEGRANTE ASC ";
-		$data = $this->db->consultaRetorno($sql);
-		$total= $this->db->total_rows($data);
+	public function verJSON($integrantes){
 		$datos=array();
-		if ($total>0) {
-			while ($row = mysqli_fetch_assoc($data)) {
+		while($inte = mysqli_fetch_array($integrantes)){
+			$sql="SELECT ID_INTEGRANTE, ASISTENCIA, COMENTARIO  FROM asistencia WHERE FECHA = '{$this->fecha}' AND ID_INTEGRANTE='".$inte['DOCUMENTO']."' ";
+			$data = $this->db->consultaRetorno($sql);
+			$total= $this->db->total_rows($data);
+			if ($total>0) {
+				$row = mysqli_fetch_assoc($data);
 				$datos[]=$row;
+			}  else {
+				$datos[]=array('ID_INTEGRANTE' => $inte['DOCUMENTO'],'ASISTENCIA' =>  0,'COMENTARIO' => 'PRUEBA' );
 			}
-		}  
+		}
 		return $datos;
 	}	
 
 	public function fechasJSON(){
-		$sql="SELECT FECHA, COMENTARIO FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC LIMIT 3";
+		$sql="SELECT FECHA, COMENTARIO FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC ";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
