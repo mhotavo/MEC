@@ -99,6 +99,7 @@ class IntegrantesController{
 			$this->integrante->__set("documento", $id);
 			$data=$this->integrante->view();
 			$datos = mysqli_fetch_assoc($data);
+			return $datos;
 		}
 		
 	}
