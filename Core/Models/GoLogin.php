@@ -42,7 +42,7 @@ class GoLogin
 			$total = $this->db->total_rows($datos);
 
 			if ($total>0) {
-				if($_POST['sesion']) { ini_set('session.cookie_lifetime', time() + (60)); }
+				/*if($_POST['sesion']) { ini_set('session.cookie_lifetime', time() + (60*60*24)); }*/
 				$_SESSION['app_id'] = $row['ID'];
 				$_SESSION['rol'] = $row['ROL'];
 				$_SESSION['nombre'] = $row['NOMBRE'];

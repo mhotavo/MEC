@@ -34,7 +34,7 @@ class MiperfilController{
          move_uploaded_file($_FILES['inputImagen']['tmp_name'], $ruta);
          $this->Usuario->__set("imagen", $nombre); 
        } else{
-         
+
         $this->Usuario->__set("imagen", $_POST['nombreImagen']);  
       }   
       
@@ -42,6 +42,7 @@ class MiperfilController{
       header("Location:" . URL . "miperfil");
 
     }else{
+      $_SESSION['app_id'];
       $this->Usuario->__set("id", $_SESSION['app_id']);
       $datos=$this->Usuario->view();  
       return $datos;

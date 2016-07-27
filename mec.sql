@@ -1,24 +1,23 @@
-
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 20-07-2016 a las 15:56:43
--- Versión del servidor: 5.1.73
--- Versión de PHP: 5.2.17
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 27-07-2016 a las 18:01:56
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.5.34
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `u307413022_mec`
+-- Base de datos: `mec`
 --
 
 -- --------------------------------------------------------
@@ -27,14 +26,12 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `asistencia`
 --
 
-CREATE TABLE IF NOT EXISTS `asistencia` (
+CREATE TABLE `asistencia` (
   `ID_INTEGRANTE` int(11) NOT NULL,
   `FECHA` date NOT NULL,
   `ASISTENCIA` tinyint(1) NOT NULL,
   `COMENTARIO` text,
-  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`FECHA`,`ID_INTEGRANTE`),
-  KEY `ID_INTEGRANTE` (`ID_INTEGRANTE`)
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -336,9 +333,69 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (61, '2016-07-16', 1, 'Advocaciones ', '2016-07-20 18:26:10'),
 (60, '2016-07-16', 1, 'Advocaciones ', '2016-07-20 18:26:10'),
 (61, '2016-07-09', 0, 'Noche de gala', '2016-07-20 19:42:26'),
-(60, '2016-07-09', 0, 'Noche de gala', '2016-07-20 19:42:26'),
 (61, '2016-07-02', 0, 'Visita RCC', '2016-07-20 19:43:28'),
-(60, '2016-07-02', 0, 'Visita RCC', '2016-07-20 19:43:28');
+(50, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(1, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:32'),
+(2, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(3, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(46, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(4, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(5, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(6, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(53, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(54, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(7, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(52, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(8, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(9, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(10, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(11, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(12, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(13, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(14, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(15, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(16, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(45, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(18, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(19, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(20, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(21, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(47, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(22, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(59, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(23, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(24, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(48, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(25, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(26, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(58, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(27, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(28, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(61, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(56, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(57, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(30, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(31, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(60, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(32, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(33, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(34, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(49, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(35, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(36, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(37, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(55, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(51, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(38, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(39, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(40, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(41, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(42, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(43, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(17, '2016-07-23', 1, 'Test grupo', '2016-07-27 13:43:25'),
+(44, '2016-07-23', 0, 'Test grupo', '2016-07-25 16:10:57'),
+(62, '2016-07-23', 1, 'Test grupo', '2016-07-25 16:10:57'),
+(62, '2016-07-16', 1, 'Advocaciones ', '2016-07-25 16:03:21');
 
 -- --------------------------------------------------------
 
@@ -346,19 +403,16 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 -- Estructura de tabla para la tabla `familiar`
 --
 
-CREATE TABLE IF NOT EXISTS `familiar` (
-  `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `familiar` (
+  `DOCUMENTO` int(11) NOT NULL,
   `IDENTIFICACION_INTEGRANTE` int(11) NOT NULL,
   `NOMBRES` varchar(50) NOT NULL,
   `PRIMER_APELLIDO` varchar(25) NOT NULL,
   `SEGUNDO_APELLIDO` varchar(25) DEFAULT NULL,
   `PARENTESCO` varchar(20) NOT NULL,
   `CELULAR` int(30) NOT NULL,
-  `DIRECCION` varchar(50) NOT NULL,
-  PRIMARY KEY (`DOCUMENTO`),
-  KEY `FK_FAMILIAR` (`IDENTIFICACION_INTEGRANTE`),
-  KEY `IDENTIFICACION_INTEGRANTE` (`IDENTIFICACION_INTEGRANTE`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+  `DIRECCION` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `familiar`
@@ -373,8 +427,8 @@ INSERT INTO `familiar` (`DOCUMENTO`, `IDENTIFICACION_INTEGRANTE`, `NOMBRES`, `PR
 -- Estructura de tabla para la tabla `integrante`
 --
 
-CREATE TABLE IF NOT EXISTS `integrante` (
-  `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `integrante` (
+  `DOCUMENTO` int(12) NOT NULL,
   `NOMBRES` varchar(25) NOT NULL,
   `PRIMER_APELLIDO` varchar(15) NOT NULL,
   `SEGUNDO_APELLIDO` varchar(15) DEFAULT NULL,
@@ -388,9 +442,8 @@ CREATE TABLE IF NOT EXISTS `integrante` (
   `IMAGEN` longtext,
   `FECHA_INGRESO` date DEFAULT NULL,
   `FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `ESTADO` varchar(20) NOT NULL DEFAULT 'ASISTENTE',
-  PRIMARY KEY (`DOCUMENTO`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
+  `ESTADO` varchar(20) NOT NULL DEFAULT 'ASISTENTE'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `integrante`
@@ -403,7 +456,7 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (4, 'Cesar ', 'Augusto', '', 'M', '2000-07-03', 'SMZ 11 MZ 7 CASA 3 N/CASTILLA', '0', '', 0, 0, '563912075072_10204855573937383_7624382963983629073_n.jpg', '2016-01-01', '2016-06-21 15:48:25', 'ASISTENTE'),
 (5, 'Cesar Luis  ', 'Ortiz', 'Montoya', 'M', '2001-01-10', 'SMZ 4 MZ 1 CASA 7 N/CASTILLA', '3134322973', 'cesar.ortizmontoya', 1, 0, '192013043392_1011381138949442_117251748371728975_n.jpg', '2016-01-01', '2016-06-21 15:48:25', 'ASISTENTE'),
 (6, 'Daniel ', 'Castro', 'Piñeros', 'M', '2000-02-03', 'SMZ 6 MZ 21 CASA 8 N/CASTILLA', '350 7077803', 'danielcastro802', 0, 0, '202111140329_10207045898643902_5087078857650326437_n.jpg', '2016-01-01', '2016-06-21 15:48:25', 'ASISTENTE'),
-(7, 'Daniela  ', 'Yara', 'Casta??o', 'F', '2006-01-10', 'MZ L CASA 28 LA CIMA 2', '3204872253', '', 0, 0, '282113103341_103312530080660_7130938882849161724_n.jpg', '2016-01-01', '2016-07-20 15:31:56', 'INASISTENTE'),
+(7, 'Daniela  ', 'Yara', 'Castaño', 'F', '2006-01-10', 'MZ L CASA 28 LA CIMA 2', '3204872253', '', 0, 0, '282113103341_103312530080660_7130938882849161724_n.jpg', '2016-01-01', '2016-07-25 16:28:41', 'INASISTENTE'),
 (8, 'Edwin Camilo ', 'Mahecha', '', 'M', '1999-09-30', 'SMZ 4 MZ 6 CASA 5 M/CASTILLA', '3214501143', 'camiilo.mahecha', 0, 0, '2907Captura.PNG', '2016-01-01', '2016-06-21 15:48:25', 'ASISTENTE'),
 (9, 'Elian Santiago ', 'Cañas', '', 'M', '2001-05-31', 'MZ B CASA 5 VASCONIA RESERVADA', '3124755243', 'eliansantiago.canas', 1, 0, '311413096241_605912969574280_1337648740416189666_n.jpg', '2016-01-01', '2016-06-21 15:48:25', 'ASISTENTE'),
 (10, 'Erickson Jimmy  ', 'Fernandez', 'Navarro', 'M', '1999-03-15', '', '3184373536', 'erickson.fernandez.navarro', 0, 0, '36001530324_981717418572521_1510125560608671455_n.jpg', '2016-01-01', '2016-07-20 19:43:33', 'INASISTENTE'),
@@ -444,19 +497,20 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (46, 'Catalina ', 'Gonzalez', 'Ducuara', 'F', '2002-11-06', '', '320 2064485', 'natilomej', 0, 0, '133012495167_970380193056162_9198080529780381870_n.jpg', '2016-01-01', '2016-06-21 15:48:25', 'ASISTENTE'),
 (47, 'Juan David', 'Varon', 'Rengifo', 'M', '1998-05-18', 'SMZ4 MZ 9 CASA 2 N/CASTILLA', '310 8698788', 'juanda.varon.9', 0, 0, '440113015593_1011787298904799_6980326812170386042_n.jpg', '2016-01-01', '2016-06-21 15:48:25', 'ASISTENTE'),
 (48, 'Laura', 'Rubio', 'Rico', 'F', '2000-01-01', '', '', '', 0, 0, '', '2016-01-01', '2016-06-21 15:56:27', 'ASISTENTE'),
-(49, 'Milton Hernando', 'Otavo', 'Varon', 'M', '1993-11-04', 'MZ 33 CASA 21 PROTECHO B', '3112002546', 'mhotavo', 1, 1, '0409pp.jpg', '2013-06-24', '2016-06-21 16:01:10', 'ASISTENTE'),
+(49, 'Milton Hernando', 'Otavo', 'Varon', 'M', '1994-11-04', 'MZ 33 CASA 21 PROTECHO B', '3112002546', 'mhotavo', 1, 1, '0409pp.jpg', '2013-06-24', '2016-07-25 19:51:23', 'ASISTENTE'),
 (50, 'Anderson David', 'Romero', '', 'M', '2002-04-23', 'MZ 12 CASA 23 PROTECHO B', '3186190149', 'andersondavid.romeroacosta', 0, 0, '232712814741_499539293552357_4468923369777411399_n.jpg', '2016-06-25', '2016-06-25 18:23:27', 'ASISTENTE'),
 (51, 'Paula', 'Santa', '', 'F', '2000-02-27', 'SMZ 6 MZ 3 CASA  6 N/CASTILLA', '3115167251', 'pauliita.santa', 0, 0, '363513407316_1082955311762664_8518695332968360428_n.jpg', '2016-06-25', '2016-06-25 18:36:35', 'ASISTENTE'),
-(52, 'Danny Fabian', 'Endo', '', 'M', '1994-04-18', 'SAN GELATO CASA 12', '3214501143', 'dannyfabianendo95', 0, 0, '41091538711_423405824522000_3042095481032841269_n.jpg', '2016-06-25', '2016-07-20 15:31:56', 'INASISTENTE'),
+(52, 'Danny Fabian', 'Endo', '', 'M', '1994-04-18', 'SAN GELATO CASA 12', '3214501143', 'dannyfabianendo95', 0, 0, '41091538711_423405824522000_3042095481032841269_n.jpg', '2016-06-25', '2016-07-24 17:19:06', 'ASISTENTE'),
 (53, 'Daniel', 'Pinilla', '', 'M', '1997-07-05', 'SMZ 8 MZ 6 CASA 8 N/CASTILLA', '3016457871', 'daniel.pinilla.5851', 0, 0, '442213412961_600995880067088_5331437935394550098_n.jpg', '2016-06-25', '2016-06-25 18:44:22', 'ASISTENTE'),
-(54, 'Daniel Santiagio', 'Beltran', 'Rincon', 'M', '2002-04-17', 'MZ 9 CASA 1 PROTECHO B', '3142694192', 'danielsantiago.beltranrincon', 0, 0, '503412801353_965233860224815_2638944380364308150_n.jpg', '2016-06-25', '2016-06-25 18:50:34', 'ASISTENTE'),
+(54, 'Daniel Santiago', 'Beltran', 'Rincon', 'M', '2002-04-17', 'MZ 9 CASA 1 PROTECHO B', '3142694192', 'danielsantiago.beltranrincon', 0, 0, '503412801353_965233860224815_2638944380364308150_n.jpg', '2016-06-25', '2016-07-25 16:28:37', 'ASISTENTE'),
 (55, 'Nicol Dayana', 'Plazas ', 'Parra', 'F', '1999-02-01', '', '3124587365', 'dayanita.parra.96', 0, 0, '524812208739_890506891040743_4659284530732698546_n.jpg', '2016-06-25', '2016-06-25 18:52:48', 'ASISTENTE'),
 (56, 'Maicol ', 'Leal', 'Torres', 'F', '1997-06-15', 'Calle 35 4-b 27 b/ nacional', '3104858931', 'michael.lealtorres', 0, 0, '', '2016-06-25', '2016-06-25 19:02:23', 'ASISTENTE'),
 (57, 'Maicol Steven', 'Galicia', '', 'M', '2003-04-22', 'MZ 34 CASA 6 PROTECHO B', '3114989979', 'maicol.galiciaaguirre', 0, 0, '050711252592_853102531439172_854412849011509899_n.jpg', '2016-06-25', '2016-06-25 19:05:07', 'ASISTENTE'),
 (58, 'Leidy', 'Cespedes', '', 'F', '2002-03-07', 'MZ S CASA 1 LA CIMA', '3222813766', 'leidy.cespedes.790', 0, 0, '073013466064_504290713100518_7652923296812731527_n.jpg', '2016-06-25', '2016-06-25 19:07:30', 'ASISTENTE'),
 (59, 'Katerine', 'Prada', '', 'F', '2000-06-05', 'Mz  D casa 19 C vasconia', '3227660136', '', 0, 0, '', '2016-06-25', '2016-06-25 19:10:50', 'ASISTENTE'),
 (60, 'Maria Juliana', 'Farfan', '', 'F', '2000-04-09', 'Súper manzana 3 manzana 1 casa 10 Nueva Castilla', '320 3810345', 'yulyfarbu', 0, 0, '5318pp.jpg', '2016-07-17', '2016-07-17 15:54:38', 'ASISTENTE'),
-(61, 'Lizeth Dayana', 'León', '', 'F', '2000-05-30', 'Mz 12 casa 15 piso 3 protecho 2', '3123198832', 'dayana.leon.37', 0, 0, '0837pp.jpg', '2016-07-17', '2016-07-20 15:09:14', 'ASISTENTE');
+(61, 'Lizeth Dayana', 'León', '', 'F', '2000-05-30', 'Mz 12 casa 15 piso 3 protecho 2', '3123198832', 'dayana.leon.37', 0, 0, '0837pp.jpg', '2016-07-17', '2016-07-20 15:09:14', 'ASISTENTE'),
+(62, 'Juan Camilo', 'García ', 'Perez ', 'M', '1991-01-26', 'Nueva Castilla Spm 13 mz 1 cs2 ', '3202612775', 'camilo.garcia.566', 0, 0, '015613718738_1094096333994130_1483576692862428280_n.jpg', '2016-07-25', '2016-07-25 16:01:57', 'ASISTENTE');
 
 -- --------------------------------------------------------
 
@@ -464,14 +518,12 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 -- Estructura de tabla para la tabla `logs`
 --
 
-CREATE TABLE IF NOT EXISTS `logs` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `logs` (
+  `ID` int(11) NOT NULL,
   `IP` varchar(20) NOT NULL,
   `USER` int(11) NOT NULL,
-  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ID`),
-  KEY `USER` (`USER`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `logs`
@@ -508,7 +560,27 @@ INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
 (28, '190.68.51.7', 1, '2016-07-19 01:55:34'),
 (29, '186.114.244.23', 1, '2016-07-20 15:06:38'),
 (30, '186.114.244.23', 1, '2016-07-20 17:26:02'),
-(31, '190.242.73.96', 1, '2016-07-20 18:22:22');
+(31, '190.242.73.96', 1, '2016-07-20 18:22:22'),
+(32, '190.128.111.236', 1, '2016-07-21 16:27:55'),
+(33, '190.128.111.236', 1, '2016-07-21 21:45:19'),
+(34, '190.255.162.220', 1, '2016-07-22 00:53:51'),
+(35, '190.128.111.236', 1, '2016-07-22 16:03:51'),
+(36, '190.128.111.236', 1, '2016-07-22 19:31:11'),
+(37, '190.128.111.236', 1, '2016-07-22 19:52:22'),
+(38, '190.255.162.118', 1, '2016-07-22 23:36:36'),
+(39, '190.128.111.236', 1, '2016-07-23 13:36:27'),
+(40, '186.115.225.245', 1, '2016-07-24 16:19:41'),
+(41, '190.128.111.236', 1, '2016-07-25 15:58:36'),
+(42, '190.128.111.236', 2, '2016-07-25 16:34:57'),
+(43, '190.128.111.236', 2, '2016-07-25 16:38:57'),
+(44, '190.128.111.236', 2, '2016-07-25 16:38:57'),
+(45, '190.128.111.236', 1, '2016-07-25 16:39:46'),
+(46, '190.128.111.236', 1, '2016-07-25 19:24:59'),
+(47, '190.128.111.236', 2, '2016-07-25 19:33:01'),
+(48, '190.128.111.236', 1, '2016-07-25 19:37:49'),
+(49, '190.253.18.192', 1, '2016-07-26 00:44:02'),
+(50, '190.128.111.236', 1, '2016-07-26 14:30:06'),
+(51, '190.128.111.236', 1, '2016-07-26 14:30:06');
 
 -- --------------------------------------------------------
 
@@ -516,16 +588,14 @@ INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
 -- Estructura de tabla para la tabla `tema`
 --
 
-CREATE TABLE IF NOT EXISTS `tema` (
-  `ID_TEMA` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tema` (
+  `ID_TEMA` int(11) NOT NULL,
   `TEMA` varchar(50) NOT NULL,
   `DESCRIPCION` text NOT NULL,
   `FECHA` date DEFAULT NULL,
   `USUARIOLOG` bigint(11) NOT NULL,
-  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`ID_TEMA`),
-  KEY `USUARIOLOG` (`USUARIOLOG`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tema`
@@ -536,7 +606,8 @@ INSERT INTO `tema` (`ID_TEMA`, `TEMA`, `DESCRIPCION`, `FECHA`, `USUARIOLOG`, `FE
 (2, 'Bienaventuranzas', 'Dinamicas:\r\n22 el limon\r\n28 obj perdidos\r\n32 reloj despertador\r\n34 sin quemarse los dedos\r\n36 concurso canciones\r\n\r\nMaterial:\r\nSe entregan 9  pliegos de papel a 9 grupos, cada uno va trabajar una bienaventuranza \r\n\r\n1. Dibujo que represente \r\n2. Ejemplos\r\n\r\nhttp://www.laverdadcatolica.org/F33.htm\r\n\r\nOtros:\r\nActividad recoger dinero camisetas\r\nOrganizar quince Angie\r\n Visitas enfermos', '2016-06-25', 1, '2016-06-24 22:13:01'),
 (3, 'CUMPLEAÑOS GRUPO', '-> 06:00PM Misa acción de gracias 3 años MEC\r\n     *Ofrendas (camisetas, pan, uvas, biblia, cirio) Moniciones\r\n->07:00PM  (Enramada) -> Cena\r\n    *Hablar mama valentina arroz \r\n   * Desechables\r\n   * Gaseosa\r\n   * Mesas & sillas\r\n   * Torta \r\n   *Copas, frutiño de uva \r\n->Presentación Video\r\n->Baile, representación, un poema, una cancion, etc\r\n->Fotos chistosas, y videos\r\n\r\n->Ida a tierra firme (7:00AM)\r\n->Apartar pollos (confirmar asistencia)\r\n-> entrada $ 2.500\r\n->Caminando\r\n->invitar a Papás\r\n\r\n\r\n', '2016-07-30', 1, '2016-06-24 22:43:30'),
 (4, 'Visita RCC', 'Taller de oración', '2016-07-02', 1, '2016-07-02 15:01:59'),
-(5, 'Advocaciones de la virgen (Virgen del Carmen)', '1.Dinámica: Conociendonos - imprimir \r\n2.Grupos por cada advocacion\r\n3. Explicación:\r\nVirgen Maria: http://www.laverdadcatolica.org/LaVirgenMaria.htm\r\nVirgen Maria Corto: http://www.laverdadcatolica.org/F04.htm\r\nVideo virgen del carmen: https://www.youtube.com/watch?v=ZhfX0mF2Nrw\r\n\r\n4. Oracion: reflexion linea ocupada\r\nhttps://www.youtube.com/watch?v=K6PExPwm06Y', '2016-07-16', 1, '2016-07-15 04:08:46');
+(5, 'Advocaciones de la virgen (Virgen del Carmen)', '1.Dinámica: Conociendonos - imprimir \r\n2.Grupos por cada advocacion\r\n3. Explicación:\r\nVirgen Maria: http://www.laverdadcatolica.org/LaVirgenMaria.htm\r\nVirgen Maria Corto: http://www.laverdadcatolica.org/F04.htm\r\nVideo virgen del carmen: https://www.youtube.com/watch?v=ZhfX0mF2Nrw\r\n\r\n4. Oracion: reflexion linea ocupada\r\nhttps://www.youtube.com/watch?v=K6PExPwm06Y', '2016-07-16', 1, '2016-07-15 04:08:46'),
+(6, 'GRUPO JUVENIL', '•	Que es para mí el grupo juvenil\r\n•	Quien es para mí Jesús\r\n•	Que ha hecho Jesús en mi vida\r\n•	Porque estoy aquí\r\n•	Que es el servicio\r\n•	Que es la fe -> obras\r\n•	Como puedo demostrar mi fe\r\n•	Cuáles son mis expectativas de pertenecer al grupo juvenil\r\n•	Cuáles son mis sugerencias para el grupo juvenil\r\n•	Que me gusta del grupo y que no me gusta.\r\n1.	ECLESIÁSTICO 4: 1- 14.  \r\n2.	ECLESIÁSTICO 6: 5- 18.\r\n3.	ECLESIÁSTICO 3: 17- 25.\r\n\r\n•	Reflexión línea ocupada \r\n•	Yo soy el grupo pagina 22 dinámicas 2 \r\n•	Lazarillo pagina 23 dinamicas 2\r\n', '2016-07-23', 1, '2016-07-23 14:31:24');
 
 -- --------------------------------------------------------
 
@@ -544,8 +615,8 @@ INSERT INTO `tema` (`ID_TEMA`, `TEMA`, `DESCRIPCION`, `FECHA`, `USUARIOLOG`, `FE
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `ID` bigint(255) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `ID` bigint(255) NOT NULL,
   `DOC` int(20) NOT NULL,
   `USER` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `PASS` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
@@ -559,17 +630,91 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `IMAGEN` text COLLATE utf8_unicode_ci,
   `KEYPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `NEWPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+  `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID`, `DOC`, `USER`, `PASS`, `EMAIL`, `ROL`, `NOMBRES`, `P_APELLIDO`, `S_APELLIDO`, `GENERO`, `FECHA_REGISTRO`, `IMAGEN`, `KEYPASS`, `NEWPASS`, `ULTIMA_CONEXION`) VALUES
-(1, 1110540682, 'admin', 'de9fd5a771a37d06cbf841051c9c8aff', 'milton.otavo@gmail.com', 1, 'MILTON', 'OTAVO', 'VARON', 'M', '2016-07-03', '20401-3254avatar.jpg', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0);
+(1, 1110540682, 'admin', 'de9fd5a771a37d06cbf841051c9c8aff', 'milton.otavo@gmail.com', 1, 'MILTON', 'OTAVO', 'VARON', 'M', '2016-07-03', '20401-3254avatar.jpg', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0),
+(2, 123456778, 'sandra', 'de9fd5a771a37d06cbf841051c9c8aff', 'sandra@gmail.com', 1, 'SANDRA', 'CEBALLOS', 'MARTINEZ', 'F', '2016-07-03', '3520pp.jpg', '20401-3254avatar.jpg', '20401-3254avatar.jpg', 0);
 
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  ADD PRIMARY KEY (`FECHA`,`ID_INTEGRANTE`),
+  ADD KEY `ID_INTEGRANTE` (`ID_INTEGRANTE`);
+
+--
+-- Indices de la tabla `familiar`
+--
+ALTER TABLE `familiar`
+  ADD PRIMARY KEY (`DOCUMENTO`),
+  ADD KEY `FK_FAMILIAR` (`IDENTIFICACION_INTEGRANTE`),
+  ADD KEY `IDENTIFICACION_INTEGRANTE` (`IDENTIFICACION_INTEGRANTE`);
+
+--
+-- Indices de la tabla `integrante`
+--
+ALTER TABLE `integrante`
+  ADD PRIMARY KEY (`DOCUMENTO`);
+
+--
+-- Indices de la tabla `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `USER` (`USER`);
+
+--
+-- Indices de la tabla `tema`
+--
+ALTER TABLE `tema`
+  ADD PRIMARY KEY (`ID_TEMA`),
+  ADD KEY `USUARIOLOG` (`USUARIOLOG`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `familiar`
+--
+ALTER TABLE `familiar`
+  MODIFY `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT de la tabla `integrante`
+--
+ALTER TABLE `integrante`
+  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+--
+-- AUTO_INCREMENT de la tabla `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+--
+-- AUTO_INCREMENT de la tabla `tema`
+--
+ALTER TABLE `tema`
+  MODIFY `ID_TEMA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `ID` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

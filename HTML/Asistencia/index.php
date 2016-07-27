@@ -36,7 +36,7 @@
             </thead>
             <tbody> 
               <?php while($row = mysqli_fetch_array($datos)){ ?>
-                <tr>
+                <tr id="<?php echo $row['DOCUMENTO'] ?>">
                   <td class="hidden-xs"><?php  echo $row['NOMBRES']; ?></td>
                   <td class="hidden-xs"><?php  echo $row['PRIMER_APELLIDO']; ?></td>
                   <td class="visible-xs"><?php  echo $row['NOMBRES']." ".$row['PRIMER_APELLIDO']; ?></td>

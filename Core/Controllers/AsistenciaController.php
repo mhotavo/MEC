@@ -4,14 +4,12 @@ use Core\Models\Asistencia as Asistencia;
 
 
 class AsistenciaController{
-
 	private $integrante;
 	private $asistencia;
 	public function __construct(){
 		$this->integrante = new Integrante();
 		$this->asistencia = new Asistencia();
 	}
-
 	public function index(){
 		if (!empty($_SESSION['app_id'])) {
 			if ($_POST) {
@@ -24,7 +22,6 @@ class AsistenciaController{
 					$this->asistencia->__set("comentario", $_POST['comentario'] );
 					$this->asistencia->add(); 
 				}
-				
 				header("Location:" . URL . "asistencia");
 			}else {
 			#listar Integrantes
@@ -50,9 +47,12 @@ class AsistenciaController{
 
 	}
 	public function verJSON(){
-		if (!empty($_GET['fecha'])) {
-			$integrantes=$this->integrante->listar();
-			$this->asistencia->__set("fecha", $_GET['fecha']);
+		if (!empty($_GET['id'])) {
+			if (!empty($_GET['fecha'])) {
+				$this->asistencia->__set("fecha", $_GET['fecha']);
+			}
+			$this->integrante->__set("documento", $_GET['id']);
+			$integrantes=$this->integrante->view();
 			$datos=$this->asistencia->verJSON($integrantes); 
 			echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 

@@ -13,6 +13,7 @@ class Integrante {
 	private $imagen;
 	private $coordinador;
 	private $genero;
+	private $inasistentes;
 	private $fechaIngreso;
 	private $db;
 
@@ -43,8 +44,7 @@ class Integrante {
 	}
 
 	public function birthdayJSON(){
-		// $sql="SELECT * FROM integrante WHERE MONTH(FECHA_NACIMIENTO) = MONTH(DATE_ADD(CURDATE(),INTERVAL 1 MONTH)) OR MONTH(FECHA_NACIMIENTO) = MONTH(CURDATE()) AND DAY( FECHA_NACIMIENTO ) > DAY(CURDATE())  ";
-		$sql="SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE MONTH(FECHA_NACIMIENTO) >= MONTH(CURDATE()) AND DAY(FECHA_NACIMIENTO) >= DAY(CURDATE()) ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)";
+		$sql='SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE DATE_FORMAT(FECHA_NACIMIENTO, "%m-%d") >= DATE_FORMAT(CURDATE(), "%m-%d")     ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)';
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
@@ -118,12 +118,16 @@ class Integrante {
 	public function view(){
 		$sql="SELECT i.*, YEAR(CURDATE())-YEAR(i.FECHA_NACIMIENTO) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(i.FECHA_NACIMIENTO,'%m-%d'), 0, -1) AS EDAD_ACTUAL FROM integrante i WHERE DOCUMENTO='{$this->documento}'";
 		$datos = $this->db->consultaRetorno($sql);
-		$row = mysqli_fetch_assoc($datos);
-		return $row;
+		//$row = mysqli_fetch_assoc($datos);
+		return $datos;
 	}
 
 	public function listarJSON(){
-		$sql="SELECT DOCUMENTO, CONCAT(NOMBRES, ' ', PRIMER_APELLIDO) as NOMBRE FROM integrante WHERE ESTADO !='INASISTENTE' ORDER BY NOMBRE ASC ";
+		$sql="SELECT DOCUMENTO, CONCAT(NOMBRES, ' ', PRIMER_APELLIDO) as NOMBRE FROM integrante";
+		if ($this->inasistentes!='si') {
+			$sql.=" WHERE ESTADO !='INASISTENTE' ";
+		}
+		$sql.=" ORDER BY NOMBRE ASC ";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();

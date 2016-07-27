@@ -58,7 +58,8 @@ class IntegrantesController{
 	public function editar($id){
 		if (!$_POST) {
 			$this->integrante->__set("documento", $id);
-			$datos=$this->integrante->view();
+			$data=$this->integrante->view();
+			$datos = mysqli_fetch_assoc($data);
 			return $datos;
 		} else {
 			$this->integrante->__set("documento", $_POST['Documento']);
@@ -96,15 +97,16 @@ class IntegrantesController{
 	public function ver($id){
 		if (isset($id)) {
 			$this->integrante->__set("documento", $id);
-			$datos=$this->integrante->view();
-			return $datos;
+			$data=$this->integrante->view();
+			$datos = mysqli_fetch_assoc($data);
 		}
 		
 	}
 
 	public function eliminar($id){
 		$this->integrante->__set("documento", $id);
-		$datos=$this->integrante->view();
+		$data=$this->integrante->view();
+		$datos = mysqli_fetch_assoc($data);
 		$ruta= "HTML/Integrantes/avatars/" . $datos['IMAGEN'];
 		if (file_exists($ruta) and $datos['IMAGEN']!='') {
 			unlink($ruta);
@@ -114,6 +116,12 @@ class IntegrantesController{
 	}
 
 	public function listarJSON(){
+		$datos=$this->integrante->listarJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function listarAllJSON(){
+		$this->integrante->__set("inasistentes", "si");
 		$datos=$this->integrante->listarJSON();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}

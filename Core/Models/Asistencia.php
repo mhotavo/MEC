@@ -10,7 +10,6 @@ class Asistencia  {
 
 	public function __construct(){
 		$this->db = new Conexion();
-	//	$this->integrante = new Integrante();
 	}
 
 	public function __set($var, $valor) {  
@@ -50,7 +49,6 @@ class Asistencia  {
 	}
 
 	public function inasistentes($integrantes){
-		
 		//$integrantes=$this->integrante->listar();
 		$datos=array();
 		while($inte = mysqli_fetch_array($integrantes)){
@@ -77,7 +75,6 @@ class Asistencia  {
 					$sql="UPDATE integrante SET ESTADO ='ASISTENTE'  WHERE DOCUMENTO = '".$inte['DOCUMENTO']."'  ";
 					$asistencias=$this->db->consultaSimple($sql);
 				}
-
 			}
 		}
 		//print_r($datos);
@@ -85,24 +82,42 @@ class Asistencia  {
 	}
 
 
-	public function verJSON($integrantes){
+	private function listarFechas(){
 		$datos=array();
-		while($inte = mysqli_fetch_array($integrantes)){
-			$sql="SELECT ID_INTEGRANTE, ASISTENCIA, COMENTARIO  FROM asistencia WHERE FECHA = '{$this->fecha}' AND ID_INTEGRANTE='".$inte['DOCUMENTO']."' ";
-			$data = $this->db->consultaRetorno($sql);
-			$total= $this->db->total_rows($data);
-			if ($total>0) {
-				$row = mysqli_fetch_assoc($data);
-				$datos[]=$row;
-			}  else {
-				$datos[]=array('ID_INTEGRANTE' => $inte['DOCUMENTO'],'ASISTENCIA' =>  0,'COMENTARIO' => 'PRUEBA' );
+		$sql="SELECT FECHA, COMENTARIO FROM asistencia ";
+		if (!empty($this->fecha)) {
+			$sql.="WHERE FECHA = '{$this->fecha}'  ";
+		}
+		$sql.=" GROUP BY FECHA ORDER BY FECHA ASC";
+		$datos=$this->db->consultaRetorno($sql);
+		return $datos;
+	}
+
+
+	public function verJSON($integrantes){
+		
+		$datos=array();
+		while($inte = mysqli_fetch_assoc($integrantes)){
+			foreach ($this->listarFechas() as $key => $value) {
+				$sql="SELECT ID_INTEGRANTE, ASISTENCIA, COMENTARIO, FECHA  FROM asistencia WHERE FECHA = '".$value['FECHA']."' AND ID_INTEGRANTE='".$inte['DOCUMENTO']."' ";
+				//echo "<br>";
+				$data = $this->db->consultaRetorno($sql);
+				$total= $this->db->total_rows($data);
+				if ($total>0) {
+					$row = mysqli_fetch_assoc($data);
+					$datos[] = array('ID_INTEGRANTE' =>  $row['ID_INTEGRANTE'], 'ASISTENCIA' =>  $row['ASISTENCIA'], 'COMENTARIO' =>  $row['COMENTARIO'],'FECHA' =>  $row['FECHA']  );
+				} else {
+					$datos[] = array('ID_INTEGRANTE' =>  $inte['DOCUMENTO'], 'ASISTENCIA' =>  "", 'COMENTARIO' =>  "",'FECHA' =>  $value['FECHA']  );
+				}
 			}
 		}
 		return $datos;
 	}	
 
+
+
 	public function fechasJSON(){
-		$sql="SELECT FECHA, COMENTARIO FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC ";
+		$sql="SELECT FECHA, COMENTARIO, SUM(asistencia) AS ASISTENCIAS, (COUNT(*)- SUM(asistencia)) as FALLAS, COUNT(*) AS TOTAL FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC ";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
@@ -113,8 +128,6 @@ class Asistencia  {
 		}  
 		return $datos;
 	}
-
-
 
 
 } 

@@ -52,25 +52,35 @@ function mesLetras(mes){
 
 
 function cargarAsistencia(val){
-	$("#alert").empty();
 	var fecha= val;
-	$.getJSON('asistencia/verJSON',{fecha:fecha}, function(resp){
-
-		if (resp.length>0) {
-			$("#alert").append('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Asistencia registrada</strong> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </div>');
-			var comentario="";
-			for (var i in resp) {
-				console.log(resp[i].ID_INTEGRANTE+" "+resp[i].ASISTENCIA);
-				if (resp[i].ASISTENCIA==1) {
-					$("#si_"+resp[i].ID_INTEGRANTE).attr('checked', true);
-				} else {
-					$("#no_"+resp[i].ID_INTEGRANTE).attr('checked', true);
+	//LISTAMOS INTEGRANTES
+	$.getJSON('Integrantes/listarAllJSON', function(resp){
+		for (var i in resp) 
+		{
+			var id = resp[i].DOCUMENTO;
+			$.getJSON('asistencia/verJSON', {id:id, fecha:fecha}, function(data){
+				if (data.length>0) {
+					$("#alert").empty();
+					$("#alert").append('<div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Asistencia registrada</strong> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </div>');
+					var comentario="";
+					for (var i in data) {
+						//console.log(data[i].ID_INTEGRANTE+" "+data[i].ASISTENCIA);
+						if (data[i].ASISTENCIA==1) {
+							$("#si_"+data[i].ID_INTEGRANTE).attr('checked', true);
+						} else {
+							$("#no_"+data[i].ID_INTEGRANTE).attr('checked', true);
+						}
+						comentario=data[i].COMENTARIO;
+					}
+					$("#comentario").val(comentario);
+				} else{
+					$( "input[name^='asistencia']" ).attr('checked', false);
 				}
-				comentario=resp[i].COMENTARIO;
-			}
-			$("#comentario").val(comentario);
-		} else{
-			$( "input[name^='asistencia']" ).attr('checked', false);
+
+
+			}).error(function(e){
+				console.log(e);
+			})
 		}
 
 	}).error(function(e){
@@ -85,80 +95,72 @@ function cargarAsistencia(val){
 function asistencia(){
 	//LISTAMOS INTEGRANTES
 	$.getJSON('../Integrantes/listarJSON', function(resp){
-		//console.log(resp);
-		
 		for (var i in resp) 
 		{
 			$("#tablaAsistencia > tbody").append("<tr id='"+resp[i].DOCUMENTO+"'><td>"+resp[i].NOMBRE+"</td></tr>");
-		}
-		$("#tablaAsistencia > tbody").append("<tr class='success' align='center' id='totalAsistencias'><td><b>ASISTENCIAS</b></td></tr>");
-		$("#tablaAsistencia > tbody").append("<tr class='danger' align='center' id='totalFallas'><td><b>FALLAS</b></td></tr>");
+			var id = resp[i].DOCUMENTO;
+				//LISTAMOS ASISTENCIA
+				$.getJSON('../asistencia/verJSON', {id:id}, function(data){
+					//console.log(data);
+					var fecha="";
+					for (var i in data) 
+					{
+						if (data[i].ASISTENCIA==1) {
+							$("#"+data[i].ID_INTEGRANTE).append("<td align='center'><b style='color:green;'><img src='../Views/images/true.png' width='20'></b></td>");
+						} 	if (data[i].ASISTENCIA==0) {
+							$("#"+data[i].ID_INTEGRANTE).append("<td align='center'><b style='color:red;'><img src='../Views/images/false.png' width='20'></b></td>");
+						}
+					}
+				}).error(function(e){
+					console.log(e);
+				})
+			}
+			$("#tablaAsistencia > tbody").append("<tr align='right' id='totalAsistencias'><td><b>Total Asistencias</b></td></tr>");
+			$("#tablaAsistencia > tbody").append("<tr align='right' id='totalFallas'><td><b>Total Fallas</b></td></tr>");
+			$("#tablaAsistencia > tbody").append("<tr align='right' id='totalAsistentes'><td><b>Total Asistentes</b></td></tr>");
 
-	}).error(function(e){
-		console.log(e);
-	})
+		}).error(function(e){
+			console.log(e);
+		})
 	//LISTAMOS FECHAS
 	$.getJSON('../asistencia/fechasJSON', function(data)
 	{
-
-		//console.log(); 
 		for (var x in data.reverse() ) 
 		{	
 			if(data[x].COMENTARIO==null){
 				data[x].COMENTARIO="Vacio";
 			}
 			$("#tablaAsistencia > thead > tr").append("<th style='text-align:center;'>"+mesLetras(data[x].FECHA.slice(5,7))+"-"+data[x].FECHA.slice(8,10)+" <br><span class='TextSmall'>"+data[x].COMENTARIO+"</span></th>");
+			
+			$("#totalAsistencias").append("<td style='text-align:center;color:#30B224;font-weight:bold'>"+data[x].ASISTENCIAS+"</td>");
+			$("#totalFallas").append("<td style='text-align:center;color:#e30000;font-weight:bold'>"+data[x].FALLAS+"</td>");
+			$("#totalAsistentes").append("<td style='text-align:center;color:#006afd;font-weight:bold'>"+data[x].TOTAL+"</td>");
 			var fecha=data[x].FECHA;
 			//console.log(fecha);
 			var asistencias=0;
 			var fallas=0;
-				//LISTAMOS ASISTENCIA
-				$.getJSON('../asistencia/verJSON',{fecha:fecha}, function(resp){
-					//console.log(resp);
-					var fecha="";
-					for (var i in resp) 
-					{
-						if (resp[i].ASISTENCIA==1) {
-							$("#"+resp[i].ID_INTEGRANTE).append("<td class='' align='center'><b style='color:green;'><img src='../Views/images/true.png' width='20'></b></td>");
-							asistencias=asistencias+1;
-						} else {
-							$("#"+resp[i].ID_INTEGRANTE).append("<td class='' align='center'><b style='color:red;'><img src='../Views/images/false.png' width='20'></b></td>");
-							fallas=fallas+1;
-						}
-					}
-					$("#totalAsistencias").append("<td class='success' align='center'><b style='color:green;'>"+asistencias+"</b></td>");
-					$("#totalFallas").append("<td class='danger'  align='center'><b style='color:red;'>"+fallas+"</b></td>");
-					asistencias=0;
-					fallas=0;
+		}
+	}).error(function(e){
+		console.log(e);
+	})
+}
 
-				}).error(function(e){
-					console.log(e);
-				})
-			}
+function birthday(){
+	$("#alert").empty();
+	var fecha= $("#fechaAsistencia").val();
+	$.getJSON('Integrantes/birthdayJSON',{fecha:fecha}, function(resp){
+		var esteMes=true;
+		var hoyCumple=true;
+		var proximos=true;
+		for (var i in resp) 
+		{	
+			var date=  resp[i].FECHA_NACIMIENTO.split("-"); 
+			var day=date[2];
+			var month=date[1];
 
-		}).error(function(e){
-			console.log(e);
-		})
-
-
-	}
-
-	function birthday(){
-		$("#alert").empty();
-		var fecha= $("#fechaAsistencia").val();
-		$.getJSON('Integrantes/birthdayJSON',{fecha:fecha}, function(resp){
-			var esteMes=true;
-			var hoyCumple=true;
-			var proximos=true;
-			for (var i in resp) 
-			{	
-				var date=  resp[i].FECHA_NACIMIENTO.split("-"); 
-				var day=date[2];
-				var month=date[1];
-
-				var hoy = new Date();
-				var dd = hoy.getDate();
-				var mm = hoy.getMonth()+1;
+			var hoy = new Date();
+			var dd = hoy.getDate();
+			var mm = hoy.getMonth()+1;
 				mm=("0" + mm).slice (-2); // devolverá “01” si h=1; “12” si h=12
 				
 				if ( mm==month && dd==day) {
