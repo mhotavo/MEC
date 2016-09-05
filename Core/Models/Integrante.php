@@ -92,6 +92,8 @@ class Integrante {
 	}
 
 	public function delete(){
+		$sql="DELETE FROM asistencia WHERE ID_INTEGRANTE='{$this->documento}'";
+		$this->db->consultaSimple($sql);
 		$sql="DELETE FROM integrante WHERE DOCUMENTO='{$this->documento}'";
 		$this->db->consultaSimple($sql);
 

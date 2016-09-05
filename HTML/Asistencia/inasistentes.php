@@ -18,25 +18,28 @@
          <tr>
           <th>Nro</th>
           <th>Nombre</th>
-          <th>Estado</th>
+          <th colspan="2">Estado</th>
         </tr>
       </thead>
       <tbody> 
         <?php foreach ($datos as $key => $value) {  ?>
-        <tr>
-          <td class=""><?php  echo $key+1; ?></td>
-          <td class=""> <a href="<?php echo URL; ?>Integrantes/ver/<?php echo $value['Documento']; ?>"><?php  echo $value['Nombre']; ?> </a></td>
-          <td style="color:red;font-weight: bold;"><?php  echo $value['Estado']; ?></td>
-          <?php 
-        }
-        ?>
+          <tr>
+            <td class=""><?php  echo $key+1; ?></td>
+            <td class=""> <a href="<?php echo URL; ?>Integrantes/ver/<?php echo $value['Documento']; ?>"><?php  echo $value['Nombre']; ?> </a></td>
+            <td style="color:red;font-weight: bold;"><?php  echo $value['Estado']; ?></td>
+            <td>
+              <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este Integrante?','<?php echo URL; ?>Integrantes/eliminar/<?php echo $value['Documento']; ?>')" >Borrar</a> 
+            </td>
+            <?php 
+          }
+          ?>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
 
-  </div>
-  <div class="col-md-2"></div>
-</div>  
+    </div>
+    <div class="col-md-2"></div>
+  </div>  
 </div>
 <?php include(HTML_DIR.'/overall/footer.php') ?> 
 </body>

@@ -103,7 +103,7 @@ function asistencia(){
 				$.getJSON('../asistencia/verJSON', {id:id}, function(data){
 					//console.log(data);
 					var fecha="";
-					for (var i in data) 
+					for (var i in data.reverse()) 
 					{
 						if (data[i].ASISTENCIA==1) {
 							$("#"+data[i].ID_INTEGRANTE).append("<td align='center'><b style='color:green;'><img src='../Views/images/true.png' width='20'></b></td>");

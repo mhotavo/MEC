@@ -88,7 +88,7 @@ class Asistencia  {
 		if (!empty($this->fecha)) {
 			$sql.="WHERE FECHA = '{$this->fecha}'  ";
 		}
-		$sql.=" GROUP BY FECHA ORDER BY FECHA ASC";
+		$sql.=" GROUP BY FECHA ORDER BY FECHA DESC LIMIT 8";
 		$datos=$this->db->consultaRetorno($sql);
 		return $datos;
 	}
@@ -117,7 +117,7 @@ class Asistencia  {
 
 
 	public function fechasJSON(){
-		$sql="SELECT FECHA, COMENTARIO, SUM(asistencia) AS ASISTENCIAS, (COUNT(*)- SUM(asistencia)) as FALLAS, COUNT(*) AS TOTAL FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC ";
+		$sql="SELECT FECHA, COMENTARIO, SUM(asistencia) AS ASISTENCIAS, (COUNT(*)- SUM(asistencia)) as FALLAS, COUNT(*) AS TOTAL FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC LIMIT 8 ";
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
