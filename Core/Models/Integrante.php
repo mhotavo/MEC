@@ -37,6 +37,12 @@ class Integrante {
 	}  
 
 
+	public function acolitos(){
+		$sql="SELECT * FROM integrante WHERE ACOLITO='1' ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
+		$datos=$this->db->consultaRetorno($sql);
+		return $datos;
+	}
+
 	public function listar(){
 		$sql="SELECT * FROM integrante ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
 		$datos=$this->db->consultaRetorno($sql);

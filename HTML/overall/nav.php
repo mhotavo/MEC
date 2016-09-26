@@ -54,8 +54,19 @@
       <ul class="nav navbar-nav">
        <li><a href="<?php echo URL; ?>birthday"> Cumpleaños  <i class="fa fa-birthday-cake" aria-hidden="true"></i></a></li> 
      </ul>
-
-     <ul class="nav navbar-nav navbar-right">
+     <ul class="nav navbar-nav">
+      <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Acolitos <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?php echo URL; ?>acolitos/dominical">Horario Dominical</a></li>
+          <li class="divider"></li>
+          <li><a href="<?php echo URL; ?>acolitos/semanal">Horario Semanal</a></li>
+          <li class="divider"></li>
+          <li><a href="<?php echo URL; ?>acolitos/suspendidos">Suspendidos</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
 
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <b><?php echo ucwords(strtolower($_SESSION['nombre'])); ?> </b>  <span class="caret"></span></a>
