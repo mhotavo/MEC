@@ -1,11 +1,42 @@
 function __(id){
 	return document.getElementById(id);
 }
+
 function DeleteItem(contenido, url){
 	var action= window.confirm(contenido);
 	if (action) {
 		window.location=url;
 	}
+}
+
+function pad (str, max) {
+	str = str.toString();
+	return str.length < max ? pad("0" + str, max) : str;
+}
+
+
+function mostrarFecha(days){
+	milisegundos=parseInt(35*24*60*60*1000);
+
+	fecha=new Date();
+	day=fecha.getDate();
+    // el mes es devuelto entre 0 y 11
+    month=fecha.getMonth()+1;
+    year=fecha.getFullYear();
+
+    //document.write("Fecha actual: "+day+"/"+month+"/"+year);
+
+    //Obtenemos los milisegundos desde media noche del 1/1/1970
+    tiempo=fecha.getTime();
+    //Calculamos los milisegundos sobre la fecha que hay que sumar o restar...
+    milisegundos=parseInt(days*24*60*60*1000);
+    //Modificamos la fecha actual
+    total=fecha.setTime(tiempo+milisegundos);
+    day=fecha.getDate();
+    month=fecha.getMonth()+1;
+    year=fecha.getFullYear();
+
+    return year+"-"+pad(month,2)+"-"+pad(day,2);
 }
 
 function mesLetras(mes){
@@ -89,7 +120,6 @@ function cargarAsistencia(val){
 
 
 }
-
 
 
 function asistencia(){

@@ -119,7 +119,22 @@
     </div>
   </div>
 </div>		    
+<div class="form-group">
+  <label class="col-lg-2 control-label">Otros</label>
+  <div class="col-lg-10">
+    <div class="radio">
+     <label>
+       <input type="radio" name="Otro" id="optionsRadios1" value="1" <?php echo ($datos['ESTADO']=='NO-MEC') ? "checked" : NULL ?>>
+       Si
+     </label>
 
+     <label>
+      <input type="radio" name="Otro" id="optionsRadios2" value="0" <?php echo ($datos['ESTADO']!='NO-MEC') ? "checked" : NULL ?>>
+      No
+    </label>
+  </div>
+</div>
+</div>    
 <div class="form-group">
  <div class="col-lg-10 col-lg-offset-2">
   <input type="hidden" class="form-control" name="Documento"  required value="<?php echo $datos['DOCUMENTO']; ?>" >

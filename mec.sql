@@ -1,23 +1,24 @@
+
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-09-2016 a las 05:25:20
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 5.6.20
+-- Servidor: localhost
+-- Tiempo de generación: 06-10-2016 a las 17:01:05
+-- Versión del servidor: 5.1.73
+-- Versión de PHP: 5.2.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `mec`
+-- Base de datos: `u307413022_mec`
 --
 
 -- --------------------------------------------------------
@@ -26,12 +27,14 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `asistencia`
 --
 
-CREATE TABLE `asistencia` (
+CREATE TABLE IF NOT EXISTS `asistencia` (
   `ID_INTEGRANTE` int(11) NOT NULL,
   `FECHA` date NOT NULL,
   `ASISTENCIA` tinyint(1) NOT NULL,
   `COMENTARIO` text,
-  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`FECHA`,`ID_INTEGRANTE`),
+  KEY `ID_INTEGRANTE` (`ID_INTEGRANTE`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -63,7 +66,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (21, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 05:25:44'),
 (47, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 05:25:44'),
 (22, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 05:25:44'),
-(23, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 05:25:44'),
 (59, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 05:25:44'),
 (24, '2016-06-18', 1, 'Jornada Arq. Juventud', '2016-07-07 05:25:44'),
 (48, '2016-06-18', 0, 'Jornada Arq. Juventud', '2016-07-07 05:25:44'),
@@ -113,7 +115,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (21, '2016-06-25', 0, NULL, '2016-06-26 11:24:10'),
 (47, '2016-06-25', 0, NULL, '2016-06-26 11:24:10'),
 (22, '2016-06-25', 0, NULL, '2016-06-26 11:24:10'),
-(23, '2016-06-25', 1, NULL, '2016-06-26 11:24:10'),
 (59, '2016-06-25', 0, NULL, '2016-06-26 11:24:10'),
 (24, '2016-06-25', 0, NULL, '2016-06-26 11:24:10'),
 (48, '2016-06-25', 1, NULL, '2016-06-26 11:24:10'),
@@ -162,7 +163,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (21, '2016-07-02', 1, 'Visita RCC', '2016-07-07 05:14:14'),
 (47, '2016-07-02', 1, 'Visita RCC', '2016-07-07 05:14:14'),
 (22, '2016-07-02', 1, 'Visita RCC', '2016-07-07 05:14:14'),
-(23, '2016-07-02', 0, 'Visita RCC', '2016-07-07 05:14:14'),
 (59, '2016-07-02', 1, 'Visita RCC', '2016-07-07 05:14:14'),
 (24, '2016-07-02', 1, 'Visita RCC', '2016-07-07 05:14:14'),
 (48, '2016-07-02', 0, 'Visita RCC', '2016-07-07 05:14:14'),
@@ -212,7 +212,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (21, '2016-07-09', 1, 'Noche de gala', '2016-07-11 18:14:08'),
 (47, '2016-07-09', 0, 'Noche de gala', '2016-07-11 18:14:08'),
 (22, '2016-07-09', 1, 'Noche de gala', '2016-07-11 18:14:08'),
-(23, '2016-07-09', 1, 'Noche de gala', '2016-07-11 18:14:08'),
 (59, '2016-07-09', 0, 'Noche de gala', '2016-07-11 18:14:08'),
 (24, '2016-07-09', 1, 'Noche de gala', '2016-07-11 18:14:08'),
 (48, '2016-07-09', 1, 'Noche de gala', '2016-07-11 18:14:08'),
@@ -262,7 +261,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (21, '2016-07-16', 1, 'Advocaciones ', '2016-07-17 07:48:35'),
 (47, '2016-07-16', 1, 'Advocaciones ', '2016-07-17 07:48:35'),
 (22, '2016-07-16', 0, 'Advocaciones ', '2016-07-17 07:48:35'),
-(23, '2016-07-16', 0, 'Advocaciones ', '2016-07-17 07:48:35'),
 (59, '2016-07-16', 1, 'Advocaciones ', '2016-07-17 07:48:35'),
 (24, '2016-07-16', 0, 'Advocaciones ', '2016-07-17 07:48:35'),
 (48, '2016-07-16', 0, 'Advocaciones ', '2016-07-17 07:48:35'),
@@ -319,7 +317,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-07-23', 0, 'Test grupo', '2016-07-25 20:10:57'),
 (22, '2016-07-23', 1, 'Test grupo', '2016-07-25 20:10:57'),
 (59, '2016-07-23', 0, 'Test grupo', '2016-07-25 20:10:57'),
-(23, '2016-07-23', 0, 'Test grupo', '2016-07-25 20:10:57'),
 (24, '2016-07-23', 1, 'Test grupo', '2016-07-25 20:10:57'),
 (48, '2016-07-23', 0, 'Test grupo', '2016-07-25 20:10:57'),
 (5, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
@@ -373,7 +370,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-07-30', 0, 'Hora santa familiar', '2016-08-01 05:25:00'),
 (22, '2016-07-30', 0, 'Hora santa familiar', '2016-08-01 05:25:00'),
 (59, '2016-07-30', 0, 'Hora santa familiar', '2016-08-01 05:25:00'),
-(23, '2016-07-30', 0, 'Hora santa familiar', '2016-08-01 05:25:00'),
 (24, '2016-07-30', 1, 'Hora santa familiar', '2016-08-01 05:25:00'),
 (48, '2016-07-30', 1, 'Hora santa familiar', '2016-08-01 05:25:00'),
 (4, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
@@ -426,7 +422,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-08-06', 1, 'Pecados Capitales', '2016-08-07 19:19:45'),
 (22, '2016-08-06', 1, 'Pecados Capitales', '2016-08-07 19:19:45'),
 (59, '2016-08-06', 1, 'Pecados Capitales', '2016-08-07 19:19:45'),
-(23, '2016-08-06', 0, 'Pecados Capitales', '2016-08-07 19:19:45'),
 (24, '2016-08-06', 1, 'Pecados Capitales', '2016-08-07 19:19:45'),
 (48, '2016-08-06', 0, 'Pecados Capitales', '2016-08-07 19:19:45'),
 (46, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
@@ -481,7 +476,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-08-13', 1, 'Aseo/visita', '2016-08-14 19:08:06'),
 (22, '2016-08-13', 1, 'Aseo/visita', '2016-08-14 19:08:06'),
 (59, '2016-08-13', 1, 'Aseo/visita', '2016-08-14 19:08:06'),
-(23, '2016-08-13', 0, 'Aseo/visita', '2016-08-14 19:08:06'),
 (24, '2016-08-13', 0, 'Aseo/visita', '2016-08-14 19:08:06'),
 (48, '2016-08-13', 0, 'Aseo/visita', '2016-08-14 19:08:06'),
 (3, '2016-09-17', 0, 'La confesión', '2016-09-18 13:53:30'),
@@ -535,7 +529,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-08-20', 1, 'Cumpleaños Grupo', '2016-08-27 23:23:58'),
 (22, '2016-08-20', 1, 'Cumpleaños Grupo', '2016-08-27 23:23:58'),
 (59, '2016-08-20', 1, 'Cumpleaños Grupo', '2016-08-27 23:23:58'),
-(23, '2016-08-20', 1, 'Cumpleaños Grupo', '2016-08-27 23:23:58'),
 (24, '2016-08-20', 1, 'Cumpleaños Grupo', '2016-08-27 23:23:58'),
 (48, '2016-08-20', 1, 'Cumpleaños Grupo', '2016-08-27 23:23:58'),
 (2, '2016-09-17', 0, 'La confesión', '2016-09-18 13:53:30'),
@@ -590,7 +583,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-08-27', 1, 'Carta', '2016-09-03 17:49:47'),
 (22, '2016-08-27', 1, 'Carta', '2016-09-03 17:49:47'),
 (59, '2016-08-27', 1, 'Carta', '2016-09-03 17:49:47'),
-(23, '2016-08-27', 0, 'Carta', '2016-09-03 17:49:47'),
 (24, '2016-08-27', 0, 'Carta', '2016-09-03 17:49:47'),
 (48, '2016-08-27', 0, 'Carta', '2016-09-03 17:49:47'),
 (26, '2016-08-27', 1, 'Carta', '2016-09-03 17:49:47'),
@@ -644,7 +636,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-09-03', 1, 'Aseo', '2016-09-05 19:48:37'),
 (22, '2016-09-03', 1, 'Aseo', '2016-09-05 19:48:37'),
 (59, '2016-09-03', 1, 'Aseo', '2016-09-05 19:48:37'),
-(23, '2016-09-03', 0, 'Aseo', '2016-09-05 19:48:37'),
 (24, '2016-09-03', 1, 'Aseo', '2016-09-05 19:48:37'),
 (48, '2016-09-03', 0, 'Aseo', '2016-09-05 19:48:37'),
 (1, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
@@ -700,7 +691,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-09-11', 1, 'El Noviazgo', '2016-09-11 17:32:18'),
 (22, '2016-09-11', 1, 'El Noviazgo', '2016-09-11 17:32:18'),
 (59, '2016-09-11', 1, 'El Noviazgo', '2016-09-11 17:32:18'),
-(23, '2016-09-11', 0, 'El Noviazgo', '2016-09-11 17:32:18'),
 (24, '2016-09-11', 1, 'El Noviazgo', '2016-09-11 17:32:18'),
 (48, '2016-09-11', 1, 'El Noviazgo', '2016-09-11 17:32:18'),
 (50, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
@@ -747,7 +737,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
 (22, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
 (59, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
-(23, '2016-09-17', 0, 'La confesión', '2016-09-18 13:53:30'),
 (24, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
 (48, '2016-09-17', 1, 'La confesión', '2016-09-18 13:53:30'),
 (26, '2016-09-17', 0, 'La confesión', '2016-09-18 13:53:30'),
@@ -802,7 +791,6 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 (47, '2016-09-24', 1, 'Amigo secreto', '2016-09-25 02:56:31'),
 (22, '2016-09-24', 1, 'Amigo secreto', '2016-09-25 02:56:31'),
 (59, '2016-09-24', 1, 'Amigo secreto', '2016-09-25 02:56:31'),
-(23, '2016-09-24', 0, 'Amigo secreto', '2016-09-25 02:56:31'),
 (24, '2016-09-24', 1, 'Amigo secreto', '2016-09-25 02:56:31'),
 (48, '2016-09-24', 1, 'Amigo secreto', '2016-09-25 02:56:31'),
 (26, '2016-09-24', 0, 'Amigo secreto', '2016-09-25 02:56:31'),
@@ -836,16 +824,19 @@ INSERT INTO `asistencia` (`ID_INTEGRANTE`, `FECHA`, `ASISTENCIA`, `COMENTARIO`, 
 -- Estructura de tabla para la tabla `familiar`
 --
 
-CREATE TABLE `familiar` (
-  `DOCUMENTO` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `familiar` (
+  `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT,
   `IDENTIFICACION_INTEGRANTE` int(11) NOT NULL,
   `NOMBRES` varchar(50) NOT NULL,
   `PRIMER_APELLIDO` varchar(25) NOT NULL,
   `SEGUNDO_APELLIDO` varchar(25) DEFAULT NULL,
   `PARENTESCO` varchar(20) NOT NULL,
   `CELULAR` int(30) NOT NULL,
-  `DIRECCION` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `DIRECCION` varchar(50) NOT NULL,
+  PRIMARY KEY (`DOCUMENTO`),
+  KEY `FK_FAMILIAR` (`IDENTIFICACION_INTEGRANTE`),
+  KEY `IDENTIFICACION_INTEGRANTE` (`IDENTIFICACION_INTEGRANTE`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `familiar`
@@ -860,11 +851,36 @@ INSERT INTO `familiar` (`DOCUMENTO`, `IDENTIFICACION_INTEGRANTE`, `NOMBRES`, `PR
 -- Estructura de tabla para la tabla `horarios`
 --
 
-CREATE TABLE `horarios` (
+CREATE TABLE IF NOT EXISTS `horarios` (
   `ID_INTEGRANTE` int(11) NOT NULL,
   `FECHA` date NOT NULL,
-  `HORARIO` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `HORARIO` varchar(7) NOT NULL,
+  `DIA` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`ID_INTEGRANTE`,`FECHA`,`HORARIO`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `horarios`
+--
+
+INSERT INTO `horarios` (`ID_INTEGRANTE`, `FECHA`, `HORARIO`, `DIA`) VALUES
+(1, '2016-10-02', '00:00', 'Domingo'),
+(68, '2016-10-02', '00:00', 'Domingo'),
+(67, '2016-10-02', '00:00', 'Domingo'),
+(5, '2016-10-02', '00:00', 'Domingo'),
+(9, '2016-10-02', '00:00', 'Domingo'),
+(12, '2016-10-02', '11:00AM', 'Domingo'),
+(22, '2016-10-02', '00:00', 'Domingo'),
+(24, '2016-10-02', '00:00', 'Domingo'),
+(32, '2016-10-02', '05:00PM', 'Domingo'),
+(34, '2016-10-02', '05:00PM', 'Domingo'),
+(49, '2016-10-02', '00:00', 'Domingo'),
+(35, '2016-10-02', '08:00AM', 'Domingo'),
+(36, '2016-10-02', '00:00', 'Domingo'),
+(37, '2016-10-02', '11:00AM', 'Domingo'),
+(40, '2016-10-02', '05:00PM', 'Domingo'),
+(66, '2016-10-02', '11:00AM', 'Domingo'),
+(44, '2016-10-02', '00:00', 'Domingo');
 
 -- --------------------------------------------------------
 
@@ -872,8 +888,8 @@ CREATE TABLE `horarios` (
 -- Estructura de tabla para la tabla `integrante`
 --
 
-CREATE TABLE `integrante` (
-  `DOCUMENTO` int(12) NOT NULL,
+CREATE TABLE IF NOT EXISTS `integrante` (
+  `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT,
   `NOMBRES` varchar(25) NOT NULL,
   `PRIMER_APELLIDO` varchar(15) NOT NULL,
   `SEGUNDO_APELLIDO` varchar(15) DEFAULT NULL,
@@ -887,8 +903,9 @@ CREATE TABLE `integrante` (
   `IMAGEN` longtext,
   `FECHA_INGRESO` date DEFAULT NULL,
   `FECHA_REGISTRO` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `ESTADO` varchar(20) NOT NULL DEFAULT 'ASISTENTE'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `ESTADO` varchar(20) NOT NULL DEFAULT 'ASISTENTE',
+  PRIMARY KEY (`DOCUMENTO`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=69 ;
 
 --
 -- Volcado de datos para la tabla `integrante`
@@ -913,12 +930,11 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (20, 'Jose Luis  ', 'Andrade', '', 'M', '1999-11-24', 'MZ 27 CASA 8 PROTECHO B', '3142162424', 'joseluis.andrade.587', 0, 0, '342813091914_1081790898529247_2869004238592451395_n.jpg', '2016-01-01', '2016-06-21 19:48:25', 'ASISTENTE'),
 (21, 'Juan Daniel ', 'Guzman', '', 'M', '1999-04-07', 'MZ 34 CASA 4 PROTECHO B', '300 3821047', 'daniel.guzman.14418101', 0, 0, '420412328405_251183701890793_1312036996_n.jpg', '2016-01-01', '2016-07-29 18:07:54', 'ASISTENTE'),
 (22, 'Julian Esteban ', 'Cano', '', 'M', '2002-04-30', 'SMZ 4 MZ 2 CASA 7 N/CASTILLA', '3144136750', 'profile.php?id=100008294737064', 1, 0, '432513000365_1756738994612575_2251948421856638481_n.jpg', '2016-01-01', '2016-06-21 19:48:25', 'ASISTENTE'),
-(23, 'Katerine  ', 'Salazar', 'Endo', 'F', '1999-12-29', 'CASA 10 SAN GELATO', '3223835254', 'kateriine.endo', 0, 0, '440913055512_1726904520886375_1470411194442095494_n.jpg', '2016-01-01', '2016-09-14 13:33:12', 'INASISTENTE'),
 (24, 'Kervlyn Alexis ', 'Guzman', '', 'M', '2001-12-14', '', '314 4819659', 'kateriine.endo', 1, 0, '455912009683_504741826367688_2586058728641024082_n.jpg', '2016-01-01', '2016-07-29 18:09:34', 'ASISTENTE'),
 (26, 'Laura Valentina  ', 'Vargas', 'Morales', 'F', '2001-11-17', 'SMZ 7 MZ 5 CASA 8 N/CASTILLA', '312 5254093', 'lauravalentina.vargasmorales', 0, 0, '485412742806_969879993099763_8946822925882915439_n.jpg', '2016-01-01', '2016-09-18 14:52:56', 'INASISTENTE'),
 (30, 'Maicol Steven  ', 'Guzman', '', 'M', '2003-04-30', 'MZ 34 CASA 4 PROTECHO B', '312 5254093', '', 0, 0, '414110917318_567900273346545_5259684330951652483_n.jpg', '2016-01-01', '2016-07-29 18:09:55', 'ASISTENTE'),
 (31, 'Maria Camila ', 'Tangarife', '', 'F', '2002-03-31', '', '3124507085', 'camila.cardenas.902266', 0, 0, '402112976674_952557114864038_663085497_n(1).jpg', '2016-01-01', '2016-09-14 13:33:12', 'INASISTENTE'),
-(32, 'Maria Paula ', 'Barrios', '', 'F', '2002-07-04', '', '3003218696', 'mariapaula.barriostrilleras.9', 0, 0, '504512417605_1671514893109127_6172349296654209961_n.jpg', '2016-01-01', '2016-06-21 19:48:25', 'ASISTENTE'),
+(32, 'Maria Paula ', 'Barrios', '', 'F', '2002-07-04', '', '3003218696', 'mariapaula.barriostrilleras.9', 1, 0, '504512417605_1671514893109127_6172349296654209961_n.jpg', '2016-01-01', '2016-10-01 14:05:21', 'ASISTENTE'),
 (33, 'Mariam Paola ', 'Betancourt', '', 'F', '2002-08-11', 'MZ 31 CASA 9 PROTECHO B', '321 9928441', 'mariiam.bettancourt', 0, 0, '511312795412_1746105812285448_823808909556973390_n.jpg', '2016-01-01', '2016-07-29 18:10:33', 'INASISTENTE'),
 (34, 'Mateo  ', 'Cortes', 'Perez', 'M', '2000-10-31', 'SMZ 4 MZ 5 CASA 6 N/CASTILLA', '2672517', 'profile.php?id=100008943496513', 1, 0, '515312250078_1480965348878234_5132347312022774896_n.jpg', '2016-01-01', '2016-06-21 19:48:25', 'ASISTENTE'),
 (35, 'Monica Alejandra ', 'Palacios', '', 'F', '2003-08-26', 'SMZ 26MZ 8 CASA 6 N/CASTILLA', '3015412925', 'monicaalejandra.palacios.6', 1, 0, '530713012634_702940669808484_2522712948787906065_n.jpg', '2016-01-01', '2016-08-26 16:58:43', 'ASISTENTE'),
@@ -929,11 +945,11 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (41, 'Tatiana ', 'Mosquera', '', 'F', '2002-07-26', 'MZ B CASA 21 BRISAS DE VASCONIA', '3124265295', '', 0, 0, '5136pp.jpg', '2016-01-01', '2016-08-01 05:25:47', 'ASISTENTE'),
 (42, 'Valentina  ', 'Sandoval', 'Sosa', 'F', '2002-01-07', 'MZ 26 CASA 20 PROTECHO B', '304 3281384', 'profile.php?id=100010322284498', 0, 0, '213475592_205781046442637_6733832403705519157_n.jpg', '2016-01-01', '2016-07-29 18:10:07', 'ASISTENTE'),
 (43, 'Viviana Mayerly', 'Yara', 'Castaño', 'F', '2000-07-16', 'MZ L CASA 28 LA CIMA 3', '3112013780', 'yerlyviviana.yara', 0, 0, '20585789_1994957837395558_7171291481264152049_n.jpg', '2016-01-01', '2016-09-14 13:33:12', 'ASISTENTE'),
-(44, 'Yuliana  ', 'Mosquera', 'Varon', 'F', '2001-07-26', 'MZ 24 CASA 3 PROTECHO B', '3108048927', 'yuliana.romero.777', 0, 0, '374812310566_930288843727129_1494953296721950439_n.jpg', '2016-01-01', '2016-07-20 23:42:32', 'INASISTENTE'),
+(44, 'Yuliana  ', 'Mosquera', 'Varon', 'F', '2001-07-26', 'MZ 24 CASA 3 PROTECHO B', '3108048927', 'yuliana.romero.777', 1, 0, '374812310566_930288843727129_1494953296721950439_n.jpg', '2016-01-01', '2016-10-05 19:25:44', 'INASISTENTE'),
 (45, 'Jhon Freddy ', 'Gonzalez', 'Ducuara', 'M', '2001-12-26', '', '320 2064485', 'profile.php?id=100008986006297', 0, 0, '183011130087_863230430409215_349477948245326008_n.jpg', '2016-01-01', '2016-06-21 19:48:25', 'ASISTENTE'),
 (46, 'Catalina ', 'Gonzalez', 'Ducuara', 'F', '2002-11-06', '', '320 2064485', 'natilomej', 0, 0, '133012495167_970380193056162_9198080529780381870_n.jpg', '2016-01-01', '2016-06-21 19:48:25', 'ASISTENTE'),
 (47, 'Juan David', 'Varon', 'Rengifo', 'M', '1998-05-18', 'SMZ4 MZ 9 CASA 2 N/CASTILLA', '310 8698788', 'juanda.varon.9', 0, 0, '440113015593_1011787298904799_6980326812170386042_n.jpg', '2016-01-01', '2016-06-21 19:48:25', 'ASISTENTE'),
-(48, 'Laura', 'Rubio', 'Rico', 'F', '2000-01-01', '', '', '', 0, 0, '', '2016-01-01', '2016-06-21 19:56:27', 'ASISTENTE'),
+(48, 'Laura', 'Rubio', 'Rico', 'F', '2000-01-01', '', '', '', 0, 0, '3530pp.jpg', '2016-01-01', '2016-10-06 16:35:30', 'ASISTENTE'),
 (49, 'Milton Hernando', 'Otavo', 'Varon', 'M', '1994-11-04', 'MZ 33 CASA 21 PROTECHO B', '3112002546', 'mhotavo', 1, 1, '0409pp.jpg', '2013-06-24', '2016-07-25 23:51:23', 'ASISTENTE'),
 (50, 'Anderson David', 'Romero', '', 'M', '2002-04-23', 'MZ 12 CASA 23 PROTECHO B', '3186190149', 'andersondavid.romeroacosta', 0, 0, '232712814741_499539293552357_4468923369777411399_n.jpg', '2016-06-25', '2016-06-25 22:23:27', 'ASISTENTE'),
 (51, 'Paula', 'Santa', '', 'F', '2000-02-27', 'SMZ 6 MZ 3 CASA  6 N/CASTILLA', '3115167251', 'pauliita.santa', 0, 0, '363513407316_1082955311762664_8518695332968360428_n.jpg', '2016-06-25', '2016-06-25 22:36:35', 'ASISTENTE'),
@@ -943,13 +959,16 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 (55, 'Nicol Dayana', 'Plazas ', 'Parra', 'F', '1999-02-01', '', '3124587365', 'dayanita.parra.96', 0, 0, '524812208739_890506891040743_4659284530732698546_n.jpg', '2016-06-25', '2016-08-28 03:35:28', 'INASISTENTE'),
 (57, 'Maicol Steven', 'Galicia', '', 'M', '2003-04-22', 'MZ 34 CASA 6 PROTECHO B', '3114989979', 'maicol.galiciaaguirre', 0, 0, '050711252592_853102531439172_854412849011509899_n.jpg', '2016-06-25', '2016-06-25 23:05:07', 'ASISTENTE'),
 (58, 'Leidy', 'Cespedes', '', 'F', '2002-03-07', 'MZ S CASA 1 LA CIMA', '3222813766', 'leidy.cespedes.790', 0, 0, '073013466064_504290713100518_7652923296812731527_n.jpg', '2016-06-25', '2016-06-25 23:07:30', 'ASISTENTE'),
-(59, 'Katerine', 'Prada', '', 'F', '2000-06-05', 'Mz  D casa 19 C vasconia', ' 322 7660136', '', 0, 0, '', '2016-06-25', '2016-07-29 18:09:19', 'ASISTENTE'),
+(59, 'Katerine', 'Prada', '', 'F', '2000-06-05', 'Mz  D casa 19 C vasconia', ' 322 7660136', '', 0, 0, '3435pp.jpg', '2016-06-25', '2016-10-06 16:34:35', 'ASISTENTE'),
 (60, 'Maria Juliana', 'Farfan', '', 'F', '2000-04-09', 'Súper manzana 3 manzana 1 casa 10 Nueva Castilla', '320 3810345', 'yulyfarbu', 0, 0, '193314067474_1193778417310177_6529275072204483411_n.jpg', '2016-07-17', '2016-08-26 20:19:33', 'ASISTENTE'),
 (61, 'Lizeth Dayana', 'León', '', 'F', '2000-05-30', 'Mz 12 casa 15 piso 3 protecho 2', '3123198832', 'dayana.leon.37', 0, 0, '5608pp.jpg', '2016-07-17', '2016-09-05 19:51:49', 'ASISTENTE'),
 (62, 'Juan Camilo', 'García ', 'Perez ', 'M', '1991-01-26', 'Nueva Castilla Spm 13 mz 1 cs2 ', '3202612775', 'camilo.garcia.566', 0, 0, '015613718738_1094096333994130_1483576692862428280_n.jpg', '2016-07-25', '2016-07-25 20:01:57', 'ASISTENTE'),
 (63, 'María Paula ', 'Diaz Calderón ', 'Calderon', 'F', '2002-11-23', 'Manzana e casa 10 vasconia', '3222466352', '100011221459355', 0, 0, '222413332825_234672293583484_4413662336725585237_n.jpg', '2016-08-08', '2016-09-14 13:33:12', 'ASISTENTE'),
 (64, 'Dairo David', 'Acevedo', 'Perez', 'M', '1999-03-25', '', '300 3041706', 'dairodavid.acevedoperez', 0, 0, '194813584871_10204962375657553_2051293552133158615_o.jpg', '2016-08-30', '2016-09-05 20:10:46', 'ASISTENTE'),
-(65, 'Faber Jeffrey ', 'Padilla ', 'Tapiero', 'M', '2004-02-05', 'Mz 29 Casa 10 Protecho B', '314 2749740', 'faberjeffrey.padillatapiero', 0, 0, '', '2016-09-11', '2016-09-14 13:47:18', 'ASISTENTE');
+(65, 'Faber Jeffrey ', 'Padilla ', 'Tapiero', 'M', '2004-02-05', 'Mz 29 Casa 10 Protecho B', '314 2749740', 'faberjeffrey.padillatapiero', 0, 0, '3654pp.jpg', '2016-09-11', '2016-10-06 16:36:54', 'ASISTENTE'),
+(66, 'Valentina', 'Peña Vargas', '', 'F', '2005-02-02', 'SP MZ 14 MZ 3 CASA 5 N/CASTILLA', '312 3245528', '', 1, 0, '2905pp.jpg', '2016-09-28', '2016-10-06 16:29:05', 'NO-MEC'),
+(67, 'Brisney', 'Mendez', '', 'F', '2016-01-01', '', '310 3120059', '', 1, 0, '284914045755_130653374046178_3509918453286109364_n.jpg', '2016-09-28', '2016-10-06 16:28:49', 'NO-MEC'),
+(68, 'Angela Maria ', 'Martinez', '', 'F', '2006-06-12', 'SMZ 1 CASA 17  N/CASTILLA', '3204135295', '', 1, 0, '', '2016-09-28', '2016-09-28 21:26:06', 'NO-MEC');
 
 -- --------------------------------------------------------
 
@@ -957,12 +976,14 @@ INSERT INTO `integrante` (`DOCUMENTO`, `NOMBRES`, `PRIMER_APELLIDO`, `SEGUNDO_AP
 -- Estructura de tabla para la tabla `logs`
 --
 
-CREATE TABLE `logs` (
-  `ID` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `logs` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `IP` varchar(20) NOT NULL,
   `USER` int(11) NOT NULL,
-  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`),
+  KEY `USER` (`USER`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=133 ;
 
 --
 -- Volcado de datos para la tabla `logs`
@@ -1084,7 +1105,23 @@ INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
 (113, '161.10.97.39', 1, '2016-09-23 16:11:47'),
 (114, '190.130.96.175', 1, '2016-09-25 01:23:28'),
 (115, '190.253.26.93', 1, '2016-09-25 02:53:36'),
-(116, '190.253.26.93', 1, '2016-09-26 01:55:18');
+(116, '190.253.26.93', 1, '2016-09-26 01:55:18'),
+(117, '190.128.111.236', 1, '2016-09-28 19:39:15'),
+(118, '190.128.111.236', 1, '2016-09-28 21:19:33'),
+(119, '190.128.111.236', 1, '2016-09-29 12:53:29'),
+(120, '190.128.111.236', 1, '2016-09-29 15:04:32'),
+(121, '190.66.236.160', 1, '2016-09-30 03:35:09'),
+(122, '190.128.111.236', 1, '2016-09-30 13:19:39'),
+(123, '186.118.235.125', 1, '2016-09-30 13:57:51'),
+(124, '190.128.111.236', 1, '2016-10-01 13:57:17'),
+(125, '186.113.251.20', 1, '2016-10-03 18:01:07'),
+(126, '190.128.111.236', 1, '2016-10-03 20:07:17'),
+(127, '190.128.111.236', 1, '2016-10-05 15:00:01'),
+(128, '190.128.111.236', 1, '2016-10-05 19:24:35'),
+(129, '190.128.111.236', 1, '2016-10-06 14:41:24'),
+(130, '190.128.111.236', 1, '2016-10-06 15:04:54'),
+(131, '190.128.111.236', 1, '2016-10-06 16:18:13'),
+(132, '190.128.111.236', 1, '2016-10-06 19:21:43');
 
 -- --------------------------------------------------------
 
@@ -1092,14 +1129,16 @@ INSERT INTO `logs` (`ID`, `IP`, `USER`, `FECHA`) VALUES
 -- Estructura de tabla para la tabla `tema`
 --
 
-CREATE TABLE `tema` (
-  `ID_TEMA` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tema` (
+  `ID_TEMA` int(11) NOT NULL AUTO_INCREMENT,
   `TEMA` varchar(50) NOT NULL,
   `DESCRIPCION` text NOT NULL,
   `FECHA` date DEFAULT NULL,
   `USUARIOLOG` bigint(11) NOT NULL,
-  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `FECHALOG` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID_TEMA`),
+  KEY `USUARIOLOG` (`USUARIOLOG`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Volcado de datos para la tabla `tema`
@@ -1125,8 +1164,8 @@ INSERT INTO `tema` (`ID_TEMA`, `TEMA`, `DESCRIPCION`, `FECHA`, `USUARIOLOG`, `FE
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
-  `ID` bigint(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `ID` bigint(255) NOT NULL AUTO_INCREMENT,
   `DOC` int(20) NOT NULL,
   `USER` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `PASS` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
@@ -1140,8 +1179,9 @@ CREATE TABLE `usuarios` (
   `IMAGEN` text COLLATE utf8_unicode_ci,
   `KEYPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
   `NEWPASS` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `ULTIMA_CONEXION` int(32) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -1151,91 +1191,6 @@ INSERT INTO `usuarios` (`ID`, `DOC`, `USER`, `PASS`, `EMAIL`, `ROL`, `NOMBRES`, 
 (1, 1110540682, 'admin', 'de9fd5a771a37d06cbf841051c9c8aff', 'milton.otavo@gmail.com', 1, 'MILTON', 'OTAVO', 'VARON', 'M', '2016-07-03', '20401-3254avatar.jpg', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0),
 (2, 123456778, 'sandra', 'de9fd5a771a37d06cbf841051c9c8aff', 'sandra@gmail.com', 1, 'SANDRA', 'CEBALLOS', 'MARTINEZ', 'F', '2016-07-03', '3520pp.jpg', '20401-3254avatar.jpg', '20401-3254avatar.jpg', 0);
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `asistencia`
---
-ALTER TABLE `asistencia`
-  ADD PRIMARY KEY (`FECHA`,`ID_INTEGRANTE`),
-  ADD KEY `ID_INTEGRANTE` (`ID_INTEGRANTE`);
-
---
--- Indices de la tabla `familiar`
---
-ALTER TABLE `familiar`
-  ADD PRIMARY KEY (`DOCUMENTO`),
-  ADD KEY `FK_FAMILIAR` (`IDENTIFICACION_INTEGRANTE`),
-  ADD KEY `IDENTIFICACION_INTEGRANTE` (`IDENTIFICACION_INTEGRANTE`);
-
---
--- Indices de la tabla `horarios`
---
-ALTER TABLE `horarios`
-  ADD PRIMARY KEY (`ID_INTEGRANTE`);
-
---
--- Indices de la tabla `integrante`
---
-ALTER TABLE `integrante`
-  ADD PRIMARY KEY (`DOCUMENTO`);
-
---
--- Indices de la tabla `logs`
---
-ALTER TABLE `logs`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `USER` (`USER`);
-
---
--- Indices de la tabla `tema`
---
-ALTER TABLE `tema`
-  ADD PRIMARY KEY (`ID_TEMA`),
-  ADD KEY `USUARIOLOG` (`USUARIOLOG`);
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`ID`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `familiar`
---
-ALTER TABLE `familiar`
-  MODIFY `DOCUMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT de la tabla `horarios`
---
-ALTER TABLE `horarios`
-  MODIFY `ID_INTEGRANTE` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `integrante`
---
-ALTER TABLE `integrante`
-  MODIFY `DOCUMENTO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
---
--- AUTO_INCREMENT de la tabla `logs`
---
-ALTER TABLE `logs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
---
--- AUTO_INCREMENT de la tabla `tema`
---
-ALTER TABLE `tema`
-  MODIFY `ID_TEMA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `ID` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

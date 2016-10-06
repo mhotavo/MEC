@@ -15,6 +15,8 @@ class Integrante {
 	private $genero;
 	private $inasistentes;
 	private $fechaIngreso;
+	private $dia;
+	private $estado;
 	private $db;
 
 	public function __construct(){
@@ -44,7 +46,7 @@ class Integrante {
 	}
 
 	public function listar(){
-		$sql="SELECT * FROM integrante ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
+		$sql="SELECT * FROM integrante /*WHERE ESTADO!='NO-MEC'*/ ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
 		$datos=$this->db->consultaRetorno($sql);
 		return $datos;
 	}
@@ -76,7 +78,8 @@ class Integrante {
 		ACOLITO,
 		COORDINADOR,
 		IMAGEN,
-		FECHA_INGRESO) 
+		FECHA_INGRESO,
+		ESTADO) 
 		VALUES 
 		(NULL, 
 		'{$this->nombres}', 
@@ -90,7 +93,8 @@ class Integrante {
 		'{$this->acolito}',
 		'{$this->coordinador}',
 		'{$this->imagen}',
-		'{$this->fechaIngreso}'
+		'{$this->fechaIngreso}',
+		'{$this->estado}'
 
 		); ";
 		$this->db->consultaSimple($sql);
@@ -118,9 +122,10 @@ class Integrante {
 		ACOLITO ='{$this->acolito}',
 		COORDINADOR ='{$this->coordinador}',
 		IMAGEN ='{$this->imagen}',
-		FECHA_INGRESO ='{$this->fechaIngreso}'
+		FECHA_INGRESO ='{$this->fechaIngreso}',
+		ESTADO ='{$this->estado}'
 		WHERE DOCUMENTO='{$this->documento}';";
-		$this->db->consultaSimple($sql);
+		$this->db->consultaSimple($sql);  
 	}
 
 	public function view(){
@@ -133,7 +138,7 @@ class Integrante {
 	public function listarJSON(){
 		$sql="SELECT DOCUMENTO, CONCAT(NOMBRES, ' ', PRIMER_APELLIDO) as NOMBRE FROM integrante";
 		if ($this->inasistentes!='si') {
-			$sql.=" WHERE ESTADO !='INASISTENTE' ";
+			$sql.=" WHERE ESTADO ='ASISTENTE' ";
 		}
 		$sql.=" ORDER BY NOMBRE ASC ";
 		$data = $this->db->consultaRetorno($sql);
@@ -147,7 +152,19 @@ class Integrante {
 		return $datos;
 	}
 
-
+	public function AcolitosJSON(){
+		$sql="SELECT h.*, CONCAT(i.NOMBRES, ' ', i.PRIMER_APELLIDO) as NOMBRE  FROM integrante i LEFT JOIN horarios h ON (i.DOCUMENTO=h.ID_INTEGRANTE)  WHERE i.ACOLITO='1' AND h.FECHA>=CURDATE() AND h.DIA='{$this->dia}' ";
+		$sql.=" ORDER BY NOMBRE ASC ";
+		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
+		$datos=array();
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		}  
+		return $datos;
+	}
 
 } 
 

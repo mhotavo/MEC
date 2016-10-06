@@ -73,7 +73,7 @@
     <div class="form-group">
       <label for="inputEmail" class="col-lg-2 control-label">Fecha de ingreso</label>
       <div class="col-lg-10">
-      <input type="date" class="form-control" name="fechaIngreso" value="<?php echo date("Y-m-d"); ?>" >
+        <input type="date" class="form-control" name="fechaIngreso" value="<?php echo date("Y-m-d"); ?>" >
       </div>
     </div>
     <div class="form-group">
@@ -108,7 +108,22 @@
 </div>
 </div>
 </div>		    
+<div class="form-group">
+ <label class="col-lg-2 control-label">Otro</label>
+ <div class="col-lg-10">
+  <div class="radio">
+   <label>
+   <input type="radio" name="Otro" id="optionsRadios1" value="1" >
+    Si
+  </label>
 
+  <label>
+  <input type="radio" name="Otro" id="optionsRadios2" value="0" checked="">
+    No
+  </label>
+</div>
+</div>
+</div>    
 <div class="form-group">
  <div class="col-lg-10 col-lg-offset-2">
   <button type="reset" class="btn btn-default">Cancelar</button>

@@ -58,11 +58,11 @@
       <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Acolitos <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<?php echo URL; ?>acolitos/dominical">Horario Dominical</a></li>
+          <li><a href="<?php echo URL; ?>acolitos/dominical">Registrar Dominical</a></li>
           <li class="divider"></li>
-          <li><a href="<?php echo URL; ?>acolitos/semanal">Horario Semanal</a></li>
+          <li><a href="<?php echo URL; ?>acolitos/semanal">Registrar Semanal</a></li>
           <li class="divider"></li>
-          <li><a href="<?php echo URL; ?>acolitos/suspendidos">Suspendidos</a></li>
+          <li><a href="<?php echo URL; ?>acolitos">Ver Horarios</a></li>
         </ul>
       </li>
     </ul>

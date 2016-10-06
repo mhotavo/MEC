@@ -12,7 +12,9 @@ class AcolitosController{
 		$this->Integrante = new Integrante();
 
 	}
-	public function index(){
+
+
+	public function dominical(){
 		if (!empty($_SESSION['app_id'])) {
 			if ($_POST) {
 				$datos=$this->Integrante->acolitos();
@@ -21,6 +23,7 @@ class AcolitosController{
 					$this->Acolitos->__set("fecha", $_POST['fecha']);
 					$this->Acolitos->__set("horario",  $_POST['misa_'.$id]);
 					$this->Acolitos->__set("integrante", $id);
+					$this->Acolitos->__set("dia", "Domingo");
 					$this->Acolitos->add(); 
 				}
 				header("Location:" . URL . "Acolitos");
@@ -36,63 +39,72 @@ class AcolitosController{
 	}
 
 
-	public function dominical(){
-		if ($_POST) {
-			$this->Acolitos->__set("documentoIntegrante", $_POST['integrante']);
-			$this->Acolitos->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
-			$this->Acolitos->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) )  ;
-			$this->Acolitos->__set("segundoApellido", ucwords(strtolower($_POST['inputSegundoApellido'])) );
-			$this->Acolitos->__set("direccion", $_POST['inputDireccion']);
-			$this->Acolitos->__set("celular", $_POST['inputCelular']);
-			$this->Acolitos->__set("parentesco", $_POST['parentesco']);
-			$this->Acolitos->add();
-			header("Location:" . URL . "Acolitoses");
-		} else{
-			$datos = $this->Integrante->listar(); 
-			return $datos;
+	public function semanal(){
+		if (!empty($_SESSION['app_id'])) {
+			if ($_POST) {
+				$datos=$this->Integrante->acolitos();
+				while($row = mysqli_fetch_array($datos)){
+					$id=$row['DOCUMENTO'];
+					$this->Acolitos->__set("fecha", $_POST['fecha_'.$id]);
+					$this->Acolitos->__set("horario", "06:30PM"  );
+					$this->Acolitos->__set("integrante", $id);
+					$this->Acolitos->__set("dia", $_POST['misa_'.$id] );
+					$this->Acolitos->add(); 
+				} 
+				header("Location:" . URL . "Acolitos");
+			}else {
+			#listar Acolitos
+				$datos=$this->Integrante->acolitos();
+				return $datos;
+			}
+		}else {
+			header("Location:" . URL . "acolitos");
 		}
-
-
-	}
-	public function listarIntegrante(){
-		$datos = $this->Integrante->listar(); 
-		return $datos;
+		
 	}
 
-	public function editar($id){
-		if (!$_POST) {
-			$this->Acolitos->__set("documento", $id);
-			$datos=$this->Acolitos->view();
-			return $datos;
-		} else {
-			$this->Acolitos->__set("documentoIntegrante", $_POST['integrante']);
-			$this->Acolitos->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
-			$this->Acolitos->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) )  ;
-			$this->Acolitos->__set("segundoApellido", ucwords(strtolower($_POST['inputSegundoApellido'])) );
-			$this->Acolitos->__set("direccion", $_POST['inputDireccion']);
-			$this->Acolitos->__set("celular", $_POST['inputCelular']);
-				 #	$this->Acolitos->__set("correo", $_POST['inputEmail']);
-			$this->Acolitos->__set("parentesco", $_POST['parentesco']);
-			$this->Acolitos->__set("documento", $_POST['Documento']);
-			$this->Acolitos->edit();   
-			header("Location:" . URL . "Acolitoses");
 
+
+	public function borrarFecha(){
+		if (!empty($_SESSION['app_id'])) {
+			if (isset($_GET['fecha']) and !empty($_GET['fecha']) ) {
+				$this->Acolitos->__set("fecha", $_GET['fecha']);
+				$datos=$this->Acolitos->borrarFecha();
+			}else {
+				header("Location:" . URL . "acolitos");
+			}
+		}else {
+			header("Location:" . URL . "acolitos");
 		}
+		
 	}
 
-	public function ver($id){
-		$this->Acolitos->__set("documento", $id);
-		$datos=$this->Acolitos->view();
-		return $datos;
+
+	public function borrarRangoFechas(){
+		if (!empty($_SESSION['app_id'])) {
+			if (isset($_GET['fecha']) and !empty($_GET['fecha']) ) {
+				$this->Acolitos->__set("fecha", $_GET['fecha']);
+				$datos=$this->Acolitos->borrarRangoFechas();
+			}else {
+				header("Location:" . URL . "acolitos");
+			}
+		}else {
+			header("Location:" . URL . "acolitos");
+		}
+		
 	}
 
-	public function eliminar($id){
-		$this->Acolitos->__set("documento", $id);
-		$this->Acolitos->delete(); 
-		header("Location:" . URL . "Acolitoses");
-	}					
-
-
+	public function generarHorarioJSON(){
+		if (!empty($_GET['dia'])) {
+			$this->Acolitos->__set("dia", $_GET['dia']);
+		}
+		if (!empty($_GET['fecha'])) {
+			$this->Acolitos->__set("fecha", $_GET['fecha']);
+		}
+		
+		$datos=$this->Acolitos->generarHorarioJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
 }
 
 $Acolitoses= new AcolitosController();

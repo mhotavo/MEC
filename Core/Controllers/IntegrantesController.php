@@ -36,9 +36,10 @@ class IntegrantesController{
 			else {
 				$nombre = null;
 			}
-			$this->integrante->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
-			$this->integrante->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) );
-			$this->integrante->__set("segundoApellido", ucwords(strtolower($_POST['inputSegundoApellido'])) );
+
+			$this->integrante->__set("nombres", ucwords(mb_strtolower($_POST['inputNombres'],'UTF-8')) );
+			$this->integrante->__set("primerApellido", ucwords(mb_strtolower($_POST['inputPrimerApellido'],'UTF-8')) );
+			$this->integrante->__set("segundoApellido", ucwords(mb_strtolower($_POST['inputSegundoApellido'],'UTF-8')) );
 			$this->integrante->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
 			$this->integrante->__set("direccion", $_POST['inputDireccion']);
 			$this->integrante->__set("celular", $_POST['inputCelular']);
@@ -47,6 +48,15 @@ class IntegrantesController{
 			$this->integrante->__set("coordinador", $_POST['Coordinador']);
 			$this->integrante->__set("genero", $_POST['selectGenero']);
 			$this->integrante->__set("fechaIngreso", $_POST['fechaIngreso']);
+
+			if ($_POST['Otro']=='1') {
+				$this->integrante->__set("estado", 'NO-MEC');
+			} else {
+				$this->integrante->__set("estado", 'ASISTENTE');
+			}
+
+
+
 			$this->integrante->__set("imagen", $nombre);
 			$this->integrante->add(); 
 			header("Location:" . URL . "Integrantes");
@@ -63,9 +73,9 @@ class IntegrantesController{
 			return $datos;
 		} else {
 			$this->integrante->__set("documento", $_POST['Documento']);
-			$this->integrante->__set("nombres", ucwords(strtolower($_POST['inputNombres'])) );
-			$this->integrante->__set("primerApellido", ucwords(strtolower($_POST['inputPrimerApellido'])) );
-			$this->integrante->__set("segundoApellido", ucwords(strtolower($_POST['inputSegundoApellido'])) );
+			$this->integrante->__set("nombres", ucwords(mb_strtolower($_POST['inputNombres'])) );
+			$this->integrante->__set("primerApellido", ucwords(mb_strtolower($_POST['inputPrimerApellido'],'UTF-8')) );
+			$this->integrante->__set("segundoApellido", ucwords(mb_strtolower($_POST['inputSegundoApellido'],'UTF-8')) );
 			$this->integrante->__set("fechaNacimiento", $_POST['inputFechaNacimiento']);
 			$this->integrante->__set("direccion", $_POST['inputDireccion']);
 			$this->integrante->__set("celular", $_POST['inputCelular']);
@@ -75,6 +85,12 @@ class IntegrantesController{
 			$this->integrante->__set("genero", $_POST['selectGenero']);
 			$this->integrante->__set("fechaIngreso", $_POST['fechaIngreso']);
 			
+			if ($_POST['Otro']=='1') {
+				$this->integrante->__set("estado", 'NO-MEC');
+			} else {
+				$this->integrante->__set("estado", 'ASISTENTE');
+			}
+
 
 			$permitidos=array("image/jpeg", "image/png", "image/jpg");
 			$limite = 700;
@@ -124,6 +140,15 @@ class IntegrantesController{
 	public function listarAllJSON(){
 		$this->integrante->__set("inasistentes", "si");
 		$datos=$this->integrante->listarJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function AcolitosJSON(){
+		if (!empty($_GET['dia'])) {
+			$this->integrante->__set("dia", $_GET['dia']);
+		}
+		
+		$datos=$this->integrante->AcolitosJSON();
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
