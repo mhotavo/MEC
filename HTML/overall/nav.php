@@ -55,8 +55,11 @@
        <li><a href="<?php echo URL; ?>birthday"> Cumpleaños  <i class="fa fa-birthday-cake" aria-hidden="true"></i></a></li> 
      </ul>
      <ul class="nav navbar-nav">
+     <li><a href="<?php echo URL; ?>statistics"> Estadisticas <i class="fa fa-bar-chart" aria-hidden="true"></i></i></a></li> 
+     </ul>
+     <ul class="nav navbar-nav">
       <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Acolitos <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Acolitos <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="<?php echo URL; ?>acolitos/dominical">Registrar Dominical</a></li>
           <li class="divider"></li>

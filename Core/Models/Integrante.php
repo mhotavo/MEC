@@ -52,7 +52,7 @@ class Integrante {
 	}
 
 	public function birthdayJSON(){
-		$sql='SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE DATE_FORMAT(FECHA_NACIMIENTO, "%m-%d") >= DATE_FORMAT(CURDATE(), "%m-%d")     ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)';
+		$sql='SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE DATE_FORMAT(FECHA_NACIMIENTO, "%m-%d") >= DATE_FORMAT(CURDATE(), "%m-%d")  AND ESTADO="ASISTENTE"  ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)';
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
@@ -165,6 +165,67 @@ class Integrante {
 		}  
 		return $datos;
 	}
+
+
+
+	# =====================================  STATISTICS =======================================================
+	public function LongevoJSON(){
+		$sql='SELECT DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(FECHA_NACIMIENTO)), "%Y")+0 AS EDAD, CONCAT(NOMBRES, " " ,PRIMER_APELLIDO, " ",SEGUNDO_APELLIDO)AS NOMBRES FROM integrante  WHERE ESTADO ="ASISTENTE" AND COORDINADOR=0
+		ORDER BY EDAD  DESC LIMIT 3';
+		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
+		$datos=array();
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		}  
+		return $datos;
+	}
+
+	public function JovenJSON(){
+		$sql='SELECT DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(FECHA_NACIMIENTO)), "%Y")+0 AS EDAD, CONCAT(NOMBRES, " " ,PRIMER_APELLIDO, " ",SEGUNDO_APELLIDO) AS NOMBRES FROM integrante  WHERE ESTADO ="ASISTENTE" AND COORDINADOR=0
+		ORDER BY EDAD  ASC LIMIT 3';		
+		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
+		$datos=array();
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		}  
+		return $datos;
+	}
+
+
+	public function MasParticipativoJSON(){
+		$integrantes=$this->integrante->listar();
+
+		$sql='SELECT COUNT(*), ID_INTEGRANTE, CONCAT(i.NOMBRES, " " ,i.PRIMER_APELLIDO, " ",i.SEGUNDO_APELLIDO)AS NOMBRES   FROM asistencia INNER JOIN integrante i ON (ID_INTEGRANTE=i.DOCUMENTO)  WHERE ID_INTEGRANTE = 1 AND FECHA>'2017-01-01' AND ASISTENCIA=1';
+		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
+		$datos=array();
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		}  
+		return $datos;
+	}
+
+	public function MenosParticipativoJSON(){
+		$sql='SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE DATE_FORMAT(FECHA_NACIMIENTO, "%m-%d") >= DATE_FORMAT(CURDATE(), "%m-%d")  AND ESTADO!="NO-MEC"  ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)';
+		$data = $this->db->consultaRetorno($sql);
+		$total= $this->db->total_rows($data);
+		$datos=array();
+		if ($total>0) {
+			while ($row = mysqli_fetch_assoc($data)) {
+				$datos[]=$row;
+			}
+		}  
+		return $datos;
+	}
+
 
 } 
 

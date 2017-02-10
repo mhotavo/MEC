@@ -157,6 +157,17 @@ class IntegrantesController{
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
+
+	public function LongevoJSON(){
+		$datos=$this->integrante->LongevoJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function JovenJSON(){
+		$datos=$this->integrante->JovenJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
 }
 
 $integrantes= new IntegrantesController();

@@ -81,9 +81,34 @@ function mesLetras(mes){
 	}
 }
 
+	//STATISTICS
+	function longevos(){
+		$("#longevos").empty();
+		$.getJSON('Integrantes/LongevoJSON', function(resp){
+			$.each(resp, function(i, item) {
+				$("#longevos").append(' <li><span class="text-primary">'+item.NOMBRES+ '</span> <b class="text-danger">'+item.EDAD+' Años</b></li>');
+			});
+		});
+	}
 
-function cargarAsistencia(val){
-	var fecha= val;
+	function jovenes(){
+		$("#jovenes").empty();
+		$.getJSON('Integrantes/JovenJSON', function(resp){
+			console.log(resp);
+			$.each(resp, function(i, item) {
+				$("#jovenes").append(' <li><span class="text-primary">'+item.NOMBRES+ '</span> <b class="text-danger">'+item.EDAD+' Años</b></li>');
+			});
+		});
+	}
+
+
+
+
+
+
+
+	function cargarAsistencia(val){
+		var fecha= val;
 	//LISTAMOS INTEGRANTES
 	$.getJSON('Integrantes/listarAllJSON', function(resp){
 		for (var i in resp) 

@@ -1,31 +1,4 @@
 
--- phpMyAdmin SQL Dump
--- version 3.5.2.2
--- http://www.phpmyadmin.net
---
--- Servidor: localhost
--- Tiempo de generación: 09-02-2017 a las 15:27:49
--- Versión del servidor: 5.1.73
--- Versión de PHP: 5.2.17
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de datos: `u307413022_mec`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `asistencia`
---
 
 CREATE TABLE IF NOT EXISTS `asistencia` (
   `ID_INTEGRANTE` int(11) NOT NULL,
@@ -1814,6 +1787,3 @@ INSERT INTO `usuarios` (`ID`, `DOC`, `USER`, `PASS`, `EMAIL`, `ROL`, `NOMBRES`, 
 (1, 1110540682, 'admin', 'de9fd5a771a37d06cbf841051c9c8aff', 'milton.otavo@gmail.com', 1, 'MILTON', 'OTAVO', 'VARON', 'M', '2016-07-03', '20401-3254avatar.jpg', '573e5feb61b20121114c322b050f0dfd', '9699F73A', 0),
 (2, 123456778, 'sandra', 'de9fd5a771a37d06cbf841051c9c8aff', 'sandra@gmail.com', 1, 'SANDRA', 'CEBALLOS', 'MARTINEZ', 'F', '2016-07-03', '3520pp.jpg', '20401-3254avatar.jpg', '20401-3254avatar.jpg', 0);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
