@@ -28,6 +28,7 @@
             <td class=""> <a href="<?php echo URL; ?>Integrantes/ver/<?php echo $value['Documento']; ?>"><?php  echo $value['Nombre']; ?> </a></td>
             <td style="color:red;font-weight: bold;"><?php  echo $value['Estado']; ?></td>
             <td>
+              <a  href="<?php echo URL; ?>Integrantes/editar/<?php echo $value['Documento']; ?>" class="btn btn-warning">Editar</a> 
               <a  class="btn btn-danger" onclick="DeleteItem('¿Está seguro de eliminar este Integrante?','<?php echo URL; ?>Integrantes/eliminar/<?php echo $value['Documento']; ?>')" >Borrar</a> 
             </td>
             <?php 

@@ -115,7 +115,6 @@ class Asistencia  {
 	}	
 
 
-
 	public function fechasJSON(){
 		$sql="SELECT FECHA, COMENTARIO, SUM(asistencia) AS ASISTENCIAS, (COUNT(*)- SUM(asistencia)) as FALLAS, COUNT(*) AS TOTAL FROM asistencia GROUP BY FECHA ORDER BY FECHA DESC LIMIT 8 ";
 		$data = $this->db->consultaRetorno($sql);
@@ -126,6 +125,25 @@ class Asistencia  {
 				$datos[]=$row;
 			}
 		}  
+		return $datos;
+	}
+
+	public function asistentes($num){ 
+
+		$sql="SELECT  COUNT(*) AS ASISTENTES FROM asistencia WHERE ASISTENCIA=1 AND FECHA='{$num}' ";		
+		$data=  $this->db->consultaRetorno($sql);
+		$row = mysqli_fetch_assoc($data);
+		$datos = $row['ASISTENTES'];
+		return $datos;		
+	}
+
+
+	public function PromedioAsistencias(){ 
+		$acum=0;
+		foreach ($this->listarFechas() as $key => $value) {
+			$acum=$acum+$this->asistentes($value['FECHA']);
+		}
+		$datos= $acum/8;
 		return $datos;
 	}
 

@@ -168,6 +168,16 @@ class IntegrantesController{
 		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
 	}
 
+	public function ParticipativoJSON(){
+		$datos=$this->integrante->MasParticipativoJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
+	public function MenosParticipativoJSON(){
+		$datos=$this->integrante->MenosParticipativoJSON();
+		echo json_encode( $datos, JSON_UNESCAPED_UNICODE );
+	}
+
 }
 
 $integrantes= new IntegrantesController();

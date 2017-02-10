@@ -46,7 +46,13 @@ class Integrante {
 	}
 
 	public function listar(){
-		$sql="SELECT * FROM integrante /*WHERE ESTADO!='NO-MEC'*/ ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
+		$sql="SELECT * FROM integrante WHERE ESTADO!='NO-MEC' ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
+		$datos=$this->db->consultaRetorno($sql);
+		return $datos;
+	}
+
+	public function listarOnlyMEC(){
+		$sql="SELECT * FROM integrante WHERE ESTADO='ASISTENTE' ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
 		$datos=$this->db->consultaRetorno($sql);
 		return $datos;
 	}
@@ -170,7 +176,7 @@ class Integrante {
 
 	# =====================================  STATISTICS =======================================================
 	public function LongevoJSON(){
-		$sql='SELECT DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(FECHA_NACIMIENTO)), "%Y")+0 AS EDAD, CONCAT(NOMBRES, " " ,PRIMER_APELLIDO, " ",SEGUNDO_APELLIDO)AS NOMBRES FROM integrante  WHERE ESTADO ="ASISTENTE" AND COORDINADOR=0
+		$sql='SELECT DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(FECHA_NACIMIENTO)), "%Y")+0 AS EDAD, CONCAT(NOMBRES, " " ,PRIMER_APELLIDO)AS NOMBRES FROM integrante  WHERE ESTADO ="ASISTENTE" AND COORDINADOR=0
 		ORDER BY EDAD  DESC LIMIT 3';
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
@@ -184,8 +190,7 @@ class Integrante {
 	}
 
 	public function JovenJSON(){
-		$sql='SELECT DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(FECHA_NACIMIENTO)), "%Y")+0 AS EDAD, CONCAT(NOMBRES, " " ,PRIMER_APELLIDO, " ",SEGUNDO_APELLIDO) AS NOMBRES FROM integrante  WHERE ESTADO ="ASISTENTE" AND COORDINADOR=0
-		ORDER BY EDAD  ASC LIMIT 3';		
+		$sql='SELECT DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(FECHA_NACIMIENTO)), "%Y")+0 AS EDAD, CONCAT(NOMBRES, " " ,PRIMER_APELLIDO) AS NOMBRES FROM integrante  WHERE ESTADO ="ASISTENTE" AND COORDINADOR=0 ORDER BY EDAD  ASC LIMIT 3';		
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
@@ -199,32 +204,99 @@ class Integrante {
 
 
 	public function MasParticipativoJSON(){
-		$integrantes=$this->integrante->listar();
-
-		$sql='SELECT COUNT(*), ID_INTEGRANTE, CONCAT(i.NOMBRES, " " ,i.PRIMER_APELLIDO, " ",i.SEGUNDO_APELLIDO)AS NOMBRES   FROM asistencia INNER JOIN integrante i ON (ID_INTEGRANTE=i.DOCUMENTO)  WHERE ID_INTEGRANTE = 1 AND FECHA>'2017-01-01' AND ASISTENCIA=1';
-		$data = $this->db->consultaRetorno($sql);
-		$total= $this->db->total_rows($data);
 		$datos=array();
-		if ($total>0) {
-			while ($row = mysqli_fetch_assoc($data)) {
-				$datos[]=$row;
+		$max=0;
+		#Creamos Array 
+		foreach ( $this->listarOnlyMEC() as $key => $value) {
+			$sql='SELECT COUNT(*) AS TOTAL, ID_INTEGRANTE, CONCAT(i.NOMBRES, " " ,i.PRIMER_APELLIDO) AS NOMBRES   FROM asistencia INNER JOIN integrante i ON (ID_INTEGRANTE=i.DOCUMENTO)  WHERE ID_INTEGRANTE = "'.$value['DOCUMENTO'].'" AND FECHA>"2017-01-01" AND ASISTENCIA=1 '; 
+			$data = $this->db->consultaRetorno($sql);
+			$total= $this->db->total_rows($data);
+			if ($total>0  ) {
+				while ($row = mysqli_fetch_assoc($data)) {
+					#Maximo de asistencia
+					if ($max==0 OR $max<$row['TOTAL']) {
+						$max=$row['TOTAL'];
+					}  
+					#Agregamos al Array
+					if ($row['ID_INTEGRANTE']!="") {
+						$datos[]=$row;
+					} 
+				}
 			}
 		}  
+		#Eliminamos del array los de menor asistencia
+		foreach ($datos as $key => $value) {
+			if ($value['TOTAL']!=$max) {
+				unset($datos[$key]);
+			}
+		}
+
 		return $datos;
 	}
 
 	public function MenosParticipativoJSON(){
-		$sql='SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE DATE_FORMAT(FECHA_NACIMIENTO, "%m-%d") >= DATE_FORMAT(CURDATE(), "%m-%d")  AND ESTADO!="NO-MEC"  ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)';
-		$data = $this->db->consultaRetorno($sql);
-		$total= $this->db->total_rows($data);
 		$datos=array();
-		if ($total>0) {
-			while ($row = mysqli_fetch_assoc($data)) {
-				$datos[]=$row;
+		$menor=0;
+		#Creamos Array 
+		foreach ( $this->listarOnlyMEC() as $key => $value) {
+			$sql='SELECT COUNT(*) AS TOTAL, ID_INTEGRANTE, CONCAT(i.NOMBRES, " " ,i.PRIMER_APELLIDO) AS NOMBRES   FROM asistencia INNER JOIN integrante i ON (ID_INTEGRANTE=i.DOCUMENTO)  WHERE ID_INTEGRANTE = "'.$value['DOCUMENTO'].'" AND FECHA>"2017-01-01" AND ASISTENCIA=1 '; 
+			$data = $this->db->consultaRetorno($sql);
+			$total= $this->db->total_rows($data);
+			if ($total>0  ) {
+				while ($row = mysqli_fetch_assoc($data)) {
+					#menor de asistencia
+					if ($menor==0 OR $menor>$row['TOTAL']) {
+						$menor=$row['TOTAL'];
+					}  
+					#Agregamos al Array
+					if ($row['ID_INTEGRANTE']!="") {
+						$datos[]=$row;
+					} 
+				}
 			}
 		}  
+		#Eliminamos del array los de menor asistencia
+		foreach ($datos as $key => $value) {
+			if ($value['TOTAL']!=$menor) {
+				unset($datos[$key]);
+			}
+		}
+
 		return $datos;
 	}
+
+
+
+	public function PromedioEdad(){
+		$sql="SELECT 
+		AVG(YEAR(CURDATE())-YEAR(FECHA_NACIMIENTO) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(FECHA_NACIMIENTO,'%m-%d'), 0, -1)) AS PROMEDIO_EDAD 
+		FROM integrante WHERE ESTADO != 'NO-MEC' ";		
+		$data=  $this->db->consultaRetorno($sql);
+		$row = mysqli_fetch_assoc($data);
+		$datos = $row['PROMEDIO_EDAD'];
+		return $datos;
+	}
+
+	public function PromedioMujeres(){
+		$sql="SELECT  COUNT(*) AS MUJERES
+		FROM integrante WHERE ESTADO != 'NO-MEC' AND GENERO='F' ";		
+		$data=  $this->db->consultaRetorno($sql);
+		$row = mysqli_fetch_assoc($data);
+		$datos = $row['MUJERES'];
+		return $datos;
+	}
+
+	public function PromedioHombres(){
+		$sql="SELECT  COUNT(*) AS HOMBRES
+		FROM integrante WHERE ESTADO != 'NO-MEC' AND GENERO='M' ";		
+		$data=  $this->db->consultaRetorno($sql);
+		$row = mysqli_fetch_assoc($data);
+		$datos = $row['HOMBRES'];
+		return $datos;
+	}
+
+
+	
 
 
 } 
