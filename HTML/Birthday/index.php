@@ -13,11 +13,67 @@
 
           <table class="table table-striped table-hover" id="birthdays" >
             <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Fecha Nacimiento</th>
-                <th>Edad</th>
+              <tr  class='hidden' id="01">
+                <td colspan='4' align='center'>
+                  Enero <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
               </tr>
+              <tr  class='hidden' id="02">
+                <td colspan='4' align='center'>
+                  Febrero <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="03">
+                <td colspan='4' align='center'>
+                  Marzo <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="04">
+                <td colspan='4' align='center'>
+                  Abril <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="05">
+                <td colspan='4' align='center'>
+                  Mayo <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="06">
+                <td colspan='4' align='center'>
+                  Junio <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="07">
+                <td colspan='4' align='center'>
+                  Julio <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="08">
+                <td colspan='4' align='center'>
+                  Agosto <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="09">
+                <td colspan='4' align='center'>
+                  Septiembre <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="10">
+                <td colspan='4' align='center'>
+                  Octubre <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="11">
+                <td colspan='4' align='center'>
+                  Noviembre <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+              <tr  class='hidden' id="12">
+                <td colspan='4' align='center'>
+                  Diciembre <i class='fa fa-phone' aria-hidden='true'></i>
+                </td>
+              </tr>
+
             </thead>
             <tbody> 
 
@@ -41,40 +97,25 @@
           $.getJSON('Integrantes/birthdayJSON', {
             fecha: fecha
           }, function(resp) {
-            var esteMes = true;
-            var hoyCumple = true;
-            var proximos = true;
-            for (var i in resp) {
-              var date = resp[i].FECHA_NACIMIENTO.split("-");
-              var day = date[2];
-              var month = date[1];
-              var hoy = new Date();
-              var dd = hoy.getDate();
-              var mm = hoy.getMonth() + 1;
-            mm = ("0" + mm).slice(-2); // devolverá “01” si h=1; “12” si h=12
-            if (mm == month && dd == day) {
-              if (hoyCumple == true) {
-                $("#birthdays > tbody").append("<tr  class='danger'><td colspan='4' align='center' style='font-weight:bold;color:#B21800'> HOY <i class='fa fa-phone' aria-hidden='true'></i></td></tr>");
-                hoyCumple = false;
-              }
-              $("#birthdays > tbody").append("<tr id='" + resp[i].DOCUMENTO + "'><td><a href='Integrantes/ver/" + resp[i].DOCUMENTO + "'>" + resp[i].NOMBRES + " " + resp[i].PRIMER_APELLIDO + "</a></td><td>" + resp[i].FECHA_NACIMIENTO + " </td><td style='color:#ad3232; font-weight:bold;font-size:14px;'> " + (resp[i].EDAD - 1) + " AÑOS  <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
-            } else if (mm == month) {
-              if (esteMes == true) {
-                $("#birthdays > tbody").append("<tr class='warning'><td colspan='4' align='center' style='font-weight:bold;color:#897604'> ESTE MES <i class='fa fa-clock-o' aria-hidden='true'></td></tr>");
-                esteMes = false;
-              }
-              var falta = dd - day;
-              $("#birthdays > tbody").append("<tr id='" + resp[i].DOCUMENTO + "'><td><a href='Integrantes/ver/" + resp[i].DOCUMENTO + "'>" + resp[i].NOMBRES + " " + resp[i].PRIMER_APELLIDO + "</a></td><td>" + resp[i].FECHA_NACIMIENTO + " <span style='color:#48A8CC; font-size:14px;font-weight:bold;'> - Faltan " + Math.abs(falta) + " día(s) </span></td><td style='color:#ad3232; font-weight:bold;'>  " + resp[i].EDAD + " AÑOS <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
-            } else {
-              if (proximos == true) {
-                $("#birthdays > tbody").append("<tr  class='info'><td colspan='4' align='center' style='font-weight:bold;color:#3B246A'> PROXIMOS <i class='fa fa-calendar' aria-hidden='true'></i></td></tr>");
-                proximos = false;
-              }
-              $("#birthdays > tbody").append("<tr id='" + resp[i].DOCUMENTO + "'><td><a href='Integrantes/ver/" + resp[i].DOCUMENTO + "'>" + resp[i].NOMBRES + " " + resp[i].PRIMER_APELLIDO + "</a></td><td>" + resp[i].FECHA_NACIMIENTO + "</td><td style='color:#ad3232; font-weight:bold;'>" + resp[i].EDAD + " AÑOS <i class='fa fa-birthday-cake' aria-hidden='true'></i></td></tr>");
-            }
+           for (var i in resp) {
+
+
+            $("#birthdays > tbody").append("<tr id='" + resp[i].DOCUMENTO + "'>\
+              <td>\
+                <a href='Integrantes/editar/" + resp[i].DOCUMENTO + "'>" + resp[i].NOMBRE+ "</a>\
+              </td>\
+              <td>" 
+                + resp[i].BIRTHDAY + " \
+                <span style='color:#48A8CC; font-size:14px;font-weight:bold;'> - Faltan " + resp[i].FALTAN + " día(s) </span>\
+              </td>\
+              <td style='color:#ad3232; font-weight:bold;font-size:14px;'> " 
+                + (resp[i].EDAD) + 
+                " AÑOS  <i class='fa fa-birthday-cake' aria-hidden='true'></i>\
+              </td>\
+            </tr>");
+
           }
-          $("#birthdays > tbody").append("<tr'><td colspan='4' align='left' style='font-weight:bold;color:#818181;font-size:13px;'> " + resp.length + " <i class='fa fa-birthday-cake' aria-hidden='true'></i> Pendientes.</td></tr>");
-          console.log();
+
         }).error(function(e) {
           console.log(e);
         })
