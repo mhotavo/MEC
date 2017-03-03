@@ -19,8 +19,17 @@ class IntegrantesController{
 		}  else {
 			header("Location:" . URL . "Integrantes");
 		}
+	}
 
-
+public function informe(){
+		if (!empty($_SESSION['app_id'])) {
+			#listar integrantes
+			//echo $_SERVER['REMOTE_ADDR'];
+			$datos=$this->integrante->informe();
+			return $datos;
+		}  else {
+			header("Location:" . URL . "Integrantes");
+		}
 	}
 
 	public function agregar(){

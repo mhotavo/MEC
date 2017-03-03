@@ -15,11 +15,14 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Integrantes <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-           <li><a href="<?php echo URL; ?>Integrantes">Integrantes</a></li>
+           <li><a href="<?php echo URL; ?>Integrantes/index">Listar</a></li>
            <li class="divider"></li>
            <li><a href="<?php echo URL; ?>Integrantes/agregar">Agregar</a></li>
            <li class="divider"></li>
-           <li><a href="<?php echo URL; ?>Integrantes/otros">Otros</a></li>
+         <!--  <li><a href="<?php echo URL; ?>Integrantes/otros">Otros</a></li>
+           <li class="divider"></li>
+           <li><a href="<?php echo URL; ?>Integrantes/informe">Informe</a></li>-->
+
 
          </ul>
        </li>

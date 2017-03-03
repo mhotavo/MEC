@@ -45,11 +45,20 @@ class Integrante {
 		return $datos;
 	}
 
-	public function listar(){
+	/*public function listar(){
 		$sql="SELECT * FROM integrante WHERE ESTADO!='NO-MEC' ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
 		$datos=$this->db->consultaRetorno($sql);
 		return $datos;
+	}*/
+
+	public function listar(){
+		$sql="SELECT *, 
+		YEAR(CURDATE())-YEAR(FECHA_NACIMIENTO) + IF(DATE_FORMAT(CURDATE(),'%m-%d') > DATE_FORMAT(FECHA_NACIMIENTO,'%m-%d'), 0, -1) AS EDAD_ACTUAL
+		FROM integrante   ORDER BY ESTADO ASC, NOMBRES ASC ";
+		$datos=$this->db->consultaRetorno($sql);
+		return $datos;
 	}
+
 
 	public function listarOnlyMEC(){
 		$sql="SELECT * FROM integrante WHERE ESTADO='ASISTENTE' ORDER BY NOMBRES ASC, PRIMER_APELLIDO ASC ";
@@ -58,7 +67,13 @@ class Integrante {
 	}
 
 	public function birthdayJSON(){
-		$sql='SELECT *, (TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD FROM integrante WHERE DATE_FORMAT(FECHA_NACIMIENTO, "%m-%d") >= DATE_FORMAT(CURDATE(), "%m-%d")  AND ESTADO="ASISTENTE"  ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)';
+		$sql='SELECT *, 
+		(TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()))+1 AS EDAD 
+		FROM integrante 
+		WHERE 
+		DATE_FORMAT(FECHA_NACIMIENTO, "%m-%d") >= DATE_FORMAT(CURDATE(), "%m-%d")  
+		AND ESTADO="ASISTENTE"  
+		ORDER BY MONTH(FECHA_NACIMIENTO),DAY(FECHA_NACIMIENTO)';
 		$data = $this->db->consultaRetorno($sql);
 		$total= $this->db->total_rows($data);
 		$datos=array();
@@ -239,14 +254,15 @@ class Integrante {
 		$menor=0;
 		#Creamos Array 
 		foreach ( $this->listarOnlyMEC() as $key => $value) {
-			$sql='SELECT COUNT(*) AS TOTAL, ID_INTEGRANTE, CONCAT(i.NOMBRES, " " ,i.PRIMER_APELLIDO) AS NOMBRES   FROM asistencia INNER JOIN integrante i ON (ID_INTEGRANTE=i.DOCUMENTO)  WHERE ID_INTEGRANTE = "'.$value['DOCUMENTO'].'" AND FECHA>"2017-01-01" AND ASISTENCIA=1 '; 
+			$sql='SELECT COUNT(*) AS TOTAL, ID_INTEGRANTE, CONCAT(i.NOMBRES, " " ,i.PRIMER_APELLIDO) AS NOMBRES   FROM asistencia INNER JOIN integrante i ON (ID_INTEGRANTE=i.DOCUMENTO)  WHERE ID_INTEGRANTE = "'.$value['DOCUMENTO'].'" AND FECHA>"2017-01-01" AND ASISTENCIA=0 '; 
 			$data = $this->db->consultaRetorno($sql);
 			$total= $this->db->total_rows($data);
 			if ($total>0  ) {
 				while ($row = mysqli_fetch_assoc($data)) {
+
 					#menor de asistencia
-					if ($menor==0 OR $menor>$row['TOTAL']) {
-						$menor=$row['TOTAL'];
+					if ($menor==0 OR $menor<$row['TOTAL']) {
+						$menor=$row['TOTAL']-1;
 					}  
 					#Agregamos al Array
 					if ($row['ID_INTEGRANTE']!="") {
@@ -256,8 +272,9 @@ class Integrante {
 			}
 		}  
 		#Eliminamos del array los de menor asistencia
+		
 		foreach ($datos as $key => $value) {
-			if ($value['TOTAL']!=$menor) {
+			if ($value['TOTAL']<$menor) {
 				unset($datos[$key]);
 			}
 		}
